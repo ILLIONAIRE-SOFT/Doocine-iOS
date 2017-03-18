@@ -27,7 +27,7 @@ class TutorialViewController: BaseViewController {
     
     private func initViews() {
         createProjectButton.backgroundColor = UIColor.tangerine
-        createProjectButton.layer.cornerRadius = 10
+        createProjectButton.layer.cornerRadius = 6
         createProjectButton.setTitleColor(UIColor.white, for: .normal)
         
         skipButton.setTitleColor(UIColor.greishBrown, for: .normal)
@@ -53,21 +53,21 @@ extension TutorialViewController {
     
     private func makeFirstLandingPage(offset: CGFloat, width: CGFloat, height: CGFloat) -> Void {
         let firstPage = UIView(frame: CGRect(x: offset, y: 0, width: width, height: height))
-        firstPage.backgroundColor = UIColor.red
+        firstPage.backgroundColor = UIColor.lightGray
         
         scrollView.addSubview(firstPage)
     }
     
     private func makeSecondLandingPage(offset: CGFloat, width: CGFloat, height: CGFloat) -> Void {
         let secondPage = UIView(frame: CGRect(x: offset, y: 0, width: width, height: height))
-        secondPage.backgroundColor = UIColor.blue
+        secondPage.backgroundColor = UIColor.white
         
         scrollView.addSubview(secondPage)
     }
     
     private func makeThirdLandingPage(offset: CGFloat, width: CGFloat, height: CGFloat) -> Void {
         let thirdPage = UIView(frame: CGRect(x: offset, y: 0, width: width, height: height))
-        thirdPage.backgroundColor = UIColor.green
+        thirdPage.backgroundColor = UIColor.lightGray
         
         scrollView.addSubview(thirdPage)
     }
