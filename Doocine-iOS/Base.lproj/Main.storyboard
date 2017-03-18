@@ -33,10 +33,86 @@
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="bDy-gg-5qL" secondAttribute="bottom" id="mgl-Rf-A3l"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <segue destination="Lk6-YB-rDz" kind="show" identifier="PresentHomeViewController" id="WId-FU-vlQ"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="32.799999999999997" y="38.23088455772114"/>
+        </scene>
+        <!--Tutorial View Controller-->
+        <scene sceneID="JBk-WR-QDE">
+            <objects>
+                <viewController storyboardIdentifier="TutorialViewController" id="soY-vM-vqO" customClass="TutorialViewController" customModule="Doocine_iOS" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="OZ8-9g-X9W"/>
+                        <viewControllerLayoutGuide type="bottom" id="wr6-DY-Dv4"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="V6G-aP-v7U">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="This is Tutorial" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5AD-bG-zp2">
+                                <rect key="frame" x="166" y="152" width="111" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="k2V-BD-Zfd" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="817" y="38"/>
+        </scene>
+        <!--Home View Controller-->
+        <scene sceneID="1su-JX-PbK">
+            <objects>
+                <viewController storyboardIdentifier="HomeViewController" id="6ee-TB-HII" customClass="HomeViewController" customModule="Doocine_iOS" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="1Rk-N8-wmP"/>
+                        <viewControllerLayoutGuide type="bottom" id="rtY-dh-UO8"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="jtG-Wk-fne">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="This is home" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cYv-5Q-qKd">
+                                <rect key="frame" x="166" y="173" width="97" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="a7I-8h-k8j"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Igb-x3-guW" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="817" y="824"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="UhD-wk-uum">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Lk6-YB-rDz" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="TOW-nZ-0nl">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="6ee-TB-HII" kind="relationship" relationship="rootViewController" id="9cN-Sy-UfF"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Ssa-mK-fCl" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="33" y="824"/>
         </scene>
     </scenes>
     <resources>

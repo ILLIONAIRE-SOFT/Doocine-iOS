@@ -12,7 +12,41 @@ class SplashViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(true)
+        
+        if isFirstLaunch() {
+            presentTutorialViewController()
+        } else {
+            presentHomeViewController()
+        }
+    }
+}
 
-        // Do any additional setup after loading the view.
+
+// MARK: - Segue
+extension SplashViewController {
+    fileprivate func presentHomeViewController() -> Void {
+        self.performSegue(withIdentifier: "PresentHomeViewController", sender: self)
+    }
+    
+    fileprivate func presentTutorialViewController() -> Void {
+        print("Tutorial View Controller")
+    }
+}
+
+
+// MARK: - Check First Launch
+extension SplashViewController {
+    fileprivate func isFirstLaunch() -> Bool {
+        let launchedBefore = UserDefaults.standard.bool(forKey: "launchedBefore")
+        if launchedBefore  {
+            return false
+        } else {
+            UserDefaults.standard.set(true, forKey: "launchedBefore")
+            return true
+        }
     }
 }
