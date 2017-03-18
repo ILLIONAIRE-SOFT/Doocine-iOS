@@ -12,6 +12,7 @@
 		494766241E7D0D000024F9A2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 494766231E7D0D000024F9A2 /* Assets.xcassets */; };
 		494766271E7D0D000024F9A2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 494766251E7D0D000024F9A2 /* LaunchScreen.storyboard */; };
 		494766331E7D0E900024F9A2 /* SplashViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 494766321E7D0E900024F9A2 /* SplashViewController.swift */; };
+		494766361E7D0F6B0024F9A2 /* MovieStoryboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 494766351E7D0F6B0024F9A2 /* MovieStoryboard.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +23,7 @@
 		494766261E7D0D000024F9A2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		494766281E7D0D000024F9A2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		494766321E7D0E900024F9A2 /* SplashViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SplashViewController.swift; path = View/ViewControllers/SplashViewController.swift; sourceTree = "<group>"; };
+		494766351E7D0F6B0024F9A2 /* MovieStoryboard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MovieStoryboard.swift; path = Model/MovieStoryboard.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -68,6 +70,7 @@
 		4947662E1E7D0D340024F9A2 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				494766351E7D0F6B0024F9A2 /* MovieStoryboard.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -91,7 +94,7 @@
 		494766311E7D0E720024F9A2 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
-				494766321E7D0E900024F9A2 /* SplashViewController.swift */,
+				494766371E7D11280024F9A2 /* Splash */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -102,6 +105,14 @@
 				494766201E7D0D000024F9A2 /* Main.storyboard */,
 			);
 			name = Storyboard;
+			sourceTree = "<group>";
+		};
+		494766371E7D11280024F9A2 /* Splash */ = {
+			isa = PBXGroup;
+			children = (
+				494766321E7D0E900024F9A2 /* SplashViewController.swift */,
+			);
+			name = Splash;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -178,6 +189,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				494766331E7D0E900024F9A2 /* SplashViewController.swift in Sources */,
+				494766361E7D0F6B0024F9A2 /* MovieStoryboard.swift in Sources */,
 				4947661D1E7D0D000024F9A2 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
