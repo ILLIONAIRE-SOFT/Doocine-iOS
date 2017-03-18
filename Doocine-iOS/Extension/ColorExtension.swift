@@ -9,5 +9,6 @@
 import UIKit
 
 extension UIColor {
-    static let doocineBlue = UIColor(red: 0/255, green: 0/255 ,blue: 0/255, alpha: 1.0)
+    static let tangerine   = UIColor(red: 255.0/255, green: 139.0/255 ,blue: 028.0/255, alpha: 1.0)
+    static let greishBrown = UIColor(red: 066.0/255, green: 066.0/255 ,blue: 066.0/255, alpha: 1.0)
 }

@@ -9,6 +9,13 @@
 import Foundation
 
 class MovieStoryboard {
+    
+    var title: String!
+    var group: String!
+    var director: String!
+    var camera: String!
+    var actor: String!
+    
     init() {
         
     }

@@ -20,7 +20,8 @@ class SplashViewController: UIViewController {
         if isFirstLaunch() {
             presentTutorialViewController()
         } else {
-            presentHomeViewController()
+            presentTutorialViewController()
+//            presentHomeViewController()
         }
     }
 }
@@ -33,7 +34,7 @@ extension SplashViewController {
     }
     
     fileprivate func presentTutorialViewController() -> Void {
-        print("Tutorial View Controller")
+        self.performSegue(withIdentifier: "PresentTutorialViewController", sender: self)
     }
 }
 
