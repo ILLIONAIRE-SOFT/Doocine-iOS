@@ -13,6 +13,7 @@ class TutorialViewController: BaseViewController {
     @IBOutlet weak var bottomView: UIView!
     @IBOutlet weak var createProjectButton: UIButton!
     @IBOutlet weak var skipButton: UIButton!
+    @IBOutlet weak var pageControl: UIPageControl!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -42,15 +43,24 @@ extension TutorialViewController {
     fileprivate func makeLandingPage() -> Void {
         let viewWidth = UIScreen.main.bounds.width
         let contentWidth = UIScreen.main.bounds.width * 3
-        let contentHeight = UIScreen.main.bounds.height - bottomView.bounds.height
+        let contentHeight = UIScreen.main.bounds.height - bottomView.bounds.height - UIApplication.shared.statusBarFrame.size.height
         scrollView.contentSize = CGSize(width: contentWidth, height: contentHeight)
         scrollView.isPagingEnabled = true
         scrollView.showsVerticalScrollIndicator = false
         scrollView.showsHorizontalScrollIndicator = false
+        scrollView.delegate = self
         
+        makePageControl()
         makeFirstLandingPage(offset: viewWidth * 0, width: viewWidth, height: contentHeight)
         makeSecondLandingPage(offset: viewWidth * 1, width: viewWidth, height: contentHeight)
         makeThirdLandingPage(offset: viewWidth * 2, width: viewWidth, height: contentHeight)
+    }
+    
+    private func makePageControl() -> Void {
+        pageControl.numberOfPages = 3
+        pageControl.translatesAutoresizingMaskIntoConstraints = false
+        pageControl.currentPageIndicatorTintColor = UIColor.orange
+        pageControl.pageIndicatorTintColor = UIColor.lightGray.withAlphaComponent(0.8)
     }
     
     private func makeFirstLandingPage(offset: CGFloat, width: CGFloat, height: CGFloat) -> Void {
@@ -78,5 +88,14 @@ extension TutorialViewController {
         thirdPage.contentMode = .scaleAspectFit
         
         scrollView.addSubview(thirdPage)
+    }
+}
+
+
+// MARK: - ScrollView Delegate
+extension TutorialViewController: UIScrollViewDelegate {
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        let currentPage = scrollView.contentOffset.x / UIScreen.main.bounds.width
+        pageControl.currentPage = Int(currentPage)
     }
 }

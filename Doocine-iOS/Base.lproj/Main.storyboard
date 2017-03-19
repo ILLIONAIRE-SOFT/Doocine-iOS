@@ -103,6 +103,7 @@
                     <connections>
                         <outlet property="bottomView" destination="g89-t7-KMn" id="S04-Lk-HVR"/>
                         <outlet property="createProjectButton" destination="HbZ-ZR-qlY" id="UjA-XN-rss"/>
+                        <outlet property="pageControl" destination="A5w-Aq-47J" id="kZp-9t-pbk"/>
                         <outlet property="scrollView" destination="lla-jC-2Fy" id="fTh-yh-BZQ"/>
                         <outlet property="skipButton" destination="hTZ-jL-IDo" id="CLb-gQ-BHZ"/>
                         <segue destination="Lk6-YB-rDz" kind="show" identifier="PresentHomeViewControllerFromTutorial" id="ITD-rp-xTe"/>
