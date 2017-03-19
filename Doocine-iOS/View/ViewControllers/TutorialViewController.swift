@@ -45,6 +45,8 @@ extension TutorialViewController {
         let contentHeight = UIScreen.main.bounds.height - bottomView.bounds.height
         scrollView.contentSize = CGSize(width: contentWidth, height: contentHeight)
         scrollView.isPagingEnabled = true
+        scrollView.showsVerticalScrollIndicator = false
+        scrollView.showsHorizontalScrollIndicator = false
         
         makeFirstLandingPage(offset: viewWidth * 0, width: viewWidth, height: contentHeight)
         makeSecondLandingPage(offset: viewWidth * 1, width: viewWidth, height: contentHeight)
@@ -52,22 +54,28 @@ extension TutorialViewController {
     }
     
     private func makeFirstLandingPage(offset: CGFloat, width: CGFloat, height: CGFloat) -> Void {
-        let firstPage = UIView(frame: CGRect(x: offset, y: 0, width: width, height: height))
-        firstPage.backgroundColor = UIColor.lightGray
+        let firstPage = UIImageView(frame: CGRect(x: offset, y: 0, width: width, height: height))
+        firstPage.image = UIImage(named: "img_tutorial_1")
+        firstPage.backgroundColor = UIColor.white
+        firstPage.contentMode = .scaleAspectFit
         
         scrollView.addSubview(firstPage)
     }
     
     private func makeSecondLandingPage(offset: CGFloat, width: CGFloat, height: CGFloat) -> Void {
-        let secondPage = UIView(frame: CGRect(x: offset, y: 0, width: width, height: height))
+        let secondPage = UIImageView(frame: CGRect(x: offset, y: 0, width: width, height: height))
+        secondPage.image = UIImage(named: "img_tutorial_2")
         secondPage.backgroundColor = UIColor.white
+        secondPage.contentMode = .scaleAspectFit
         
         scrollView.addSubview(secondPage)
     }
     
     private func makeThirdLandingPage(offset: CGFloat, width: CGFloat, height: CGFloat) -> Void {
-        let thirdPage = UIView(frame: CGRect(x: offset, y: 0, width: width, height: height))
-        thirdPage.backgroundColor = UIColor.lightGray
+        let thirdPage = UIImageView(frame: CGRect(x: offset, y: 0, width: width, height: height))
+        thirdPage.image = UIImage(named: "img_tutorial_3")
+        thirdPage.backgroundColor = UIColor.white
+        thirdPage.contentMode = .scaleAspectFit
         
         scrollView.addSubview(thirdPage)
     }
