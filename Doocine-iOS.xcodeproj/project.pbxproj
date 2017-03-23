@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		492430B41E8400B800C3BBA0 /* HomeProjectScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 492430B31E8400B800C3BBA0 /* HomeProjectScrollView.swift */; };
+		492430B61E8401AD00C3BBA0 /* HomeHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 492430B51E8401AD00C3BBA0 /* HomeHeaderView.swift */; };
+		492430B81E840AF500C3BBA0 /* ProjectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 492430B71E840AF500C3BBA0 /* ProjectView.swift */; };
+		492430BA1E840B1000C3BBA0 /* MakeNewProjectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 492430B91E840B1000C3BBA0 /* MakeNewProjectView.swift */; };
 		4947661D1E7D0D000024F9A2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4947661C1E7D0D000024F9A2 /* AppDelegate.swift */; };
 		494766221E7D0D000024F9A2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 494766201E7D0D000024F9A2 /* Main.storyboard */; };
 		494766241E7D0D000024F9A2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 494766231E7D0D000024F9A2 /* Assets.xcassets */; };
@@ -19,9 +23,16 @@
 		49F8E3C01E7D194C004A61B3 /* ColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49F8E3BF1E7D194C004A61B3 /* ColorExtension.swift */; };
 		49F8E3C71E7D1B2D004A61B3 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49F8E3C61E7D1B2D004A61B3 /* Constants.swift */; };
 		49F8E3C91E7D1DED004A61B3 /* Scene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49F8E3C81E7D1DED004A61B3 /* Scene.swift */; };
+		ED3649E7823A586FFA71C9BE /* Pods_Doocine_iOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E0D88F961367641B98C98A6C /* Pods_Doocine_iOS.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		1EC1349277454E927C588BBE /* Pods-Doocine-iOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Doocine-iOS.release.xcconfig"; path = "Pods/Target Support Files/Pods-Doocine-iOS/Pods-Doocine-iOS.release.xcconfig"; sourceTree = "<group>"; };
+		2D64F9E2D53F17A4C0E29676 /* Pods-Doocine-iOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Doocine-iOS.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Doocine-iOS/Pods-Doocine-iOS.debug.xcconfig"; sourceTree = "<group>"; };
+		492430B31E8400B800C3BBA0 /* HomeProjectScrollView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HomeProjectScrollView.swift; path = View/CustomView/HomeProjectScrollView.swift; sourceTree = "<group>"; };
+		492430B51E8401AD00C3BBA0 /* HomeHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HomeHeaderView.swift; path = View/CustomView/HomeHeaderView.swift; sourceTree = "<group>"; };
+		492430B71E840AF500C3BBA0 /* ProjectView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ProjectView.swift; path = View/CustomView/ProjectView.swift; sourceTree = "<group>"; };
+		492430B91E840B1000C3BBA0 /* MakeNewProjectView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MakeNewProjectView.swift; path = View/CustomView/MakeNewProjectView.swift; sourceTree = "<group>"; };
 		494766191E7D0D000024F9A2 /* Doocine-iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Doocine-iOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		4947661C1E7D0D000024F9A2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		494766211E7D0D000024F9A2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -36,6 +47,7 @@
 		49F8E3BF1E7D194C004A61B3 /* ColorExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ColorExtension.swift; path = Extension/ColorExtension.swift; sourceTree = "<group>"; };
 		49F8E3C61E7D1B2D004A61B3 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Constants.swift; path = Utils/Constants.swift; sourceTree = "<group>"; };
 		49F8E3C81E7D1DED004A61B3 /* Scene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Scene.swift; path = Model/Scene.swift; sourceTree = "<group>"; };
+		E0D88F961367641B98C98A6C /* Pods_Doocine_iOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Doocine_iOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -43,17 +55,39 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				ED3649E7823A586FFA71C9BE /* Pods_Doocine_iOS.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		492430B11E84009300C3BBA0 /* CustomView */ = {
+			isa = PBXGroup;
+			children = (
+				492430B21E8400A000C3BBA0 /* Home */,
+			);
+			name = CustomView;
+			sourceTree = "<group>";
+		};
+		492430B21E8400A000C3BBA0 /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				492430B31E8400B800C3BBA0 /* HomeProjectScrollView.swift */,
+				492430B51E8401AD00C3BBA0 /* HomeHeaderView.swift */,
+				492430B71E840AF500C3BBA0 /* ProjectView.swift */,
+				492430B91E840B1000C3BBA0 /* MakeNewProjectView.swift */,
+			);
+			name = Home;
+			sourceTree = "<group>";
+		};
 		494766101E7D0CFF0024F9A2 = {
 			isa = PBXGroup;
 			children = (
 				4947661B1E7D0D000024F9A2 /* Doocine-iOS */,
 				4947661A1E7D0D000024F9A2 /* Products */,
+				FC66D24A0B587E586BC8106D /* Pods */,
+				A4CE5488CA0646390B7F9606 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -93,6 +127,7 @@
 		4947662F1E7D0D380024F9A2 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				492430B11E84009300C3BBA0 /* CustomView */,
 				494766341E7D0E9F0024F9A2 /* Storyboard */,
 				494766311E7D0E720024F9A2 /* ViewControllers */,
 			);
@@ -173,6 +208,23 @@
 			name = Utils;
 			sourceTree = "<group>";
 		};
+		A4CE5488CA0646390B7F9606 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				E0D88F961367641B98C98A6C /* Pods_Doocine_iOS.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		FC66D24A0B587E586BC8106D /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				2D64F9E2D53F17A4C0E29676 /* Pods-Doocine-iOS.debug.xcconfig */,
+				1EC1349277454E927C588BBE /* Pods-Doocine-iOS.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -180,9 +232,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 4947662B1E7D0D000024F9A2 /* Build configuration list for PBXNativeTarget "Doocine-iOS" */;
 			buildPhases = (
+				60B0CA4934DBA8C5454FC36F /* [CP] Check Pods Manifest.lock */,
 				494766151E7D0CFF0024F9A2 /* Sources */,
 				494766161E7D0CFF0024F9A2 /* Frameworks */,
 				494766171E7D0CFF0024F9A2 /* Resources */,
+				C38F6848FDD75678545EF1F6 /* [CP] Embed Pods Frameworks */,
+				9DB97E983F1E315412075EB4 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -241,16 +296,68 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		60B0CA4934DBA8C5454FC36F /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		9DB97E983F1E315412075EB4 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Doocine-iOS/Pods-Doocine-iOS-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		C38F6848FDD75678545EF1F6 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Doocine-iOS/Pods-Doocine-iOS-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		494766151E7D0CFF0024F9A2 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				492430B41E8400B800C3BBA0 /* HomeProjectScrollView.swift in Sources */,
 				4947663F1E7D14430024F9A2 /* HomeViewController.swift in Sources */,
 				494766331E7D0E900024F9A2 /* SplashViewController.swift in Sources */,
 				494766361E7D0F6B0024F9A2 /* MovieStoryboard.swift in Sources */,
 				49F8E3BB1E7D149B004A61B3 /* TutorialViewController.swift in Sources */,
+				492430BA1E840B1000C3BBA0 /* MakeNewProjectView.swift in Sources */,
 				4947661D1E7D0D000024F9A2 /* AppDelegate.swift in Sources */,
+				492430B81E840AF500C3BBA0 /* ProjectView.swift in Sources */,
+				492430B61E8401AD00C3BBA0 /* HomeHeaderView.swift in Sources */,
 				49F8E3C01E7D194C004A61B3 /* ColorExtension.swift in Sources */,
 				49F8E3BE1E7D18E6004A61B3 /* BaseViewController.swift in Sources */,
 				49F8E3C71E7D1B2D004A61B3 /* Constants.swift in Sources */,
@@ -375,6 +482,7 @@
 		};
 		4947662C1E7D0D000024F9A2 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 2D64F9E2D53F17A4C0E29676 /* Pods-Doocine-iOS.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = 23EFP3FERN;
@@ -388,6 +496,7 @@
 		};
 		4947662D1E7D0D000024F9A2 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 1EC1349277454E927C588BBE /* Pods-Doocine-iOS.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = 23EFP3FERN;

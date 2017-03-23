@@ -18,5 +18,6 @@ class BaseViewController: UIViewController {
     func initNavigation(barTintColor: UIColor = UIColor.white, barTitle: String = "Doocine") -> Void {
         self.navigationController?.navigationBar.barTintColor = barTintColor
         self.navigationItem.title = barTitle
+        self.navigationController?.navigationBar.isTranslucent = false
     }
 }

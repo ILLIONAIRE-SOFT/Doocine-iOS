@@ -17,6 +17,10 @@ class MovieStoryboard {
     var actor: String!
     
     init() {
-        
+        title = "Test Project"
+        group = "Doocine"
+        director = "DaiGeun Sohn"
+        camera = "Christoper Nolan"
+        actor = "Tang Wei"
     }
 }
