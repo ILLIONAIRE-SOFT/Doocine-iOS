@@ -10,11 +10,20 @@ import Foundation
 
 class MovieStoryboard {
     
-    var title: String!
+    var title: String! {
+        didSet {
+            print("Title DidSet")
+            if handlePropertyChange != nil {
+                self.handlePropertyChange?()
+            }
+        }
+    }
     var group: String!
     var director: String!
     var camera: String!
     var actor: String!
+    
+    var handlePropertyChange: (() -> ())?
     
     init() {
         title = "Test Project"

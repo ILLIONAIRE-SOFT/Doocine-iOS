@@ -13,6 +13,8 @@ class HomeProjectScrollView: UIView {
     
     var storyboards: [MovieStoryboard]!
     
+    var pageControl: UIPageControl!
+    
     let leftMargin: CGFloat = 36
     let rightMargin: CGFloat = 36
     
@@ -33,7 +35,7 @@ class HomeProjectScrollView: UIView {
     
     private func initViews() -> Void {
         projectCountLabel = UILabel()
-        projectCountLabel.text = "MY PROJECT | 321 project"
+        projectCountLabel.text = "MY PROJECT | \(self.storyboards.count) projects"
         projectCountLabel.textColor = UIColor.darkBlueGrey
         projectCountLabel.font = UIFont.systemFont(ofSize: 16)
         
@@ -62,7 +64,8 @@ class HomeProjectScrollView: UIView {
     
     public func initProjectsViews() -> Void {
         let scrollView = UIScrollView()
-        scrollView.contentSize = CGSize(width: UIScreen.main.bounds.width * 3, height: 240)
+        scrollView.contentSize = CGSize(width: UIScreen.main.bounds.width * 3, height: 180)
+        scrollView.showsHorizontalScrollIndicator = false
         scrollView.isPagingEnabled = true
         scrollView.delegate = self
         
@@ -72,13 +75,28 @@ class HomeProjectScrollView: UIView {
             make.top.equalTo(projectCountLabel.snp.bottom).offset(24)
             make.left.equalTo(self)
             make.right.equalTo(self)
-            make.height.equalTo(240)
+            make.height.equalTo(180)
         }
         
         for i in 0...storyboards.count-1 {
             let projectView = ProjectView(frame: CGRect(), order: i, storyboard: storyboards[i])
             projectView.storyboard = storyboards[i]
+            projectView.makeHandlePropertyChnage()
             scrollView.addSubview(projectView)
+        }
+        
+        pageControl = UIPageControl()
+        pageControl.numberOfPages = 3
+        pageControl.pageIndicatorTintColor = UIColor.lightGray
+        pageControl.currentPageIndicatorTintColor = UIColor.red
+        
+        self.addSubview(pageControl)
+        
+        pageControl.snp.makeConstraints { (make) in
+            make.top.equalTo(scrollView.snp.bottom).offset(12)
+            make.centerX.equalTo(self)
+            make.width.equalTo(60)
+            make.height.equalTo(40)
         }
         
     }
@@ -103,6 +121,7 @@ class HomeProjectScrollView: UIView {
 // MARK: - ScrollView Delegate
 extension HomeProjectScrollView: UIScrollViewDelegate {
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        print("Hi")
+        let currentPage = scrollView.contentOffset.x / UIScreen.main.bounds.width
+        pageControl.currentPage = Int(currentPage)
     }
 }

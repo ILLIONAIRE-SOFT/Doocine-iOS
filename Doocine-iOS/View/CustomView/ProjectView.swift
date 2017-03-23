@@ -12,6 +12,8 @@ import SnapKit
 class ProjectView: UIView {
 
     var storyboard: MovieStoryboard!
+    var groupLabel: UILabel!
+    var titleLabel: UILabel!
     
     let spacing: CGFloat = 16
     let leftRightSpacing: CGFloat = 32
@@ -34,6 +36,7 @@ class ProjectView: UIView {
         self.backgroundColor = UIColor.white
         
         initViews(with: storyboard)
+        addGestureSelf()
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -53,26 +56,51 @@ class ProjectView: UIView {
             make.height.equalTo(110)
         }
         
-        let groupLabel = UILabel()
+        groupLabel = UILabel()
         groupLabel.text = storyboard.group!
-        groupLabel.font = UIFont.systemFont(ofSize: 12)
+        groupLabel.textColor = UIColor.darkGray
+        groupLabel.font = UIFont.systemFont(ofSize: 13)
         
         self.addSubview(groupLabel)
         
         groupLabel.snp.makeConstraints { (make) in
-            make.left.equalTo(self).offset(6)
-            make.top.equalTo(imageView.snp.bottom).offset(6)
+            make.left.equalTo(self).offset(12)
+            make.top.equalTo(imageView.snp.bottom).offset(20)
         }
         
-        let titleLabel = UILabel()
+        titleLabel = UILabel()
         titleLabel.text = storyboard.title!
-        titleLabel.font = UIFont.systemFont(ofSize: 14)
+        titleLabel.font = UIFont.boldSystemFont(ofSize: 15)
         
         self.addSubview(titleLabel)
         
         titleLabel.snp.makeConstraints { (make) in
-            make.left.equalTo(self).offset(6)
-            make.top.equalTo(groupLabel.snp.bottom).offset(6)
+            make.left.equalTo(self).offset(12)
+            make.top.equalTo(groupLabel.snp.bottom).offset(4)
         }
+    }
+    
+    private func addGestureSelf() -> Void {
+        let tapSelf = UITapGestureRecognizer(target: self, action: #selector(presentStoryboardDetail))
+        self.addGestureRecognizer(tapSelf)
+    }
+    
+    public func makeHandlePropertyChnage() -> Void {
+        storyboard!.handlePropertyChange = { _ in
+            self.updateValuesNeedChnage()
+        }
+    }
+    
+    public func presentStoryboardDetail() -> Void {
+        print("Tapped")
+    }
+}
+
+
+// MARK: - Update Value
+extension ProjectView {
+    public func updateValuesNeedChnage() -> Void {
+        self.titleLabel.text = storyboard.title
+        self.groupLabel.text = storyboard.group
     }
 }

@@ -43,7 +43,19 @@ class HomeViewController: BaseViewController {
             make.left.equalTo(self.view).offset(0)
             make.right.equalTo(self.view).offset(0)
             make.top.equalTo(homeHeaderView.snp.bottom)
-            make.height.equalTo(300)
+            make.height.equalTo(380)
+        }
+        
+        let doocineBanner = UIImageView()
+        doocineBanner.contentMode = .scaleAspectFill
+        doocineBanner.image = UIImage(named: "img_banner_doocine")
+        
+        self.view.addSubview(doocineBanner)
+        doocineBanner.snp.makeConstraints { (make) in
+            make.left.equalTo(self.view)
+            make.right.equalTo(self.view)
+            make.top.equalTo(homeProjectScrollView.snp.bottom)
+            make.height.equalTo(200)
         }
         
     }
