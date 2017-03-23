@@ -78,7 +78,10 @@ class HomeProjectScrollView: UIView {
             make.height.equalTo(180)
         }
         
-        for i in 0...storyboards.count-1 {
+        let makeNewProjectView = MakeNewProjectView(frame: CGRect(), order: 0)
+        scrollView.addSubview(makeNewProjectView)
+        
+        for i in 1...storyboards.count-1 {
             let projectView = ProjectView(frame: CGRect(), order: i, storyboard: storyboards[i])
             projectView.storyboard = storyboards[i]
             projectView.makeHandlePropertyChnage()

@@ -12,16 +12,43 @@ class MovieStoryboard {
     
     var title: String! {
         didSet {
-            print("Title DidSet")
             if handlePropertyChange != nil {
                 self.handlePropertyChange?()
             }
         }
     }
-    var group: String!
-    var director: String!
-    var camera: String!
-    var actor: String!
+    
+    var group: String! {
+        didSet {
+            if handlePropertyChange != nil {
+                self.handlePropertyChange?()
+            }
+        }
+    }
+    
+    var director: String! {
+        didSet {
+            if handlePropertyChange != nil {
+                self.handlePropertyChange?()
+            }
+        }
+    }
+    
+    var camera: String! {
+        didSet {
+            if handlePropertyChange != nil {
+                self.handlePropertyChange?()
+            }
+        }
+    }
+    
+    var actor: String! {
+        didSet {
+            if handlePropertyChange != nil {
+                self.handlePropertyChange?()
+            }
+        }
+    }
     
     var handlePropertyChange: (() -> ())?
     
