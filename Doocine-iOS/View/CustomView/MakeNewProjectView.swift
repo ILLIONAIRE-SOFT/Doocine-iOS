@@ -8,11 +8,13 @@
 
 import UIKit
 import SnapKit
+import PopupController
 
 class MakeNewProjectView: UIView {
     let spacing: CGFloat = 16
     let leftRightSpacing: CGFloat = 32
     let viewWidth = (UIScreen.main.bounds.width - 2*16 - 2*32) / 3
+    var handleTapMakeNewProject: (() -> ())!
     
     init(frame: CGRect, order: Int) {
         super.init(frame: frame)
@@ -78,6 +80,8 @@ class MakeNewProjectView: UIView {
 
 extension MakeNewProjectView {
     public func tappedMakeNewProject() -> Void {
-        print("Show make New Project")
+        if handleTapMakeNewProject != nil {
+            self.handleTapMakeNewProject!()
+        }
     }
 }

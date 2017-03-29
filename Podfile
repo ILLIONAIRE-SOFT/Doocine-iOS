@@ -6,6 +6,7 @@ target 'Doocine-iOS' do
   use_frameworks!
 
   pod 'SnapKit'
+  pod 'PopupController'
   # Pods for Doocine-iOS
 
 end

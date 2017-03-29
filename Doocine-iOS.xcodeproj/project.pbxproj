@@ -18,6 +18,8 @@
 		494766331E7D0E900024F9A2 /* SplashViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 494766321E7D0E900024F9A2 /* SplashViewController.swift */; };
 		494766361E7D0F6B0024F9A2 /* MovieStoryboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 494766351E7D0F6B0024F9A2 /* MovieStoryboard.swift */; };
 		4947663F1E7D14430024F9A2 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4947663E1E7D14430024F9A2 /* HomeViewController.swift */; };
+		498A21F01E8C100400C1D5E1 /* CreateProjectPopup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 498A21EF1E8C100400C1D5E1 /* CreateProjectPopup.swift */; };
+		498A21F31E8C105300C1D5E1 /* Popup.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 498A21F11E8C105300C1D5E1 /* Popup.storyboard */; };
 		49F8E3BB1E7D149B004A61B3 /* TutorialViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49F8E3BA1E7D149B004A61B3 /* TutorialViewController.swift */; };
 		49F8E3BE1E7D18E6004A61B3 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49F8E3BD1E7D18E6004A61B3 /* BaseViewController.swift */; };
 		49F8E3C01E7D194C004A61B3 /* ColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49F8E3BF1E7D194C004A61B3 /* ColorExtension.swift */; };
@@ -42,6 +44,8 @@
 		494766321E7D0E900024F9A2 /* SplashViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SplashViewController.swift; path = View/ViewControllers/SplashViewController.swift; sourceTree = "<group>"; };
 		494766351E7D0F6B0024F9A2 /* MovieStoryboard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MovieStoryboard.swift; path = Model/MovieStoryboard.swift; sourceTree = "<group>"; };
 		4947663E1E7D14430024F9A2 /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HomeViewController.swift; path = View/ViewControllers/HomeViewController.swift; sourceTree = "<group>"; };
+		498A21EF1E8C100400C1D5E1 /* CreateProjectPopup.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CreateProjectPopup.swift; path = View/Popup/CreateProjectPopup.swift; sourceTree = "<group>"; };
+		498A21F21E8C105300C1D5E1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Popup.storyboard; sourceTree = "<group>"; };
 		49F8E3BA1E7D149B004A61B3 /* TutorialViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TutorialViewController.swift; path = View/ViewControllers/TutorialViewController.swift; sourceTree = "<group>"; };
 		49F8E3BD1E7D18E6004A61B3 /* BaseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BaseViewController.swift; path = View/ViewControllers/BaseViewController.swift; sourceTree = "<group>"; };
 		49F8E3BF1E7D194C004A61B3 /* ColorExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ColorExtension.swift; path = Extension/ColorExtension.swift; sourceTree = "<group>"; };
@@ -127,6 +131,7 @@
 		4947662F1E7D0D380024F9A2 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				498A21EE1E8C0FE400C1D5E1 /* Popup */,
 				492430B11E84009300C3BBA0 /* CustomView */,
 				494766341E7D0E9F0024F9A2 /* Storyboard */,
 				494766311E7D0E720024F9A2 /* ViewControllers */,
@@ -156,6 +161,7 @@
 			isa = PBXGroup;
 			children = (
 				494766201E7D0D000024F9A2 /* Main.storyboard */,
+				498A21F11E8C105300C1D5E1 /* Popup.storyboard */,
 			);
 			name = Storyboard;
 			sourceTree = "<group>";
@@ -182,6 +188,14 @@
 				4947663E1E7D14430024F9A2 /* HomeViewController.swift */,
 			);
 			name = Home;
+			sourceTree = "<group>";
+		};
+		498A21EE1E8C0FE400C1D5E1 /* Popup */ = {
+			isa = PBXGroup;
+			children = (
+				498A21EF1E8C100400C1D5E1 /* CreateProjectPopup.swift */,
+			);
+			name = Popup;
 			sourceTree = "<group>";
 		};
 		49F8E3B91E7D148B004A61B3 /* Tutorial */ = {
@@ -291,6 +305,7 @@
 				494766271E7D0D000024F9A2 /* LaunchScreen.storyboard in Resources */,
 				494766241E7D0D000024F9A2 /* Assets.xcassets in Resources */,
 				494766221E7D0D000024F9A2 /* Main.storyboard in Resources */,
+				498A21F31E8C105300C1D5E1 /* Popup.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -355,6 +370,7 @@
 				494766361E7D0F6B0024F9A2 /* MovieStoryboard.swift in Sources */,
 				49F8E3BB1E7D149B004A61B3 /* TutorialViewController.swift in Sources */,
 				492430BA1E840B1000C3BBA0 /* MakeNewProjectView.swift in Sources */,
+				498A21F01E8C100400C1D5E1 /* CreateProjectPopup.swift in Sources */,
 				4947661D1E7D0D000024F9A2 /* AppDelegate.swift in Sources */,
 				492430B81E840AF500C3BBA0 /* ProjectView.swift in Sources */,
 				492430B61E8401AD00C3BBA0 /* HomeHeaderView.swift in Sources */,
@@ -382,6 +398,14 @@
 				494766261E7D0D000024F9A2 /* Base */,
 			);
 			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+		498A21F11E8C105300C1D5E1 /* Popup.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				498A21F21E8C105300C1D5E1 /* Base */,
+			);
+			name = Popup.storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */

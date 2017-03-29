@@ -14,10 +14,10 @@
             buildForArchiving = "YES">
             <BuildableReference
                BuildableIdentifier = 'primary'
-               BlueprintIdentifier = '589DCB45FD3F93C59D7E1C1E955045E3'
-               BlueprintName = 'SnapKit'
+               BlueprintIdentifier = 'A3071C6B5954639C652EAEF6EE9FD4C4'
+               BlueprintName = 'PopupController'
                ReferencedContainer = 'container:Pods.xcodeproj'
-               BuildableName = 'SnapKit.framework'>
+               BuildableName = 'PopupController.framework'>
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>

@@ -11,6 +11,7 @@ import SnapKit
 
 class HomeProjectScrollView: UIView {
     
+    var handleTapMakeNewProject: (() -> ())!
     var storyboards: [MovieStoryboard]!
     
     var pageControl: UIPageControl!
@@ -79,6 +80,10 @@ class HomeProjectScrollView: UIView {
         }
         
         let makeNewProjectView = MakeNewProjectView(frame: CGRect(), order: 0)
+        makeNewProjectView.handleTapMakeNewProject = {
+            self.handleTapMakeNewProject!()
+        }
+        
         scrollView.addSubview(makeNewProjectView)
         
         for i in 1...storyboards.count-1 {
@@ -118,6 +123,11 @@ class HomeProjectScrollView: UIView {
         storyboards.append(MovieStoryboard())   
     }
     
+    public func tappedMakeNewProject() -> Void {
+        if handleTapMakeNewProject != nil {
+            self.handleTapMakeNewProject!()
+        }
+    }
 }
 
 

@@ -1,12 +1,15 @@
 PODS:
+  - PopupController (0.2.0)
   - SnapKit (3.2.0)
 
 DEPENDENCIES:
+  - PopupController
   - SnapKit
 
 SPEC CHECKSUMS:
+  PopupController: 0b69fdf11cbeaa807789a8c3992599083640988f
   SnapKit: 1ca44df72cfa543218d177cb8aab029d10d86ea7
 
-PODFILE CHECKSUM: 2b8d3732ae95eee2225083d6afa3fa31d8479a7a
+PODFILE CHECKSUM: 76e14f262bf6d88849ecf212b011aa5cf134ab98
 
 COCOAPODS: 1.1.1

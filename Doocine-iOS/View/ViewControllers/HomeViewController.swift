@@ -8,6 +8,7 @@
 
 import UIKit
 import SnapKit
+import PopupController
 
 class HomeViewController: BaseViewController {
     
@@ -37,6 +38,9 @@ class HomeViewController: BaseViewController {
         }
         
         homeProjectScrollView = HomeProjectScrollView()
+        homeProjectScrollView.handleTapMakeNewProject = {
+            self.tappedMakeNewProject()
+        }
         
         self.view.addSubview(homeProjectScrollView)
         homeProjectScrollView.snp.makeConstraints { (make) in
@@ -58,5 +62,25 @@ class HomeViewController: BaseViewController {
             make.height.equalTo(200)
         }
         
+    }
+}
+
+
+// MARK: - Tap Action
+extension HomeViewController {
+    fileprivate func tappedMakeNewProject() -> Void {
+        print("Tapped new project")
+        var popup = PopupController.create(self).customize(
+                                                [.animation(.slideUp),
+                                                .scrollable(false),
+                                                .backgroundStyle(.blackFilter(alpha:0.7)),
+                                                .layout(.center),
+                                                .movesAlongWithKeyboard(true)
+                                                
+                                                ])
+        let popupSB = UIStoryboard(name: "Popup", bundle: nil)
+        let controller = popupSB.instantiateViewController(withIdentifier: "CreateProjectPopup") as! CreateProjectPopup
+        
+        popup = popup.show(controller)
     }
 }
