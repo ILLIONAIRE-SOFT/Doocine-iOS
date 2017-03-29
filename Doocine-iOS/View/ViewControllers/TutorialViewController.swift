@@ -20,6 +20,7 @@ class TutorialViewController: BaseViewController {
 
         initNavigation()
         initViews()
+        initButtons()
     }
     
     private func initNavigation() {
@@ -34,6 +35,11 @@ class TutorialViewController: BaseViewController {
         skipButton.setTitleColor(UIColor.greishBrown, for: .normal)
         
         makeLandingPage()
+    }
+    
+    private func initButtons() -> Void {
+        createProjectButton.addTarget(self, action: #selector(presentHomeViewController), for: .touchUpInside)
+        skipButton.addTarget(self, action: #selector(presentHomeViewController), for: .touchUpInside)
     }
 }
 
@@ -97,5 +103,13 @@ extension TutorialViewController: UIScrollViewDelegate {
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         let currentPage = scrollView.contentOffset.x / UIScreen.main.bounds.width
         pageControl.currentPage = Int(currentPage)
+    }
+}
+
+
+// MARK: - Segue
+extension TutorialViewController {
+    func presentHomeViewController() {
+        performSegue(withIdentifier: "PresentHomeViewControllerFromTutorial", sender: self)
     }
 }

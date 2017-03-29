@@ -10,13 +10,53 @@ import Foundation
 
 class MovieStoryboard {
     
-    var title: String!
-    var group: String!
-    var director: String!
-    var camera: String!
-    var actor: String!
+    var title: String! {
+        didSet {
+            if handlePropertyChange != nil {
+                self.handlePropertyChange?()
+            }
+        }
+    }
+    
+    var group: String! {
+        didSet {
+            if handlePropertyChange != nil {
+                self.handlePropertyChange?()
+            }
+        }
+    }
+    
+    var director: String! {
+        didSet {
+            if handlePropertyChange != nil {
+                self.handlePropertyChange?()
+            }
+        }
+    }
+    
+    var camera: String! {
+        didSet {
+            if handlePropertyChange != nil {
+                self.handlePropertyChange?()
+            }
+        }
+    }
+    
+    var actor: String! {
+        didSet {
+            if handlePropertyChange != nil {
+                self.handlePropertyChange?()
+            }
+        }
+    }
+    
+    var handlePropertyChange: (() -> ())?
     
     init() {
-        
+        title = "Test Project"
+        group = "Doocine"
+        director = "DaiGeun Sohn"
+        camera = "Christoper Nolan"
+        actor = "Tang Wei"
     }
 }
