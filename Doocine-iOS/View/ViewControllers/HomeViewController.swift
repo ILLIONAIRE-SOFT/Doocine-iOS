@@ -69,7 +69,6 @@ class HomeViewController: BaseViewController {
 // MARK: - Tap Action
 extension HomeViewController {
     fileprivate func tappedMakeNewProject() -> Void {
-        print("Tapped new project")
         var popup = PopupController.create(self).customize(
                                                 [.animation(.slideUp),
                                                 .scrollable(false),
@@ -80,6 +79,14 @@ extension HomeViewController {
                                                 ])
         let popupSB = UIStoryboard(name: "Popup", bundle: nil)
         let controller = popupSB.instantiateViewController(withIdentifier: "CreateProjectPopup") as! CreateProjectPopup
+        
+        popup.didShowHandler { (_) in
+            
+        }
+        
+        popup.didCloseHandler { (_) in
+            
+        }
         
         popup = popup.show(controller)
     }
