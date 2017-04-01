@@ -20,7 +20,8 @@ class SplashViewController: UIViewController {
         if isFirstLaunch() {
             presentTutorialViewController()
         } else {
-            presentHomeViewController()
+            presentTutorialViewController()
+//            presentHomeViewController()
         }
     }
 }

@@ -7,6 +7,7 @@ target 'Doocine-iOS' do
 
   pod 'SnapKit'
   pod 'PopupController'
+  pod 'RealmSwift'
   # Pods for Doocine-iOS
 
 end

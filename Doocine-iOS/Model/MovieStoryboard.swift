@@ -7,56 +7,39 @@
 //
 
 import Foundation
+import Realm
+import RealmSwift
 
-class MovieStoryboard {
+class MovieStoryboard: Object {
     
-    var title: String! {
-        didSet {
-            if handlePropertyChange != nil {
-                self.handlePropertyChange?()
-            }
-        }
+    dynamic var title: String!
+    
+    dynamic var group: String!
+    
+    dynamic var director: String!
+    
+    dynamic var cameraMan: String!
+
+    dynamic var actor: String!
+    
+    dynamic var scenes = RLMArray(objectClassName: "Scene")
+    
+//    var handlePropertyChange: (() -> ())?
+    
+    required init() {
+        super.init()
+        title = ""
+        group = ""
+        director = ""
+        cameraMan = ""
+        actor = ""
     }
     
-    var group: String! {
-        didSet {
-            if handlePropertyChange != nil {
-                self.handlePropertyChange?()
-            }
-        }
+    required init(realm: RLMRealm, schema: RLMObjectSchema) {
+        fatalError("init(realm:schema:) has not been implemented")
     }
     
-    var director: String! {
-        didSet {
-            if handlePropertyChange != nil {
-                self.handlePropertyChange?()
-            }
-        }
-    }
-    
-    var camera: String! {
-        didSet {
-            if handlePropertyChange != nil {
-                self.handlePropertyChange?()
-            }
-        }
-    }
-    
-    var actor: String! {
-        didSet {
-            if handlePropertyChange != nil {
-                self.handlePropertyChange?()
-            }
-        }
-    }
-    
-    var handlePropertyChange: (() -> ())?
-    
-    init() {
-        title = "Test Project"
-        group = "Doocine"
-        director = "DaiGeun Sohn"
-        camera = "Christoper Nolan"
-        actor = "Tang Wei"
+    required init(value: Any, schema: RLMSchema) {
+        fatalError("init(value:schema:) has not been implemented")
     }
 }
