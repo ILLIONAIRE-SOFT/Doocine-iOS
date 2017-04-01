@@ -9,6 +9,7 @@
 import UIKit
 import SnapKit
 import PopupController
+import RealmSwift
 
 class HomeViewController: BaseViewController {
     
@@ -61,6 +62,12 @@ class HomeViewController: BaseViewController {
             make.top.equalTo(homeProjectScrollView.snp.bottom)
             make.height.equalTo(200)
         }
+    }
+    
+    public func refresh() -> Void {
+        // Realm에서 Storyboard 부르고
+        // HomeProjectScrollView storyboard 교체해 주고 reload
+        
         
     }
 }
@@ -79,6 +86,24 @@ extension HomeViewController {
                                                 ])
         let popupSB = UIStoryboard(name: "Popup", bundle: nil)
         let controller = popupSB.instantiateViewController(withIdentifier: "CreateProjectPopup") as! CreateProjectPopup
+        
+        controller.delegateTappedClose = {
+            popup.dismiss()
+        }
+        
+        controller.delegateCreate = { movieStoryboard in
+            print("무비스토리보드 생성시작")
+            print(movieStoryboard.title)
+            print(movieStoryboard.director)
+            
+            let realm = try! Realm()
+            
+            try! realm.write {
+                realm.add(movieStoryboard)
+            }
+            
+            popup.dismiss()
+        }
         
         popup.didShowHandler { (_) in
             

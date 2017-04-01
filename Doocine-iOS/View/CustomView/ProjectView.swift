@@ -86,9 +86,9 @@ class ProjectView: UIView {
     }
     
     public func makeHandlePropertyChnage() -> Void {
-        storyboard!.handlePropertyChange = { _ in
-            self.updateValuesNeedChnage()
-        }
+//        storyboard!.handlePropertyChange = { _ in
+//            self.updateValuesNeedChnage()
+//        }
     }
     
     public func presentStoryboardDetail() -> Void {

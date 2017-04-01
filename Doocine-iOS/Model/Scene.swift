@@ -7,16 +7,17 @@
 //
 
 import UIKit
+import RealmSwift
+import Realm
 
-class Scene {
-    var title: String!
-    var place: String!
-    var time: Date!
-    var dialog: String!
+class Scene: RLMObject {
+    dynamic var title: UIImage!
+    dynamic var place: UIImage!
+    dynamic var time: Date!
     
-    var cuts: [Cut]!
+    dynamic var cuts = RLMArray(objectClassName: "Cut")
     
-    init () {
-        
+    required init(realm: RLMRealm, schema: RLMObjectSchema) {
+        fatalError("init(realm:schema:) has not been implemented")
     }
 }

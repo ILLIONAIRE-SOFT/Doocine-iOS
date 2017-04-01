@@ -134,9 +134,9 @@
 		4947662F1E7D0D380024F9A2 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				494766341E7D0E9F0024F9A2 /* Storyboard */,
 				498A21EE1E8C0FE400C1D5E1 /* Popup */,
 				492430B11E84009300C3BBA0 /* CustomView */,
-				494766341E7D0E9F0024F9A2 /* Storyboard */,
 				494766311E7D0E720024F9A2 /* ViewControllers */,
 			);
 			name = View;

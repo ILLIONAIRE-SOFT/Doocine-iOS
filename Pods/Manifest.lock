@@ -1,15 +1,23 @@
 PODS:
   - PopupController (0.2.0)
+  - Realm (2.5.0):
+    - Realm/Headers (= 2.5.0)
+  - Realm/Headers (2.5.0)
+  - RealmSwift (2.5.0):
+    - Realm (= 2.5.0)
   - SnapKit (3.2.0)
 
 DEPENDENCIES:
   - PopupController
+  - RealmSwift
   - SnapKit
 
 SPEC CHECKSUMS:
   PopupController: 0b69fdf11cbeaa807789a8c3992599083640988f
+  Realm: 62abce501668580092d2be9b6ba7324a3d5f906a
+  RealmSwift: 9f1a8f624f2f153410115c2cb7d486be9976565d
   SnapKit: 1ca44df72cfa543218d177cb8aab029d10d86ea7
 
-PODFILE CHECKSUM: 76e14f262bf6d88849ecf212b011aa5cf134ab98
+PODFILE CHECKSUM: 2c11f081578a886d79628a331590b1dcd89ae0dd
 
 COCOAPODS: 1.1.1
