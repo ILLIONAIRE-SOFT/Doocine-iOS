@@ -34,7 +34,7 @@ class MovieStoryboard {
         }
     }
     
-    var camera: String! {
+    var cameraMan: String! {
         didSet {
             if handlePropertyChange != nil {
                 self.handlePropertyChange?()
@@ -56,7 +56,7 @@ class MovieStoryboard {
         title = "Test Project"
         group = "Doocine"
         director = "DaiGeun Sohn"
-        camera = "Christoper Nolan"
+        cameraMan = "Christoper Nolan"
         actor = "Tang Wei"
     }
 }

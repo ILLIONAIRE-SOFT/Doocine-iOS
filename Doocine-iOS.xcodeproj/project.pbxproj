@@ -20,6 +20,7 @@
 		4947663F1E7D14430024F9A2 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4947663E1E7D14430024F9A2 /* HomeViewController.swift */; };
 		498A21F01E8C100400C1D5E1 /* CreateProjectPopup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 498A21EF1E8C100400C1D5E1 /* CreateProjectPopup.swift */; };
 		498A21F31E8C105300C1D5E1 /* Popup.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 498A21F11E8C105300C1D5E1 /* Popup.storyboard */; };
+		4997E9601E8CD7A8004F742E /* Cut.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4997E95F1E8CD7A8004F742E /* Cut.swift */; };
 		49F8E3BB1E7D149B004A61B3 /* TutorialViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49F8E3BA1E7D149B004A61B3 /* TutorialViewController.swift */; };
 		49F8E3BE1E7D18E6004A61B3 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49F8E3BD1E7D18E6004A61B3 /* BaseViewController.swift */; };
 		49F8E3C01E7D194C004A61B3 /* ColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49F8E3BF1E7D194C004A61B3 /* ColorExtension.swift */; };
@@ -46,6 +47,7 @@
 		4947663E1E7D14430024F9A2 /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HomeViewController.swift; path = View/ViewControllers/HomeViewController.swift; sourceTree = "<group>"; };
 		498A21EF1E8C100400C1D5E1 /* CreateProjectPopup.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CreateProjectPopup.swift; path = View/Popup/CreateProjectPopup.swift; sourceTree = "<group>"; };
 		498A21F21E8C105300C1D5E1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Popup.storyboard; sourceTree = "<group>"; };
+		4997E95F1E8CD7A8004F742E /* Cut.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Cut.swift; path = Model/Cut.swift; sourceTree = "<group>"; };
 		49F8E3BA1E7D149B004A61B3 /* TutorialViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TutorialViewController.swift; path = View/ViewControllers/TutorialViewController.swift; sourceTree = "<group>"; };
 		49F8E3BD1E7D18E6004A61B3 /* BaseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BaseViewController.swift; path = View/ViewControllers/BaseViewController.swift; sourceTree = "<group>"; };
 		49F8E3BF1E7D194C004A61B3 /* ColorExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ColorExtension.swift; path = Extension/ColorExtension.swift; sourceTree = "<group>"; };
@@ -124,6 +126,7 @@
 			children = (
 				494766351E7D0F6B0024F9A2 /* MovieStoryboard.swift */,
 				49F8E3C81E7D1DED004A61B3 /* Scene.swift */,
+				4997E95F1E8CD7A8004F742E /* Cut.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -365,6 +368,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				492430B41E8400B800C3BBA0 /* HomeProjectScrollView.swift in Sources */,
+				4997E9601E8CD7A8004F742E /* Cut.swift in Sources */,
 				4947663F1E7D14430024F9A2 /* HomeViewController.swift in Sources */,
 				494766331E7D0E900024F9A2 /* SplashViewController.swift in Sources */,
 				494766361E7D0F6B0024F9A2 /* MovieStoryboard.swift in Sources */,

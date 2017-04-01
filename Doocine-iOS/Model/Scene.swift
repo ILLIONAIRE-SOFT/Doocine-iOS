@@ -13,7 +13,8 @@ class Scene {
     var place: String!
     var time: Date!
     var dialog: String!
-    var image: UIImage!
+    
+    var cuts: [Cut]!
     
     init () {
         
