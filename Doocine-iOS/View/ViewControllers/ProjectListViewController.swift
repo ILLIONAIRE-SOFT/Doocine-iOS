@@ -7,9 +7,12 @@
 //
 
 import UIKit
+import RealmSwift
 
 class ProjectListViewController: BaseViewController {
     @IBOutlet weak var collectionView: UICollectionView!
+    
+    var projects: [MovieStoryboard] = [MovieStoryboard]()
     
     fileprivate let sectionInsets = UIEdgeInsets(top: 40.0, left: 48.0, bottom: 30.0, right: 48.0)
     fileprivate var itemsPerRow: CGFloat = 2
@@ -19,6 +22,7 @@ class ProjectListViewController: BaseViewController {
         
         self.initNavigation()
         self.initViews()
+        self.refresh()
     }
     
     private func initNavigation() -> Void {
@@ -28,7 +32,21 @@ class ProjectListViewController: BaseViewController {
     private func initViews() -> Void {
         collectionView.delegate = self
         collectionView.dataSource = self
+        collectionView.backgroundColor = UIColor.groupTableViewBackground
         self.collectionView.register(ProjectListCell.self, forCellWithReuseIdentifier: "ProjectListCell")
+    }
+    
+    fileprivate func refresh() -> Void {
+        let realm = try! Realm()
+        let movieStoryboards = realm.objects(MovieStoryboard.self)
+        
+        self.projects.removeAll()
+        
+        for storyboard in movieStoryboards {
+            self.projects.append(storyboard)
+        }
+        
+        self.collectionView.reloadData()
     }
 }
 
@@ -40,11 +58,12 @@ extension ProjectListViewController: UICollectionViewDelegate, UICollectionViewD
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 5
+        return self.projects.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ProjectListCell", for: indexPath) as! ProjectListCell
+        cell.initCell(with: projects[indexPath.item])
         
         return cell
     }
