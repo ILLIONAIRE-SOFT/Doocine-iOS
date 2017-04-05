@@ -12,7 +12,8 @@ import SnapKit
 class HomeProjectScrollView: UIView {
     
     var handleTapMakeNewProject: (() -> ())!
-    var storyboards: [MovieStoryboard]!
+    var handleTapBrowseAll: (() -> ())!
+    var storyboards: [MovieStoryboard] = [MovieStoryboard]()
     
     var pageControl: UIPageControl!
     
@@ -25,7 +26,6 @@ class HomeProjectScrollView: UIView {
     override init(frame: CGRect) {
         super.init(frame: frame)
         
-        self.makeTestProjects()
         self.initViews()
         self.initProjectsViews()
     }
@@ -52,6 +52,7 @@ class HomeProjectScrollView: UIView {
         browseAllButton.backgroundColor = UIColor.tangerine
         browseAllButton.layer.cornerRadius = 8
         browseAllButton.setTitleColor(UIColor.white, for: .normal)
+        browseAllButton.addTarget(self, action: #selector(tappedBrowseAll), for: .touchUpInside)
         
         self.addSubview(browseAllButton)
         
@@ -86,9 +87,9 @@ class HomeProjectScrollView: UIView {
         
         scrollView.addSubview(makeNewProjectView)
         
-        for i in 1...storyboards.count-1 {
-            let projectView = ProjectView(frame: CGRect(), order: i, storyboard: storyboards[i])
-            projectView.storyboard = storyboards[i]
+        for i in 1 ..< storyboards.count + 1 {
+            let projectView = ProjectView(frame: CGRect(), order: i, storyboard: storyboards[i-1])
+            projectView.storyboard = storyboards[i-1]
             projectView.makeHandlePropertyChnage()
             scrollView.addSubview(projectView)
         }
@@ -109,23 +110,15 @@ class HomeProjectScrollView: UIView {
         
     }
     
-    private func makeTestProjects() -> Void {
-        self.storyboards = [MovieStoryboard]()
-        
-        storyboards.append(MovieStoryboard())
-        storyboards.append(MovieStoryboard())
-        storyboards.append(MovieStoryboard())
-        storyboards.append(MovieStoryboard())
-        storyboards.append(MovieStoryboard())
-        storyboards.append(MovieStoryboard())
-        storyboards.append(MovieStoryboard())
-        storyboards.append(MovieStoryboard())
-        storyboards.append(MovieStoryboard())   
-    }
-    
     public func tappedMakeNewProject() -> Void {
         if handleTapMakeNewProject != nil {
             self.handleTapMakeNewProject!()
+        }
+    }
+    
+    public func tappedBrowseAll() -> Void {
+        if handleTapBrowseAll != nil {
+            self.handleTapBrowseAll!()
         }
     }
 }

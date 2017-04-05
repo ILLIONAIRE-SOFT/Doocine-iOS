@@ -11,7 +11,7 @@ import UIKit
 import RealmSwift
 import Realm
 
-class Cut: RLMObject {
+class Cut: Object {
     dynamic var firstImage: String!
     dynamic var secondImage: String!
     
