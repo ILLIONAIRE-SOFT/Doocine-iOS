@@ -67,6 +67,14 @@ extension ProjectListViewController: UICollectionViewDelegate, UICollectionViewD
         
         return cell
     }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let controller = storyboard?.instantiateViewController(withIdentifier: "ProjectDetailViewController") as! ProjectDetailViewController
+        controller.project = projects[indexPath.item]
+        
+        self.navigationController?.pushViewController(controller, animated: true)
+        
+    }
 }
 
 
