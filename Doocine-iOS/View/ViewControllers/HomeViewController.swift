@@ -21,6 +21,7 @@ class HomeViewController: BaseViewController {
 
         initNavigation()
         initViews()
+        refresh()
     }
     
     private func initNavigation() {
@@ -41,6 +42,9 @@ class HomeViewController: BaseViewController {
         homeProjectScrollView = HomeProjectScrollView()
         homeProjectScrollView.handleTapMakeNewProject = {
             self.tappedMakeNewProject()
+        }
+        homeProjectScrollView.handleTapBrowseAll = {
+            self.tappedBrowseAll()
         }
         
         self.view.addSubview(homeProjectScrollView)
@@ -67,8 +71,20 @@ class HomeViewController: BaseViewController {
     public func refresh() -> Void {
         // Realm에서 Storyboard 부르고
         // HomeProjectScrollView storyboard 교체해 주고 reload
+        let realm = try! Realm()
+        print(realm.objects(MovieStoryboard.self))
         
+        let movieStoryboards = realm.objects(MovieStoryboard.self)
         
+        var storyboards = [MovieStoryboard]()
+        
+        for storyboard in movieStoryboards {
+            storyboards.append(storyboard)
+        }
+        
+        self.homeProjectScrollView.storyboards.removeAll()
+        self.homeProjectScrollView.storyboards = storyboards
+        self.homeProjectScrollView.initProjectsViews()
     }
 }
 
@@ -103,6 +119,8 @@ extension HomeViewController {
             }
             
             popup.dismiss()
+            
+            self.refresh()
         }
         
         popup.didShowHandler { (_) in
@@ -114,5 +132,11 @@ extension HomeViewController {
         }
         
         popup = popup.show(controller)
+    }
+    
+    fileprivate func tappedBrowseAll() -> Void {
+        let controller = storyboard?.instantiateViewController(withIdentifier: "ProjectListViewController")
+        
+        self.navigationController?.pushViewController(controller!, animated: true)
     }
 }

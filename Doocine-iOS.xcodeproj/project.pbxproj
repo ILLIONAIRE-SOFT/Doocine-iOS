@@ -21,6 +21,9 @@
 		498A21F01E8C100400C1D5E1 /* CreateProjectPopup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 498A21EF1E8C100400C1D5E1 /* CreateProjectPopup.swift */; };
 		498A21F31E8C105300C1D5E1 /* Popup.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 498A21F11E8C105300C1D5E1 /* Popup.storyboard */; };
 		4997E9601E8CD7A8004F742E /* Cut.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4997E95F1E8CD7A8004F742E /* Cut.swift */; };
+		49A9DF8F1E954ACC008F75AB /* ProjectListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49A9DF8E1E954ACC008F75AB /* ProjectListViewController.swift */; };
+		49A9DF921E9550ED008F75AB /* ProjectListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49A9DF911E9550ED008F75AB /* ProjectListCell.swift */; };
+		49A9DF951E9564BD008F75AB /* ProjectDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49A9DF941E9564BD008F75AB /* ProjectDetailViewController.swift */; };
 		49F8E3BB1E7D149B004A61B3 /* TutorialViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49F8E3BA1E7D149B004A61B3 /* TutorialViewController.swift */; };
 		49F8E3BE1E7D18E6004A61B3 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49F8E3BD1E7D18E6004A61B3 /* BaseViewController.swift */; };
 		49F8E3C01E7D194C004A61B3 /* ColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49F8E3BF1E7D194C004A61B3 /* ColorExtension.swift */; };
@@ -48,6 +51,9 @@
 		498A21EF1E8C100400C1D5E1 /* CreateProjectPopup.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CreateProjectPopup.swift; path = View/Popup/CreateProjectPopup.swift; sourceTree = "<group>"; };
 		498A21F21E8C105300C1D5E1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Popup.storyboard; sourceTree = "<group>"; };
 		4997E95F1E8CD7A8004F742E /* Cut.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Cut.swift; path = Model/Cut.swift; sourceTree = "<group>"; };
+		49A9DF8E1E954ACC008F75AB /* ProjectListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ProjectListViewController.swift; path = View/ViewControllers/ProjectListViewController.swift; sourceTree = "<group>"; };
+		49A9DF911E9550ED008F75AB /* ProjectListCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ProjectListCell.swift; path = Cell/ProjectListCell.swift; sourceTree = "<group>"; };
+		49A9DF941E9564BD008F75AB /* ProjectDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ProjectDetailViewController.swift; path = View/ViewControllers/ProjectDetailViewController.swift; sourceTree = "<group>"; };
 		49F8E3BA1E7D149B004A61B3 /* TutorialViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TutorialViewController.swift; path = View/ViewControllers/TutorialViewController.swift; sourceTree = "<group>"; };
 		49F8E3BD1E7D18E6004A61B3 /* BaseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BaseViewController.swift; path = View/ViewControllers/BaseViewController.swift; sourceTree = "<group>"; };
 		49F8E3BF1E7D194C004A61B3 /* ColorExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ColorExtension.swift; path = Extension/ColorExtension.swift; sourceTree = "<group>"; };
@@ -145,6 +151,7 @@
 		494766301E7D0D420024F9A2 /* Cell */ = {
 			isa = PBXGroup;
 			children = (
+				49A9DF901E9550D0008F75AB /* ProjectList */,
 			);
 			name = Cell;
 			sourceTree = "<group>";
@@ -152,6 +159,8 @@
 		494766311E7D0E720024F9A2 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				49A9DF931E9564A8008F75AB /* ProjectDetail */,
+				49A9DF8D1E954AA0008F75AB /* ProjectList */,
 				49F8E3BC1E7D18D5004A61B3 /* Base */,
 				49F8E3B91E7D148B004A61B3 /* Tutorial */,
 				4947663B1E7D14220024F9A2 /* Home */,
@@ -199,6 +208,30 @@
 				498A21EF1E8C100400C1D5E1 /* CreateProjectPopup.swift */,
 			);
 			name = Popup;
+			sourceTree = "<group>";
+		};
+		49A9DF8D1E954AA0008F75AB /* ProjectList */ = {
+			isa = PBXGroup;
+			children = (
+				49A9DF8E1E954ACC008F75AB /* ProjectListViewController.swift */,
+			);
+			name = ProjectList;
+			sourceTree = "<group>";
+		};
+		49A9DF901E9550D0008F75AB /* ProjectList */ = {
+			isa = PBXGroup;
+			children = (
+				49A9DF911E9550ED008F75AB /* ProjectListCell.swift */,
+			);
+			name = ProjectList;
+			sourceTree = "<group>";
+		};
+		49A9DF931E9564A8008F75AB /* ProjectDetail */ = {
+			isa = PBXGroup;
+			children = (
+				49A9DF941E9564BD008F75AB /* ProjectDetailViewController.swift */,
+			);
+			name = ProjectDetail;
 			sourceTree = "<group>";
 		};
 		49F8E3B91E7D148B004A61B3 /* Tutorial */ = {
@@ -372,13 +405,16 @@
 				4947663F1E7D14430024F9A2 /* HomeViewController.swift in Sources */,
 				494766331E7D0E900024F9A2 /* SplashViewController.swift in Sources */,
 				494766361E7D0F6B0024F9A2 /* MovieStoryboard.swift in Sources */,
+				49A9DF921E9550ED008F75AB /* ProjectListCell.swift in Sources */,
 				49F8E3BB1E7D149B004A61B3 /* TutorialViewController.swift in Sources */,
+				49A9DF951E9564BD008F75AB /* ProjectDetailViewController.swift in Sources */,
 				492430BA1E840B1000C3BBA0 /* MakeNewProjectView.swift in Sources */,
 				498A21F01E8C100400C1D5E1 /* CreateProjectPopup.swift in Sources */,
 				4947661D1E7D0D000024F9A2 /* AppDelegate.swift in Sources */,
 				492430B81E840AF500C3BBA0 /* ProjectView.swift in Sources */,
 				492430B61E8401AD00C3BBA0 /* HomeHeaderView.swift in Sources */,
 				49F8E3C01E7D194C004A61B3 /* ColorExtension.swift in Sources */,
+				49A9DF8F1E954ACC008F75AB /* ProjectListViewController.swift in Sources */,
 				49F8E3BE1E7D18E6004A61B3 /* BaseViewController.swift in Sources */,
 				49F8E3C71E7D1B2D004A61B3 /* Constants.swift in Sources */,
 				49F8E3C91E7D1DED004A61B3 /* Scene.swift in Sources */,

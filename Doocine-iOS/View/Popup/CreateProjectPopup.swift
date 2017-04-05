@@ -8,6 +8,7 @@
 
 import UIKit
 import PopupController
+import RealmSwift
 
 class CreateProjectPopup: UIViewController, PopupContentViewController {
     
@@ -50,12 +51,24 @@ extension CreateProjectPopup {
             return
         }
         
+        let realm = try! Realm()
+        let storyboards = realm.objects(MovieStoryboard).sorted(byKeyPath: "id")
+        print("스토리보드 개수 카운트 \(storyboards.count)")
+        let lastId = storyboards.last?.id
+        print("마지막 스토리 보드 아디 \(lastId)")
+        
         let movieStoryboard = MovieStoryboard()
         movieStoryboard.actor = "Tang Wei"
         movieStoryboard.cameraMan = "DaiGeun Sohn"
         movieStoryboard.director = "감독맨"
         movieStoryboard.group = "앙트시네"
         movieStoryboard.title = "계란맨"
+        
+        if storyboards.count == 0 {
+            movieStoryboard.id = 0
+        } else {
+            movieStoryboard.id = lastId! + 1
+        }
         
         self.delegateCreate!(movieStoryboard)
     }
