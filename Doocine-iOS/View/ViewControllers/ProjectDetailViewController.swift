@@ -10,6 +10,7 @@ import UIKit
 
 class ProjectDetailViewController: BaseViewController {
 
+    @IBOutlet weak var tableView: UITableView!
     var project: MovieStoryboard!
     
     @IBOutlet weak var groupName: UILabel!
@@ -39,5 +40,27 @@ class ProjectDetailViewController: BaseViewController {
         self.director.text = project.director
         self.cameraMan.text = project.cameraMan
         self.actor.text = project.actor
+        
+        self.tableView.delegate = self
+        self.tableView.dataSource = self
+        self.tableView.backgroundColor = UIColor.groupTableViewBackground
+    }
+}
+
+
+// MARK: - Table View Delegate, DataSource
+extension ProjectDetailViewController: UITableViewDelegate, UITableViewDataSource {
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 1
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 1
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = UITableViewCell()
+        
+        return cell
     }
 }
