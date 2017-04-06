@@ -18,6 +18,7 @@
 		494766331E7D0E900024F9A2 /* SplashViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 494766321E7D0E900024F9A2 /* SplashViewController.swift */; };
 		494766361E7D0F6B0024F9A2 /* MovieStoryboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 494766351E7D0F6B0024F9A2 /* MovieStoryboard.swift */; };
 		4947663F1E7D14430024F9A2 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4947663E1E7D14430024F9A2 /* HomeViewController.swift */; };
+		494AF10C1E96092F005D704C /* ProjectSceneCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 494AF10B1E96092F005D704C /* ProjectSceneCell.swift */; };
 		498A21F01E8C100400C1D5E1 /* CreateProjectPopup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 498A21EF1E8C100400C1D5E1 /* CreateProjectPopup.swift */; };
 		498A21F31E8C105300C1D5E1 /* Popup.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 498A21F11E8C105300C1D5E1 /* Popup.storyboard */; };
 		4997E9601E8CD7A8004F742E /* Cut.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4997E95F1E8CD7A8004F742E /* Cut.swift */; };
@@ -48,6 +49,7 @@
 		494766321E7D0E900024F9A2 /* SplashViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SplashViewController.swift; path = View/ViewControllers/SplashViewController.swift; sourceTree = "<group>"; };
 		494766351E7D0F6B0024F9A2 /* MovieStoryboard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MovieStoryboard.swift; path = Model/MovieStoryboard.swift; sourceTree = "<group>"; };
 		4947663E1E7D14430024F9A2 /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HomeViewController.swift; path = View/ViewControllers/HomeViewController.swift; sourceTree = "<group>"; };
+		494AF10B1E96092F005D704C /* ProjectSceneCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ProjectSceneCell.swift; path = Cell/ProjectSceneCell.swift; sourceTree = "<group>"; };
 		498A21EF1E8C100400C1D5E1 /* CreateProjectPopup.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CreateProjectPopup.swift; path = View/Popup/CreateProjectPopup.swift; sourceTree = "<group>"; };
 		498A21F21E8C105300C1D5E1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Popup.storyboard; sourceTree = "<group>"; };
 		4997E95F1E8CD7A8004F742E /* Cut.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Cut.swift; path = Model/Cut.swift; sourceTree = "<group>"; };
@@ -151,6 +153,7 @@
 		494766301E7D0D420024F9A2 /* Cell */ = {
 			isa = PBXGroup;
 			children = (
+				494AF10A1E960919005D704C /* ProjectScene */,
 				49A9DF901E9550D0008F75AB /* ProjectList */,
 			);
 			name = Cell;
@@ -200,6 +203,14 @@
 				4947663E1E7D14430024F9A2 /* HomeViewController.swift */,
 			);
 			name = Home;
+			sourceTree = "<group>";
+		};
+		494AF10A1E960919005D704C /* ProjectScene */ = {
+			isa = PBXGroup;
+			children = (
+				494AF10B1E96092F005D704C /* ProjectSceneCell.swift */,
+			);
+			name = ProjectScene;
 			sourceTree = "<group>";
 		};
 		498A21EE1E8C0FE400C1D5E1 /* Popup */ = {
@@ -400,6 +411,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				494AF10C1E96092F005D704C /* ProjectSceneCell.swift in Sources */,
 				492430B41E8400B800C3BBA0 /* HomeProjectScrollView.swift in Sources */,
 				4997E9601E8CD7A8004F742E /* Cut.swift in Sources */,
 				4947663F1E7D14430024F9A2 /* HomeViewController.swift in Sources */,
