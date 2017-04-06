@@ -14,11 +14,18 @@ class ProjectDetailViewController: BaseViewController {
     var project: MovieStoryboard!
     var scenes: [Scene] = [Scene]()
     
+    @IBOutlet weak var reducedHeaderView: UIView!
+    @IBOutlet weak var headerView: UIView!
     @IBOutlet weak var groupName: UILabel!
     @IBOutlet weak var projectTitle: UILabel!
     @IBOutlet weak var director: UILabel!
     @IBOutlet weak var cameraMan: UILabel!
     @IBOutlet weak var actor: UILabel!
+    @IBOutlet weak var headerViewHeightConstraint: NSLayoutConstraint!
+    @IBOutlet weak var reducedHeaderViewHeightConstraint: NSLayoutConstraint!
+    
+    @IBOutlet weak var reducedHeaderGroupName: UILabel!
+    @IBOutlet weak var reducedHeaderProjectTitle: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,6 +37,7 @@ class ProjectDetailViewController: BaseViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        self.expandHeaderViewWithoutDelay()
     }
     
     private func initNavigation() -> Void {
@@ -42,6 +50,10 @@ class ProjectDetailViewController: BaseViewController {
         self.director.text = project.director
         self.cameraMan.text = project.cameraMan
         self.actor.text = project.actor
+        
+        self.reducedHeaderProjectTitle.text = project.title
+        self.reducedHeaderGroupName.text = project.group
+        
         
         self.tableView.delegate = self
         self.tableView.dataSource = self
@@ -81,5 +93,46 @@ extension ProjectDetailViewController: UITableViewDelegate, UITableViewDataSourc
         let cell = ProjectSceneCell(style: .default, reuseIdentifier: "ProjectSceneCell", scene: scenes[indexPath.row], order: indexPath.row + 1)
         
         return cell
+    }
+    
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        reduceHeaderView()
+    }
+}
+
+
+// MARK: - Animation
+extension ProjectDetailViewController {
+    fileprivate func reduceHeaderView() -> Void {
+        self.headerViewHeightConstraint.constant = 0
+        self.reducedHeaderViewHeightConstraint.constant = 100
+        
+        self.headerView.updateConstraints()
+        
+        UIView.animate(withDuration: 0.4) {
+            self.view.layoutIfNeeded()
+        }
+    }
+    
+    fileprivate func expandHeaderView() -> Void {
+        self.headerViewHeightConstraint.constant = 400
+        self.reducedHeaderViewHeightConstraint.constant = 0
+        
+        self.headerView.updateConstraints()
+        
+        UIView.animate(withDuration: 0.4) {
+            self.view.layoutIfNeeded()
+        }
+    }
+    
+    fileprivate func expandHeaderViewWithoutDelay() -> Void {
+        self.headerViewHeightConstraint.constant = 400
+        self.reducedHeaderViewHeightConstraint.constant = 0
+        
+        self.headerView.updateConstraints()
+        
+        UIView.animate(withDuration: 0) {
+            self.view.layoutIfNeeded()
+        }
     }
 }
