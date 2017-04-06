@@ -14,6 +14,8 @@ class ProjectDetailViewController: BaseViewController {
     var project: MovieStoryboard!
     var scenes: [Scene] = [Scene]()
     
+    @IBOutlet weak var expandButton: UIButton!
+    
     @IBOutlet weak var reducedHeaderView: UIView!
     @IBOutlet weak var headerView: UIView!
     @IBOutlet weak var groupName: UILabel!
@@ -33,6 +35,7 @@ class ProjectDetailViewController: BaseViewController {
         self.makeTestScenes()
         self.initNavigation()
         self.initViews()
+        self.initButton()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -53,12 +56,17 @@ class ProjectDetailViewController: BaseViewController {
         
         self.reducedHeaderProjectTitle.text = project.title
         self.reducedHeaderGroupName.text = project.group
+        self.reducedHeaderView.clipsToBounds = true
         
         
         self.tableView.delegate = self
         self.tableView.dataSource = self
         self.tableView.backgroundColor = UIColor.groupTableViewBackground
         self.tableView.separatorStyle = .none
+    }
+    
+    private func initButton() -> Void {
+        self.expandButton.addTarget(self, action: #selector(expandHeaderView), for: .touchUpInside)
     }
     
     private func makeTestScenes() -> Void {
@@ -114,7 +122,7 @@ extension ProjectDetailViewController {
         }
     }
     
-    fileprivate func expandHeaderView() -> Void {
+    public func expandHeaderView() -> Void {
         self.headerViewHeightConstraint.constant = 400
         self.reducedHeaderViewHeightConstraint.constant = 0
         
