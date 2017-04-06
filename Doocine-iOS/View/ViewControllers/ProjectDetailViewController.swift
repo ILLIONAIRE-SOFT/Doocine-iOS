@@ -12,6 +12,7 @@ class ProjectDetailViewController: BaseViewController {
 
     @IBOutlet weak var tableView: UITableView!
     var project: MovieStoryboard!
+    var scenes: [Scene] = [Scene]()
     
     @IBOutlet weak var groupName: UILabel!
     @IBOutlet weak var projectTitle: UILabel!
@@ -22,6 +23,7 @@ class ProjectDetailViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.makeTestScenes()
         self.initNavigation()
         self.initViews()
     }
@@ -44,6 +46,18 @@ class ProjectDetailViewController: BaseViewController {
         self.tableView.delegate = self
         self.tableView.dataSource = self
         self.tableView.backgroundColor = UIColor.groupTableViewBackground
+        self.tableView.separatorStyle = .none
+    }
+    
+    private func makeTestScenes() -> Void {
+        for _ in 0 ..< 2 {
+            let scene = Scene()
+            scene.place = "Chungmuro Pildong"
+            scene.time = "Late evening"
+            scene.title = "Beautiful Scene"
+            
+            scenes.append(scene)
+        }
     }
 }
 
@@ -55,11 +69,16 @@ extension ProjectDetailViewController: UITableViewDelegate, UITableViewDataSourc
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 1
+        return scenes.count
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        let cell = ProjectSceneCell(style: .default, reuseIdentifier: "ProjectSceneCell", scene: scenes[indexPath.row], order: indexPath.row + 1)
+        return cell.getHeight()
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = UITableViewCell()
+        let cell = ProjectSceneCell(style: .default, reuseIdentifier: "ProjectSceneCell", scene: scenes[indexPath.row], order: indexPath.row + 1)
         
         return cell
     }

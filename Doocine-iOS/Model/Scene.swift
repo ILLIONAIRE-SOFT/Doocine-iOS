@@ -14,5 +14,5 @@ class Scene: Object {
     dynamic var storyboardId: Int = 0
     dynamic var title: String!
     dynamic var place: String!
-    dynamic var time: Date!
+    dynamic var time: String!
 }
