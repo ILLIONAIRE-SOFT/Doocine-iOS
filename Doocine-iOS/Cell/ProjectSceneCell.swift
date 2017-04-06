@@ -87,7 +87,7 @@ class ProjectSceneCell: UITableViewCell {
         headerView.addSubview(timeHeader)
         
         timeHeader.snp.makeConstraints { (make) in
-            make.left.equalTo(placeHeader.snp.right).offset(80)
+            make.left.equalTo(placeHeader.snp.right).offset(160)
             make.centerY.equalTo(headerView).offset(-16)
         }
         
