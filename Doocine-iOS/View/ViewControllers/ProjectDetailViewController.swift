@@ -58,7 +58,6 @@ class ProjectDetailViewController: BaseViewController {
         self.reducedHeaderGroupName.text = project.group
         self.reducedHeaderView.clipsToBounds = true
         
-        
         self.tableView.delegate = self
         self.tableView.dataSource = self
         self.tableView.backgroundColor = UIColor.groupTableViewBackground
@@ -89,18 +88,31 @@ extension ProjectDetailViewController: UITableViewDelegate, UITableViewDataSourc
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return scenes.count
+        return scenes.count + 1
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        let cell = ProjectSceneCell(style: .default, reuseIdentifier: "ProjectSceneCell", scene: scenes[indexPath.row], order: indexPath.row + 1)
-        return cell.getHeight()
+        switch indexPath.row {
+        case 0:
+            return ProjectStartCell.getHeight()
+            
+        default:
+            let cell = ProjectSceneCell(style: .default, reuseIdentifier: "ProjectSceneCell", scene: scenes[indexPath.row-1], order: indexPath.row)
+            return cell.getHeight()
+        }
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = ProjectSceneCell(style: .default, reuseIdentifier: "ProjectSceneCell", scene: scenes[indexPath.row], order: indexPath.row + 1)
-        
-        return cell
+        switch indexPath.row {
+        case 0:
+            let cell = ProjectStartCell(style: .default, reuseIdentifier: "ProjectStartCell")
+            return cell
+            
+        default:
+            let cell = ProjectSceneCell(style: .default, reuseIdentifier: "ProjectSceneCell", scene: scenes[indexPath.row-1], order: indexPath.row)
+            
+            return cell
+        }
     }
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {

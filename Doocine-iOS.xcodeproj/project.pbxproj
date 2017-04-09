@@ -11,6 +11,7 @@
 		492430B61E8401AD00C3BBA0 /* HomeHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 492430B51E8401AD00C3BBA0 /* HomeHeaderView.swift */; };
 		492430B81E840AF500C3BBA0 /* ProjectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 492430B71E840AF500C3BBA0 /* ProjectView.swift */; };
 		492430BA1E840B1000C3BBA0 /* MakeNewProjectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 492430B91E840B1000C3BBA0 /* MakeNewProjectView.swift */; };
+		493D68641E9A522500A67670 /* ProjectStartCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 493D68631E9A522500A67670 /* ProjectStartCell.swift */; };
 		4947661D1E7D0D000024F9A2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4947661C1E7D0D000024F9A2 /* AppDelegate.swift */; };
 		494766221E7D0D000024F9A2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 494766201E7D0D000024F9A2 /* Main.storyboard */; };
 		494766241E7D0D000024F9A2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 494766231E7D0D000024F9A2 /* Assets.xcassets */; };
@@ -40,6 +41,7 @@
 		492430B51E8401AD00C3BBA0 /* HomeHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HomeHeaderView.swift; path = View/CustomView/HomeHeaderView.swift; sourceTree = "<group>"; };
 		492430B71E840AF500C3BBA0 /* ProjectView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ProjectView.swift; path = View/CustomView/ProjectView.swift; sourceTree = "<group>"; };
 		492430B91E840B1000C3BBA0 /* MakeNewProjectView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MakeNewProjectView.swift; path = View/CustomView/MakeNewProjectView.swift; sourceTree = "<group>"; };
+		493D68631E9A522500A67670 /* ProjectStartCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ProjectStartCell.swift; path = Cell/ProjectStartCell.swift; sourceTree = "<group>"; };
 		494766191E7D0D000024F9A2 /* Doocine-iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Doocine-iOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		4947661C1E7D0D000024F9A2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		494766211E7D0D000024F9A2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -93,6 +95,14 @@
 				492430B91E840B1000C3BBA0 /* MakeNewProjectView.swift */,
 			);
 			name = Home;
+			sourceTree = "<group>";
+		};
+		493D68621E9A520700A67670 /* ProjectStart */ = {
+			isa = PBXGroup;
+			children = (
+				493D68631E9A522500A67670 /* ProjectStartCell.swift */,
+			);
+			name = ProjectStart;
 			sourceTree = "<group>";
 		};
 		494766101E7D0CFF0024F9A2 = {
@@ -153,6 +163,7 @@
 		494766301E7D0D420024F9A2 /* Cell */ = {
 			isa = PBXGroup;
 			children = (
+				493D68621E9A520700A67670 /* ProjectStart */,
 				494AF10A1E960919005D704C /* ProjectScene */,
 				49A9DF901E9550D0008F75AB /* ProjectList */,
 			);
@@ -429,6 +440,7 @@
 				49A9DF8F1E954ACC008F75AB /* ProjectListViewController.swift in Sources */,
 				49F8E3BE1E7D18E6004A61B3 /* BaseViewController.swift in Sources */,
 				49F8E3C71E7D1B2D004A61B3 /* Constants.swift in Sources */,
+				493D68641E9A522500A67670 /* ProjectStartCell.swift in Sources */,
 				49F8E3C91E7D1DED004A61B3 /* Scene.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
