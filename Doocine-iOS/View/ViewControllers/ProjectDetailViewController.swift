@@ -7,9 +7,11 @@
 //
 
 import UIKit
+import RealmSwift
 
 class ProjectDetailViewController: BaseViewController {
 
+    @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var tableView: UITableView!
     var project: MovieStoryboard!
     var scenes: [Scene] = [Scene]()
@@ -29,10 +31,14 @@ class ProjectDetailViewController: BaseViewController {
     @IBOutlet weak var reducedHeaderGroupName: UILabel!
     @IBOutlet weak var reducedHeaderProjectTitle: UILabel!
     
+    fileprivate let sectionInsets = UIEdgeInsets(top: 10.0, left: 24.0, bottom: 10.0, right: 24.0)
+    fileprivate var itemsPerRow: CGFloat = 4
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        self.makeTestScenes()
+
+//        self.fetchScenes()
+//        self.makeTestScenes()
         self.initNavigation()
         self.initViews()
         self.initButton()
@@ -41,6 +47,7 @@ class ProjectDetailViewController: BaseViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.expandHeaderViewWithoutDelay()
+        self.fetchScenes()
     }
     
     private func initNavigation() -> Void {
@@ -58,26 +65,45 @@ class ProjectDetailViewController: BaseViewController {
         self.reducedHeaderGroupName.text = project.group
         self.reducedHeaderView.clipsToBounds = true
         
-        
         self.tableView.delegate = self
         self.tableView.dataSource = self
         self.tableView.backgroundColor = UIColor.groupTableViewBackground
         self.tableView.separatorStyle = .none
+        
+        self.collectionView.delegate = self
+        self.collectionView.dataSource = self
+        self.collectionView.register(ProjectDetailCollectionCell.self, forCellWithReuseIdentifier: "ProjectDetailCollectionCell")
+        self.collectionView.register(MakeSceneCollectionViewCell.self, forCellWithReuseIdentifier: "MakeSceneCollectionViewCell")
     }
     
     private func initButton() -> Void {
         self.expandButton.addTarget(self, action: #selector(expandHeaderView), for: .touchUpInside)
     }
     
+    private func fetchScenes() -> Void {
+        let realm = try! Realm()
+        let scenes = realm.objects(Scene.self).filter("storyboardId == \(self.project.id)")
+        
+        self.scenes.removeAll()
+        
+        for scene in scenes {
+            self.scenes.append(scene)
+        }
+        
+        self.collectionView.reloadData()
+        self.tableView.reloadData()
+    }
+    
     private func makeTestScenes() -> Void {
-        for _ in 0 ..< 2 {
+        for _ in 0 ..< 11 {
             let scene = Scene()
             scene.place = "Chungmuro Pildong"
             scene.time = "Late evening"
-            scene.title = "Beautiful Scene"
             
             scenes.append(scene)
         }
+        
+        self.collectionView.reloadData()
     }
 }
 
@@ -89,25 +115,105 @@ extension ProjectDetailViewController: UITableViewDelegate, UITableViewDataSourc
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return scenes.count
+        return scenes.count + 1
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        let cell = ProjectSceneCell(style: .default, reuseIdentifier: "ProjectSceneCell", scene: scenes[indexPath.row], order: indexPath.row + 1)
-        return cell.getHeight()
+        switch indexPath.row {
+        case 0:
+            return ProjectStartCell.getHeight()
+            
+        default:
+            let cell = ProjectSceneCell(style: .default, reuseIdentifier: "ProjectSceneCell", scene: scenes[indexPath.row-1], order: indexPath.row)
+            return cell.getHeight()
+        }
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = ProjectSceneCell(style: .default, reuseIdentifier: "ProjectSceneCell", scene: scenes[indexPath.row], order: indexPath.row + 1)
-        
-        return cell
+        switch indexPath.row {
+        case 0:
+            let cell = ProjectStartCell(style: .default, reuseIdentifier: "ProjectStartCell")
+            return cell
+            
+        default:
+            let cell = ProjectSceneCell(style: .default, reuseIdentifier: "ProjectSceneCell", scene: scenes[indexPath.row-1], order: indexPath.row)
+            
+            return cell
+        }
     }
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        if scrollView == collectionView {
+            return
+        }
+        
         reduceHeaderView()
     }
 }
 
+
+// MARK: - Collection View Delegate, DataSource
+extension ProjectDetailViewController: UICollectionViewDelegate, UICollectionViewDataSource {
+    func numberOfSections(in collectionView: UICollectionView) -> Int {
+        return 1
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return self.scenes.count + 1
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        if indexPath.item == 0 {
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "MakeSceneCollectionViewCell", for: indexPath) as! MakeSceneCollectionViewCell
+            cell.initCell()
+            
+            return cell
+        } else {
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ProjectDetailCollectionCell", for: indexPath) as! ProjectDetailCollectionCell
+            cell.scene = scenes[indexPath.item - 1]
+            cell.initCell(scene: scenes[indexPath.item - 1], order: indexPath.item)
+            
+            return cell
+        }
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        if indexPath.item == 0 {
+            let controller = storyboard?.instantiateViewController(withIdentifier: "MakeSceneViewController") as! MakeSceneViewController
+            controller.storyboardId = self.project.id
+            
+            self.navigationController?.pushViewController(controller, animated: true)
+        } else {
+            self.tableView.scrollToRow(at: IndexPath(row: indexPath.item, section: 0), at: UITableViewScrollPosition.top, animated: true)
+        }
+    }
+}
+
+
+// MARK: - Collection View Flow Layout
+extension ProjectDetailViewController: UICollectionViewDelegateFlowLayout {
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        var insets = UIEdgeInsets()
+        
+        insets = sectionInsets
+        
+        let paddingSpace = insets.left * (itemsPerRow + 1)
+        let availableWidth = view.frame.width - paddingSpace
+        let widthPerItem = availableWidth / itemsPerRow
+        
+        let height: CGFloat = 120
+        
+        return CGSize(width: widthPerItem, height: height)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+        return sectionInsets
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+        return sectionInsets.left
+    }
+}
 
 // MARK: - Animation
 extension ProjectDetailViewController {

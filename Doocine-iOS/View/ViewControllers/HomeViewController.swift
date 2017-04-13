@@ -108,10 +108,6 @@ extension HomeViewController {
         }
         
         controller.delegateCreate = { movieStoryboard in
-            print("무비스토리보드 생성시작")
-            print(movieStoryboard.title)
-            print(movieStoryboard.director)
-            
             let realm = try! Realm()
             
             try! realm.write {

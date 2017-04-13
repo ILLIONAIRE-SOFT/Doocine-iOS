@@ -15,8 +15,8 @@ class Cut: Object {
     dynamic var firstImage: String!
     dynamic var secondImage: String!
     
-    dynamic var cameraWalkMode: Int = 0
-    dynamic var shotSize: Int = 0
+    dynamic var cameraWalkMode: String!
+    dynamic var shotSize: String!
     dynamic var dialog: String!
     
     public func isTopEndCut() -> Bool {
