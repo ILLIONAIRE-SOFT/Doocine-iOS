@@ -10,7 +10,6 @@ import Foundation
 import RealmSwift
 
 class MovieStoryboard: Object {
-    
     dynamic var id: Int = 0
     dynamic var title: String!
     dynamic var group: String!

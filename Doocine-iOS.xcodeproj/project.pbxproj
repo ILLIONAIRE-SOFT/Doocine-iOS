@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		49131DFD1E9E8A25002108A2 /* ProjectDetailCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49131DFC1E9E8A25002108A2 /* ProjectDetailCollectionCell.swift */; };
+		49131DFF1E9F1407002108A2 /* MakeSceneCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49131DFE1E9F1407002108A2 /* MakeSceneCollectionViewCell.swift */; };
+		49131E011E9F1A53002108A2 /* MakeSceneViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49131E001E9F1A53002108A2 /* MakeSceneViewController.swift */; };
 		492430B41E8400B800C3BBA0 /* HomeProjectScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 492430B31E8400B800C3BBA0 /* HomeProjectScrollView.swift */; };
 		492430B61E8401AD00C3BBA0 /* HomeHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 492430B51E8401AD00C3BBA0 /* HomeHeaderView.swift */; };
 		492430B81E840AF500C3BBA0 /* ProjectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 492430B71E840AF500C3BBA0 /* ProjectView.swift */; };
@@ -37,6 +40,9 @@
 /* Begin PBXFileReference section */
 		1EC1349277454E927C588BBE /* Pods-Doocine-iOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Doocine-iOS.release.xcconfig"; path = "Pods/Target Support Files/Pods-Doocine-iOS/Pods-Doocine-iOS.release.xcconfig"; sourceTree = "<group>"; };
 		2D64F9E2D53F17A4C0E29676 /* Pods-Doocine-iOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Doocine-iOS.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Doocine-iOS/Pods-Doocine-iOS.debug.xcconfig"; sourceTree = "<group>"; };
+		49131DFC1E9E8A25002108A2 /* ProjectDetailCollectionCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ProjectDetailCollectionCell.swift; path = Cell/ProjectDetailCollectionCell.swift; sourceTree = "<group>"; };
+		49131DFE1E9F1407002108A2 /* MakeSceneCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MakeSceneCollectionViewCell.swift; path = Cell/MakeSceneCollectionViewCell.swift; sourceTree = "<group>"; };
+		49131E001E9F1A53002108A2 /* MakeSceneViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MakeSceneViewController.swift; path = View/ViewControllers/MakeSceneViewController.swift; sourceTree = "<group>"; };
 		492430B31E8400B800C3BBA0 /* HomeProjectScrollView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HomeProjectScrollView.swift; path = View/CustomView/HomeProjectScrollView.swift; sourceTree = "<group>"; };
 		492430B51E8401AD00C3BBA0 /* HomeHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HomeHeaderView.swift; path = View/CustomView/HomeHeaderView.swift; sourceTree = "<group>"; };
 		492430B71E840AF500C3BBA0 /* ProjectView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ProjectView.swift; path = View/CustomView/ProjectView.swift; sourceTree = "<group>"; };
@@ -78,6 +84,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		49131DFB1E9E89FE002108A2 /* ProjectDetail */ = {
+			isa = PBXGroup;
+			children = (
+				49131DFC1E9E8A25002108A2 /* ProjectDetailCollectionCell.swift */,
+				49131DFE1E9F1407002108A2 /* MakeSceneCollectionViewCell.swift */,
+			);
+			name = ProjectDetail;
+			sourceTree = "<group>";
+		};
 		492430B11E84009300C3BBA0 /* CustomView */ = {
 			isa = PBXGroup;
 			children = (
@@ -126,11 +141,11 @@
 		4947661B1E7D0D000024F9A2 /* Doocine-iOS */ = {
 			isa = PBXGroup;
 			children = (
-				49F8E3C11E7D1AFC004A61B3 /* Utils */,
 				494766381E7D12660024F9A2 /* Extension */,
-				494766301E7D0D420024F9A2 /* Cell */,
-				4947662F1E7D0D380024F9A2 /* View */,
+				49F8E3C11E7D1AFC004A61B3 /* Utils */,
 				4947662E1E7D0D340024F9A2 /* Model */,
+				4947662F1E7D0D380024F9A2 /* View */,
+				494766301E7D0D420024F9A2 /* Cell */,
 				4947661C1E7D0D000024F9A2 /* AppDelegate.swift */,
 				494766231E7D0D000024F9A2 /* Assets.xcassets */,
 				494766251E7D0D000024F9A2 /* LaunchScreen.storyboard */,
@@ -163,6 +178,7 @@
 		494766301E7D0D420024F9A2 /* Cell */ = {
 			isa = PBXGroup;
 			children = (
+				49131DFB1E9E89FE002108A2 /* ProjectDetail */,
 				493D68621E9A520700A67670 /* ProjectStart */,
 				494AF10A1E960919005D704C /* ProjectScene */,
 				49A9DF901E9550D0008F75AB /* ProjectList */,
@@ -252,6 +268,7 @@
 			isa = PBXGroup;
 			children = (
 				49A9DF941E9564BD008F75AB /* ProjectDetailViewController.swift */,
+				49131E001E9F1A53002108A2 /* MakeSceneViewController.swift */,
 			);
 			name = ProjectDetail;
 			sourceTree = "<group>";
@@ -422,6 +439,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				49131E011E9F1A53002108A2 /* MakeSceneViewController.swift in Sources */,
 				494AF10C1E96092F005D704C /* ProjectSceneCell.swift in Sources */,
 				492430B41E8400B800C3BBA0 /* HomeProjectScrollView.swift in Sources */,
 				4997E9601E8CD7A8004F742E /* Cut.swift in Sources */,
@@ -431,7 +449,9 @@
 				49A9DF921E9550ED008F75AB /* ProjectListCell.swift in Sources */,
 				49F8E3BB1E7D149B004A61B3 /* TutorialViewController.swift in Sources */,
 				49A9DF951E9564BD008F75AB /* ProjectDetailViewController.swift in Sources */,
+				49131DFD1E9E8A25002108A2 /* ProjectDetailCollectionCell.swift in Sources */,
 				492430BA1E840B1000C3BBA0 /* MakeNewProjectView.swift in Sources */,
+				49131DFF1E9F1407002108A2 /* MakeSceneCollectionViewCell.swift in Sources */,
 				498A21F01E8C100400C1D5E1 /* CreateProjectPopup.swift in Sources */,
 				4947661D1E7D0D000024F9A2 /* AppDelegate.swift in Sources */,
 				492430B81E840AF500C3BBA0 /* ProjectView.swift in Sources */,
