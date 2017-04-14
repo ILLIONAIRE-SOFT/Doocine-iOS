@@ -192,7 +192,6 @@ class ShotSizeViewController: UIViewController, PopupContentViewController {
             make.width.equalTo(itemWidth)
             make.height.equalTo(itemWidth + 20)
         }
-        
     }
     
     func sizeForPopup(_ popupController: PopupController, size: CGSize, showingKeyboard: Bool) -> CGSize {
@@ -217,9 +216,5 @@ extension ShotSizeViewController {
     
     public func tappedFourthSize() -> Void {
         self.delegateSelect("Closure Shot")
-    }
-    
-    public func tappedSize(sender: UIButton) -> Void {
-        
     }
 }

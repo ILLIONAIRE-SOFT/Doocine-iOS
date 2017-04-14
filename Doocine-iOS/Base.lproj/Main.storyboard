@@ -547,7 +547,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="xVv-5R-d3j">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="img_banner_doocine" translatesAutoresizingMaskIntoConstraints="NO" id="xVv-5R-d3j">
                                 <rect key="frame" x="0.0" y="20" width="768" height="360"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="360" id="ZMY-mf-QmJ"/>
@@ -584,8 +584,8 @@
                                 <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="F.S" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Dkb-Ld-wVi">
-                                <rect key="frame" x="24" y="526.5" width="30" height="25.5"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Closure Shot" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Dkb-Ld-wVi">
+                                <rect key="frame" x="24" y="526.5" width="121" height="26"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="21"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -602,6 +602,17 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="89B-0L-7uV">
+                                <rect key="frame" x="324" y="603" width="120" height="40"/>
+                                <color key="backgroundColor" red="1" green="0.5" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="120" id="ENA-tN-HGy"/>
+                                    <constraint firstAttribute="height" constant="40" id="ZpT-nc-y9P"/>
+                                </constraints>
+                                <state key="normal" title="Make Cut">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <constraints>
@@ -610,6 +621,7 @@
                             <constraint firstItem="H61-4C-R2a" firstAttribute="leading" secondItem="MxP-2Z-s6z" secondAttribute="leading" constant="24" id="6rn-bq-yHv"/>
                             <constraint firstItem="xVv-5R-d3j" firstAttribute="top" secondItem="1u7-Ab-kVD" secondAttribute="bottom" id="BDa-uQ-N6D"/>
                             <constraint firstItem="aID-Uk-r7G" firstAttribute="leading" secondItem="7Fl-d1-ev5" secondAttribute="leading" id="Fho-UW-of0"/>
+                            <constraint firstItem="89B-0L-7uV" firstAttribute="top" secondItem="aID-Uk-r7G" secondAttribute="bottom" constant="50" id="I60-KO-TTt"/>
                             <constraint firstItem="eey-or-zpl" firstAttribute="leading" secondItem="MxP-2Z-s6z" secondAttribute="leading" constant="24" id="M9v-B1-fC0"/>
                             <constraint firstItem="Lu0-Gs-F5j" firstAttribute="leading" secondItem="MxP-2Z-s6z" secondAttribute="leading" constant="24" id="NwM-6b-EjE"/>
                             <constraint firstItem="7Fl-d1-ev5" firstAttribute="centerX" secondItem="MxP-2Z-s6z" secondAttribute="centerX" id="Pzq-6P-Da9"/>
@@ -624,10 +636,14 @@
                             <constraint firstAttribute="trailing" secondItem="eey-or-zpl" secondAttribute="trailing" constant="24" id="qBD-VD-RQ5"/>
                             <constraint firstItem="H61-4C-R2a" firstAttribute="top" secondItem="eey-or-zpl" secondAttribute="bottom" constant="8" id="uT9-RA-W4g"/>
                             <constraint firstItem="Lu0-Gs-F5j" firstAttribute="top" secondItem="xVv-5R-d3j" secondAttribute="bottom" constant="24" id="z95-L8-0tt"/>
+                            <constraint firstItem="89B-0L-7uV" firstAttribute="centerX" secondItem="MxP-2Z-s6z" secondAttribute="centerX" id="zLE-P4-gVt"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="cameraWalkValueLabel" destination="aID-Uk-r7G" id="8J3-Sw-HqF"/>
+                        <outlet property="cutImage" destination="xVv-5R-d3j" id="qBc-P7-rlQ"/>
+                        <outlet property="dialogTextField" destination="eey-or-zpl" id="gwA-tB-pUi"/>
+                        <outlet property="makeButton" destination="89B-0L-7uV" id="Cgk-pT-bqx"/>
                         <outlet property="shotSizeValueLabel" destination="Dkb-Ld-wVi" id="WnI-WL-2NA"/>
                     </connections>
                 </viewController>
@@ -656,6 +672,7 @@
     </scenes>
     <resources>
         <image name="LaunchImage" width="1194" height="1590"/>
+        <image name="img_banner_doocine" width="1190" height="464"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="WId-FU-vlQ"/>
