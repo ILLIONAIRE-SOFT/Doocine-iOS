@@ -12,6 +12,7 @@ import RealmSwift
 class MakeSceneViewController: BaseViewController {
     var storyboardId: Int!
     
+    
     @IBOutlet weak var placeTextField: UITextField!
     @IBOutlet weak var timeTextField: UITextField!
     @IBOutlet weak var makeButton: UIButton!

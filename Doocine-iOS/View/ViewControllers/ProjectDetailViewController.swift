@@ -52,6 +52,10 @@ class ProjectDetailViewController: BaseViewController {
     
     private func initNavigation() -> Void {
         super.initNavigation(barTintColor: .white, barTitle: "PROJECT")
+        
+        let shareBarButton = UIBarButtonItem(image: UIImage(named: "icon_file_upload"), style: .plain, target: self, action: #selector(tappedShare))
+        
+        self.navigationItem.rightBarButtonItem = shareBarButton
     }
     
     private func initViews() -> Void {
@@ -125,6 +129,7 @@ extension ProjectDetailViewController: UITableViewDelegate, UITableViewDataSourc
             
         default:
             let cell = ProjectSceneCell(style: .default, reuseIdentifier: "ProjectSceneCell", scene: scenes[indexPath.row-1], order: indexPath.row)
+            
             return cell.getHeight()
         }
     }
@@ -137,6 +142,7 @@ extension ProjectDetailViewController: UITableViewDelegate, UITableViewDataSourc
             
         default:
             let cell = ProjectSceneCell(style: .default, reuseIdentifier: "ProjectSceneCell", scene: scenes[indexPath.row-1], order: indexPath.row)
+            cell.rootController = self
             
             return cell
         }
@@ -248,5 +254,18 @@ extension ProjectDetailViewController {
         UIView.animate(withDuration: 0) {
             self.view.layoutIfNeeded()
         }
+    }
+}
+
+
+// MARK: - Tap Action
+extension ProjectDetailViewController {
+    public func tappedShare() -> Void {
+        let shareText = "Share Storyboard"
+        let activityVC = UIActivityViewController(activityItems: [shareText], applicationActivities: nil)
+        
+        activityVC.popoverPresentationController?.sourceView = self.view
+        activityVC.excludedActivityTypes = [UIActivityType.airDrop, UIActivityType.message, UIActivityType.mail, UIActivityType.postToFacebook, UIActivityType.addToReadingList]
+        self.present(activityVC, animated: true, completion: nil)
     }
 }

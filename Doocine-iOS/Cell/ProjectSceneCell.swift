@@ -11,6 +11,8 @@ import SnapKit
 import RealmSwift
 
 class ProjectSceneCell: UITableViewCell {
+    var rootController: ProjectDetailViewController!
+    var scene: Scene!
     var cuts: [Cut] = [Cut]()
     
     var height: CGFloat = 0
@@ -20,7 +22,8 @@ class ProjectSceneCell: UITableViewCell {
         
         self.selectionStyle = .none
         self.backgroundColor = UIColor.groupTableViewBackground
-        self.makeTestCut()
+        self.scene = scene
+        self.fetchCuts()
         self.initCell(with: scene, order: order)
     }
     
@@ -28,13 +31,14 @@ class ProjectSceneCell: UITableViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
-    private func makeTestCut() -> Void {
-        for _ in 0 ..< 3 {
-            let cut = Cut()
-            cut.dialog = "I`m tired and I have to sleep now."
-            cut.shotSize = "1x"
-            cut.cameraWalkMode = "Pan"
-            cuts.append(cut)
+    private func fetchCuts() -> Void {
+        let realm = try! Realm()
+        let cuts = realm.objects(Cut.self).filter("sceneId == \(self.scene.id)")
+        
+        self.cuts.removeAll()
+        
+        for cut in cuts {
+            self.cuts.append(cut)
         }
     }
     
@@ -108,7 +112,7 @@ class ProjectSceneCell: UITableViewCell {
         headerView.addSubview(timeHeader)
         
         timeHeader.snp.makeConstraints { (make) in
-            make.left.equalTo(placeHeader.snp.right).offset(160)
+            make.left.equalTo(placeHeader.snp.right).offset(150)
             make.centerY.equalTo(headerView).offset(-16)
         }
         
@@ -120,6 +124,20 @@ class ProjectSceneCell: UITableViewCell {
         timeLabel.snp.makeConstraints { (make) in
             make.left.equalTo(timeHeader)
             make.centerY.equalTo(headerView).offset(16)
+        }
+        
+        let addButton = UIButton()
+        addButton.setTitle("추가", for: .normal)
+        addButton.backgroundColor = UIColor.orange
+        addButton.addTarget(self, action: #selector(goToMakeCut), for: .touchUpInside)
+        
+        headerView.addSubview(addButton)
+        
+        addButton.snp.makeConstraints { (make) in
+            make.centerY.equalTo(headerView)
+            make.right.equalTo(headerView).offset(-16)
+            make.height.equalTo(36)
+            make.width.equalTo(62)
         }
         
         // MARK: - Header View Height
@@ -136,7 +154,7 @@ class ProjectSceneCell: UITableViewCell {
             
             bodyView.snp.makeConstraints({ (make) in
                 make.top.equalTo(self).offset(height)
-                make.height.equalTo(370)
+                make.height.equalTo(460)
                 make.left.equalTo(self).offset(72)
                 make.right.equalTo(self).offset(-72)
             })
@@ -172,7 +190,7 @@ class ProjectSceneCell: UITableViewCell {
                 make.top.equalTo(bodyView).offset(48)
                 make.left.equalTo(bodyView)
                 make.right.equalTo(bodyView)
-                make.height.equalTo(240)
+                make.height.equalTo(300)
             })
             
             let dialogImage = UIImageView()
@@ -183,7 +201,7 @@ class ProjectSceneCell: UITableViewCell {
             
             dialogImage.snp.makeConstraints({ (make) in
                 make.left.equalTo(bodyView).offset(16)
-                make.top.equalTo(bodyView).offset(300)
+                make.top.equalTo(bodyView).offset(360)
                 make.width.equalTo(24)
                 make.height.equalTo(24)
             })
@@ -212,7 +230,51 @@ class ProjectSceneCell: UITableViewCell {
                 make.top.equalTo(dialogImage.snp.bottom).offset(8)
             })
             
-            height += 370 + 24
+            let shotSizeHeader = UILabel()
+            shotSizeHeader.text = "SHOT SIZE"
+            shotSizeHeader.textColor = UIColor.darkGray
+            shotSizeHeader.font = UIFont.systemFont(ofSize: 15)
+            
+            bodyView.addSubview(shotSizeHeader)
+            
+            shotSizeHeader.snp.makeConstraints({ (make) in
+                make.left.equalTo(bodyView).offset(16)
+                make.top.equalTo(dialogMessage.snp.bottom).offset(8)
+            })
+            
+            let shotSizeValue = UILabel()
+            shotSizeValue.text = cuts[i].shotSize
+            
+            bodyView.addSubview(shotSizeValue)
+            
+            shotSizeValue.snp.makeConstraints({ (make) in
+                make.left.equalTo(shotSizeHeader.snp.right).offset(16)
+                make.centerY.equalTo(shotSizeHeader)
+            })
+            
+            let cameraWalkHeader = UILabel()
+            cameraWalkHeader.text = "CAMERA WALK"
+            cameraWalkHeader.textColor = UIColor.darkGray
+            cameraWalkHeader.font = UIFont.systemFont(ofSize: 15)
+            
+            bodyView.addSubview(cameraWalkHeader)
+            
+            cameraWalkHeader.snp.makeConstraints({ (make) in
+                make.left.equalTo(shotSizeValue.snp.right).offset(32)
+                make.centerY.equalTo(shotSizeHeader)
+            })
+            
+            let cameraWalkValue = UILabel()
+            cameraWalkValue.text = cuts[i].cameraWalkMode
+            
+            bodyView.addSubview(cameraWalkValue)
+            
+            cameraWalkValue.snp.makeConstraints({ (make) in
+                make.left.equalTo(cameraWalkHeader.snp.right).offset(16)
+                make.centerY.equalTo(shotSizeHeader)
+            })
+            
+            height += 460 + 24
         }
         
         
@@ -222,5 +284,12 @@ class ProjectSceneCell: UITableViewCell {
     
     public func getHeight() -> CGFloat {
         return height
+    }
+    
+    public func goToMakeCut() -> Void {
+        let mainSB = UIStoryboard(name: "Main", bundle: nil)
+        let controller = mainSB.instantiateViewController(withIdentifier: "MakeCutViewController") as! MakeCutViewController
+        controller.sceneId = self.scene.id
+        self.rootController.navigationController?.pushViewController(controller, animated: true)
     }
 }

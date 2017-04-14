@@ -10,10 +10,13 @@
 		49131DFD1E9E8A25002108A2 /* ProjectDetailCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49131DFC1E9E8A25002108A2 /* ProjectDetailCollectionCell.swift */; };
 		49131DFF1E9F1407002108A2 /* MakeSceneCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49131DFE1E9F1407002108A2 /* MakeSceneCollectionViewCell.swift */; };
 		49131E011E9F1A53002108A2 /* MakeSceneViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49131E001E9F1A53002108A2 /* MakeSceneViewController.swift */; };
+		491FDA2A1E9FB1F40010FB8A /* MakeCutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 491FDA291E9FB1F40010FB8A /* MakeCutViewController.swift */; };
+		491FDA2C1E9FBE150010FB8A /* ShotSizeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 491FDA2B1E9FBE150010FB8A /* ShotSizeViewController.swift */; };
 		492430B41E8400B800C3BBA0 /* HomeProjectScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 492430B31E8400B800C3BBA0 /* HomeProjectScrollView.swift */; };
 		492430B61E8401AD00C3BBA0 /* HomeHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 492430B51E8401AD00C3BBA0 /* HomeHeaderView.swift */; };
 		492430B81E840AF500C3BBA0 /* ProjectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 492430B71E840AF500C3BBA0 /* ProjectView.swift */; };
 		492430BA1E840B1000C3BBA0 /* MakeNewProjectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 492430B91E840B1000C3BBA0 /* MakeNewProjectView.swift */; };
+		4939D6B91EA0667000A90B96 /* CameraWalkPopup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4939D6B81EA0667000A90B96 /* CameraWalkPopup.swift */; };
 		493D68641E9A522500A67670 /* ProjectStartCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 493D68631E9A522500A67670 /* ProjectStartCell.swift */; };
 		4947661D1E7D0D000024F9A2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4947661C1E7D0D000024F9A2 /* AppDelegate.swift */; };
 		494766221E7D0D000024F9A2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 494766201E7D0D000024F9A2 /* Main.storyboard */; };
@@ -43,10 +46,13 @@
 		49131DFC1E9E8A25002108A2 /* ProjectDetailCollectionCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ProjectDetailCollectionCell.swift; path = Cell/ProjectDetailCollectionCell.swift; sourceTree = "<group>"; };
 		49131DFE1E9F1407002108A2 /* MakeSceneCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MakeSceneCollectionViewCell.swift; path = Cell/MakeSceneCollectionViewCell.swift; sourceTree = "<group>"; };
 		49131E001E9F1A53002108A2 /* MakeSceneViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MakeSceneViewController.swift; path = View/ViewControllers/MakeSceneViewController.swift; sourceTree = "<group>"; };
+		491FDA291E9FB1F40010FB8A /* MakeCutViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MakeCutViewController.swift; path = View/ViewControllers/MakeCutViewController.swift; sourceTree = "<group>"; };
+		491FDA2B1E9FBE150010FB8A /* ShotSizeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ShotSizeViewController.swift; path = View/Popup/ShotSizeViewController.swift; sourceTree = "<group>"; };
 		492430B31E8400B800C3BBA0 /* HomeProjectScrollView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HomeProjectScrollView.swift; path = View/CustomView/HomeProjectScrollView.swift; sourceTree = "<group>"; };
 		492430B51E8401AD00C3BBA0 /* HomeHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HomeHeaderView.swift; path = View/CustomView/HomeHeaderView.swift; sourceTree = "<group>"; };
 		492430B71E840AF500C3BBA0 /* ProjectView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ProjectView.swift; path = View/CustomView/ProjectView.swift; sourceTree = "<group>"; };
 		492430B91E840B1000C3BBA0 /* MakeNewProjectView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MakeNewProjectView.swift; path = View/CustomView/MakeNewProjectView.swift; sourceTree = "<group>"; };
+		4939D6B81EA0667000A90B96 /* CameraWalkPopup.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CameraWalkPopup.swift; path = View/Popup/CameraWalkPopup.swift; sourceTree = "<group>"; };
 		493D68631E9A522500A67670 /* ProjectStartCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ProjectStartCell.swift; path = Cell/ProjectStartCell.swift; sourceTree = "<group>"; };
 		494766191E7D0D000024F9A2 /* Doocine-iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Doocine-iOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		4947661C1E7D0D000024F9A2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -244,6 +250,8 @@
 			isa = PBXGroup;
 			children = (
 				498A21EF1E8C100400C1D5E1 /* CreateProjectPopup.swift */,
+				491FDA2B1E9FBE150010FB8A /* ShotSizeViewController.swift */,
+				4939D6B81EA0667000A90B96 /* CameraWalkPopup.swift */,
 			);
 			name = Popup;
 			sourceTree = "<group>";
@@ -269,6 +277,7 @@
 			children = (
 				49A9DF941E9564BD008F75AB /* ProjectDetailViewController.swift */,
 				49131E001E9F1A53002108A2 /* MakeSceneViewController.swift */,
+				491FDA291E9FB1F40010FB8A /* MakeCutViewController.swift */,
 			);
 			name = ProjectDetail;
 			sourceTree = "<group>";
@@ -445,7 +454,9 @@
 				4997E9601E8CD7A8004F742E /* Cut.swift in Sources */,
 				4947663F1E7D14430024F9A2 /* HomeViewController.swift in Sources */,
 				494766331E7D0E900024F9A2 /* SplashViewController.swift in Sources */,
+				491FDA2C1E9FBE150010FB8A /* ShotSizeViewController.swift in Sources */,
 				494766361E7D0F6B0024F9A2 /* MovieStoryboard.swift in Sources */,
+				4939D6B91EA0667000A90B96 /* CameraWalkPopup.swift in Sources */,
 				49A9DF921E9550ED008F75AB /* ProjectListCell.swift in Sources */,
 				49F8E3BB1E7D149B004A61B3 /* TutorialViewController.swift in Sources */,
 				49A9DF951E9564BD008F75AB /* ProjectDetailViewController.swift in Sources */,
@@ -462,6 +473,7 @@
 				49F8E3C71E7D1B2D004A61B3 /* Constants.swift in Sources */,
 				493D68641E9A522500A67670 /* ProjectStartCell.swift in Sources */,
 				49F8E3C91E7D1DED004A61B3 /* Scene.swift in Sources */,
+				491FDA2A1E9FB1F40010FB8A /* MakeCutViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
