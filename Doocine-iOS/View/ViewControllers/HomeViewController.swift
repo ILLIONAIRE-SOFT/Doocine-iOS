@@ -98,7 +98,6 @@ extension HomeViewController {
                                                 .backgroundStyle(.blackFilter(alpha:0.7)),
                                                 .layout(.center),
                                                 .movesAlongWithKeyboard(true)
-                                                
                                                 ])
         let popupSB = UIStoryboard(name: "Popup", bundle: nil)
         let controller = popupSB.instantiateViewController(withIdentifier: "CreateProjectPopup") as! CreateProjectPopup

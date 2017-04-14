@@ -137,6 +137,8 @@ extension ProjectDetailViewController: UITableViewDelegate, UITableViewDataSourc
             
         default:
             let cell = ProjectSceneCell(style: .default, reuseIdentifier: "ProjectSceneCell", scene: scenes[indexPath.row-1], order: indexPath.row)
+            cell.scene = scenes[indexPath.row-1]
+            cell.rootController = self
             
             return cell
         }

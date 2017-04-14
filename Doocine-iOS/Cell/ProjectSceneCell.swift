@@ -11,6 +11,8 @@ import SnapKit
 import RealmSwift
 
 class ProjectSceneCell: UITableViewCell {
+    var rootController: ProjectDetailViewController!
+    var scene: Scene!
     var cuts: [Cut] = [Cut]()
     
     var height: CGFloat = 0
@@ -108,7 +110,7 @@ class ProjectSceneCell: UITableViewCell {
         headerView.addSubview(timeHeader)
         
         timeHeader.snp.makeConstraints { (make) in
-            make.left.equalTo(placeHeader.snp.right).offset(160)
+            make.left.equalTo(placeHeader.snp.right).offset(150)
             make.centerY.equalTo(headerView).offset(-16)
         }
         
@@ -120,6 +122,20 @@ class ProjectSceneCell: UITableViewCell {
         timeLabel.snp.makeConstraints { (make) in
             make.left.equalTo(timeHeader)
             make.centerY.equalTo(headerView).offset(16)
+        }
+        
+        let addButton = UIButton()
+        addButton.setTitle("추가", for: .normal)
+        addButton.backgroundColor = UIColor.orange
+        addButton.addTarget(self, action: #selector(goToMakeCut), for: .touchUpInside)
+        
+        headerView.addSubview(addButton)
+        
+        addButton.snp.makeConstraints { (make) in
+            make.centerY.equalTo(headerView)
+            make.right.equalTo(headerView).offset(-16)
+            make.height.equalTo(36)
+            make.width.equalTo(62)
         }
         
         // MARK: - Header View Height
@@ -222,5 +238,12 @@ class ProjectSceneCell: UITableViewCell {
     
     public func getHeight() -> CGFloat {
         return height
+    }
+    
+    public func goToMakeCut() -> Void {
+        let mainSB = UIStoryboard(name: "Main", bundle: nil)
+        let controller = mainSB.instantiateViewController(withIdentifier: "MakeCutViewController") as! MakeCutViewController
+        controller.sceneId = self.scene.id
+        self.rootController.navigationController?.pushViewController(controller, animated: true)
     }
 }

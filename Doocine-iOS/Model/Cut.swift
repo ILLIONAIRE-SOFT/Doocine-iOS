@@ -12,6 +12,8 @@ import RealmSwift
 import Realm
 
 class Cut: Object {
+    dynamic var sceneId: String!
+    
     dynamic var firstImage: String!
     dynamic var secondImage: String!
     

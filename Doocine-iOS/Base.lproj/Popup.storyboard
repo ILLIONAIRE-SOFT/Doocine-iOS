@@ -253,5 +253,41 @@
             </objects>
             <point key="canvasLocation" x="-186.40000000000001" y="188.45577211394306"/>
         </scene>
+        <!--Shot Size View Controller-->
+        <scene sceneID="cgJ-kT-29O">
+            <objects>
+                <viewController storyboardIdentifier="ShotSizeViewController" id="5YB-Fh-yw3" customClass="ShotSizeViewController" customModule="Doocine_iOS" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="cL3-qO-eFz"/>
+                        <viewControllerLayoutGuide type="bottom" id="mi8-e5-qFE"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="XUh-Vq-SLz">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Vkt-R9-Mrr" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="569" y="188"/>
+        </scene>
+        <!--Camera Walk Popup-->
+        <scene sceneID="VMb-aj-Upv">
+            <objects>
+                <viewController storyboardIdentifier="CameraWalkPopup" id="5qx-AW-2bP" customClass="CameraWalkPopup" customModule="Doocine_iOS" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="ovS-BM-hIn"/>
+                        <viewControllerLayoutGuide type="bottom" id="rvZ-dx-kA2"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="k7V-ye-Ihg">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Ev8-Qz-K1d" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1335" y="188"/>
+        </scene>
     </scenes>
 </document>

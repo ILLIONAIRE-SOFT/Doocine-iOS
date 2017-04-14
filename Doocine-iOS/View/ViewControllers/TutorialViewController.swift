@@ -12,7 +12,6 @@ class TutorialViewController: BaseViewController {
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var bottomView: UIView!
     @IBOutlet weak var createProjectButton: UIButton!
-    @IBOutlet weak var skipButton: UIButton!
     @IBOutlet weak var pageControl: UIPageControl!
     
     override func viewDidLoad() {
@@ -32,14 +31,11 @@ class TutorialViewController: BaseViewController {
         createProjectButton.layer.cornerRadius = 6
         createProjectButton.setTitleColor(UIColor.white, for: .normal)
         
-        skipButton.setTitleColor(UIColor.greishBrown, for: .normal)
-        
         makeLandingPage()
     }
     
     private func initButtons() -> Void {
         createProjectButton.addTarget(self, action: #selector(presentHomeViewController), for: .touchUpInside)
-        skipButton.addTarget(self, action: #selector(presentHomeViewController), for: .touchUpInside)
     }
 }
 
