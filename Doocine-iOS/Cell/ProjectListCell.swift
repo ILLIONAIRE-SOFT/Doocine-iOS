@@ -8,6 +8,7 @@
 
 import UIKit
 import SnapKit
+import RealmSwift
 
 class ProjectListCell: UICollectionViewCell {
     override init(frame: CGRect) {
@@ -25,7 +26,29 @@ class ProjectListCell: UICollectionViewCell {
     public func initCell(with project: MovieStoryboard) -> Void {
         // MARK: - Header View
         let projectImage = UIImageView()
-        projectImage.image = UIImage(named: "img_banner_doocine")
+        
+        let realm = try! Realm()
+        let scene = realm.objects(Scene.self).filter("storyboardId == \(project.id)").first
+        
+        if scene != nil {
+            let sceneId = scene?.id
+            let cut = realm.objects(Cut.self).filter("sceneId == \(sceneId ?? 0)").first
+            
+            if cut != nil {
+                let cutImage = PhotoManager.loadImage(imageId: (cut?.id)!)
+                
+                if cutImage != nil {
+                    projectImage.image = cutImage
+                } else {
+                    projectImage.image = UIImage(named: "img_banner_doocine")
+                }
+            } else {
+                projectImage.image = UIImage(named: "img_banner_doocine")
+            }
+        } else {
+            projectImage.image = UIImage(named: "img_banner_doocine")
+        }
+        
         projectImage.contentMode = .scaleAspectFill
         projectImage.clipsToBounds = true
         

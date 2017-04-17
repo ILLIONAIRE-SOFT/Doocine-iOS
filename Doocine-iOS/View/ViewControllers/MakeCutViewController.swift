@@ -21,6 +21,7 @@ class MakeCutViewController: BaseViewController {
     
     let imagePicker = UIImagePickerController()
     var pickedPhoto = UIImage()
+    var isPhotoPicked: Bool = false
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -47,6 +48,8 @@ class MakeCutViewController: BaseViewController {
         imagePicker.delegate = self
         
         cutImage.isUserInteractionEnabled = true
+        cutImage.contentMode = .scaleAspectFill
+        cutImage.clipsToBounds = true
         
         let tapImage = UITapGestureRecognizer(target: self, action: #selector(tappedImage))
         cutImage.addGestureRecognizer(tapImage)
@@ -88,6 +91,10 @@ class MakeCutViewController: BaseViewController {
         
         try! realm.write {
             realm.add(cut)
+        }
+        
+        if isPhotoPicked {
+            PhotoManager.saveImage(image: pickedPhoto, imageId: cut.id)
         }
         
         self.navigationController?.popViewController(animated: true)
@@ -142,9 +149,11 @@ extension MakeCutViewController {
         }
         
         popup.didShowHandler { (_) in
+            
         }
         
         popup.didCloseHandler { (_) in
+            
         }
         
         popup = popup.show(controller)
@@ -161,13 +170,12 @@ extension MakeCutViewController {
 // MARK: - Image Picker Delegate
 extension MakeCutViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
-        
         let image = (info[UIImagePickerControllerEditedImage] as? UIImage)
         
         if image != nil {
             self.pickedPhoto = image!
             self.cutImage.image = pickedPhoto
-//            isPhotoPicked = true
+            isPhotoPicked = true
         }
         dismiss(animated: true, completion: nil)
     }

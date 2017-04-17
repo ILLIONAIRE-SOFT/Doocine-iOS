@@ -180,7 +180,15 @@ class ProjectSceneCell: UITableViewCell {
             
             // MARK: - Cut Image
             let imageView = UIImageView()
-            imageView.image = UIImage(named: "img_banner_doocine")
+            
+            let cutImage = PhotoManager.loadImage(imageId: cuts[i].id)
+            
+            if cutImage != nil {
+                imageView.image = cutImage
+            } else {
+                imageView.image = UIImage(named: "img_banner_doocine")
+            }
+            
             imageView.clipsToBounds = true
             imageView.contentMode = .scaleAspectFill
             

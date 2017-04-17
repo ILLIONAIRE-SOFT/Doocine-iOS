@@ -261,11 +261,12 @@ extension ProjectDetailViewController {
 // MARK: - Tap Action
 extension ProjectDetailViewController {
     public func tappedShare() -> Void {
-        let shareText = "Share Storyboard"
+        let shareText = UIImage(named: "img_intro")
         let activityVC = UIActivityViewController(activityItems: [shareText], applicationActivities: nil)
         
         activityVC.popoverPresentationController?.sourceView = self.view
-        activityVC.excludedActivityTypes = [UIActivityType.airDrop, UIActivityType.message, UIActivityType.mail, UIActivityType.postToFacebook, UIActivityType.addToReadingList]
+        activityVC.excludedActivityTypes = [UIActivityType.airDrop, UIActivityType.message, UIActivityType.mail, UIActivityType.postToFacebook, UIActivityType.addToReadingList, UIActivityType.saveToCameraRoll]
+        
         self.present(activityVC, animated: true, completion: nil)
     }
 }

@@ -58,6 +58,11 @@ class HomeViewController: BaseViewController {
         let doocineBanner = UIImageView()
         doocineBanner.contentMode = .scaleAspectFill
         doocineBanner.image = UIImage(named: "img_banner_doocine")
+        doocineBanner.isUserInteractionEnabled = true
+        
+        let tapBanner = UITapGestureRecognizer(target: self, action: #selector(tappedIntro))
+        
+        doocineBanner.addGestureRecognizer(tapBanner)
         
         self.view.addSubview(doocineBanner)
         doocineBanner.snp.makeConstraints { (make) in
@@ -131,6 +136,12 @@ extension HomeViewController {
     
     fileprivate func tappedBrowseAll() -> Void {
         let controller = storyboard?.instantiateViewController(withIdentifier: "ProjectListViewController")
+        
+        self.navigationController?.pushViewController(controller!, animated: true)
+    }
+    
+    func tappedIntro() -> Void {
+        let controller = storyboard?.instantiateViewController(withIdentifier: "IntroViewController")
         
         self.navigationController?.pushViewController(controller!, animated: true)
     }
