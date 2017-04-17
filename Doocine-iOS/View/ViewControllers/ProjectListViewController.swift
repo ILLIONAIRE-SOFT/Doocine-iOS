@@ -73,7 +73,6 @@ extension ProjectListViewController: UICollectionViewDelegate, UICollectionViewD
         controller.project = projects[indexPath.item]
         
         self.navigationController?.pushViewController(controller, animated: true)
-        
     }
 }
 

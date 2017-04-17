@@ -39,6 +39,8 @@
 		49F8E3C01E7D194C004A61B3 /* ColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49F8E3BF1E7D194C004A61B3 /* ColorExtension.swift */; };
 		49F8E3C71E7D1B2D004A61B3 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49F8E3C61E7D1B2D004A61B3 /* Constants.swift */; };
 		49F8E3C91E7D1DED004A61B3 /* Scene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49F8E3C81E7D1DED004A61B3 /* Scene.swift */; };
+		49FD2F941EA462F700F40C44 /* MakeProjectCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49FD2F931EA462F700F40C44 /* MakeProjectCell.swift */; };
+		49FD2F961EA4630800F40C44 /* ProjectCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49FD2F951EA4630800F40C44 /* ProjectCell.swift */; };
 		ED3649E7823A586FFA71C9BE /* Pods_Doocine_iOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E0D88F961367641B98C98A6C /* Pods_Doocine_iOS.framework */; };
 /* End PBXBuildFile section */
 
@@ -79,6 +81,8 @@
 		49F8E3BF1E7D194C004A61B3 /* ColorExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ColorExtension.swift; path = Extension/ColorExtension.swift; sourceTree = "<group>"; };
 		49F8E3C61E7D1B2D004A61B3 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Constants.swift; path = Utils/Constants.swift; sourceTree = "<group>"; };
 		49F8E3C81E7D1DED004A61B3 /* Scene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Scene.swift; path = Model/Scene.swift; sourceTree = "<group>"; };
+		49FD2F931EA462F700F40C44 /* MakeProjectCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MakeProjectCell.swift; path = Cell/MakeProjectCell.swift; sourceTree = "<group>"; };
+		49FD2F951EA4630800F40C44 /* ProjectCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ProjectCell.swift; path = Cell/ProjectCell.swift; sourceTree = "<group>"; };
 		E0D88F961367641B98C98A6C /* Pods_Doocine_iOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Doocine_iOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -188,6 +192,7 @@
 		494766301E7D0D420024F9A2 /* Cell */ = {
 			isa = PBXGroup;
 			children = (
+				49FD2F921EA462DC00F40C44 /* ProjectHome */,
 				49131DFB1E9E89FE002108A2 /* ProjectDetail */,
 				493D68621E9A520700A67670 /* ProjectStart */,
 				494AF10A1E960919005D704C /* ProjectScene */,
@@ -318,6 +323,15 @@
 				49C282471EA381BF00727CB2 /* PhotoManager.swift */,
 			);
 			name = Utils;
+			sourceTree = "<group>";
+		};
+		49FD2F921EA462DC00F40C44 /* ProjectHome */ = {
+			isa = PBXGroup;
+			children = (
+				49FD2F931EA462F700F40C44 /* MakeProjectCell.swift */,
+				49FD2F951EA4630800F40C44 /* ProjectCell.swift */,
+			);
+			name = ProjectHome;
 			sourceTree = "<group>";
 		};
 		A4CE5488CA0646390B7F9606 /* Frameworks */ = {
@@ -464,6 +478,7 @@
 			files = (
 				49131E011E9F1A53002108A2 /* MakeSceneViewController.swift in Sources */,
 				494AF10C1E96092F005D704C /* ProjectSceneCell.swift in Sources */,
+				49FD2F941EA462F700F40C44 /* MakeProjectCell.swift in Sources */,
 				49C282481EA381BF00727CB2 /* PhotoManager.swift in Sources */,
 				492430B41E8400B800C3BBA0 /* HomeProjectScrollView.swift in Sources */,
 				4997E9601E8CD7A8004F742E /* Cut.swift in Sources */,
@@ -474,6 +489,7 @@
 				4939D6B91EA0667000A90B96 /* CameraWalkPopup.swift in Sources */,
 				49A9DF921E9550ED008F75AB /* ProjectListCell.swift in Sources */,
 				49F8E3BB1E7D149B004A61B3 /* TutorialViewController.swift in Sources */,
+				49FD2F961EA4630800F40C44 /* ProjectCell.swift in Sources */,
 				49A9DF951E9564BD008F75AB /* ProjectDetailViewController.swift in Sources */,
 				49131DFD1E9E8A25002108A2 /* ProjectDetailCollectionCell.swift in Sources */,
 				492430BA1E840B1000C3BBA0 /* MakeNewProjectView.swift in Sources */,

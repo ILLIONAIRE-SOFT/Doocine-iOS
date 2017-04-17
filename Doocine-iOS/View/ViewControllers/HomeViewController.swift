@@ -13,15 +13,22 @@ import RealmSwift
 
 class HomeViewController: BaseViewController {
     
-    var homeHeaderView: HomeHeaderView!
-    var homeProjectScrollView: HomeProjectScrollView!
+    @IBOutlet weak var bannerImageView: UIImageView!
+    @IBOutlet weak var browseAllButton: UIButton!
+    @IBOutlet weak var projectCountLabel: UILabel!
+    @IBOutlet weak var collectionView: UICollectionView!
+    var projects: [MovieStoryboard] = [MovieStoryboard]()
+    
+    fileprivate let sectionInsets = UIEdgeInsets(top: 10.0, left: 24.0, bottom: 10.0, right: 24.0)
+    fileprivate var itemsPerRow: CGFloat = 3
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        initNavigation()
-        initViews()
-        refresh()
+        self.initNavigation()
+        self.initViews()
+        self.initButtons()
+        self.fetchStoryboards()
     }
     
     private func initNavigation() {
@@ -29,67 +36,99 @@ class HomeViewController: BaseViewController {
     }
     
     private func initViews() {
-        homeHeaderView = HomeHeaderView()
-        
-        self.view.addSubview(homeHeaderView)
-        homeHeaderView.snp.makeConstraints { (make) in
-            make.left.equalTo(self.view).offset(0)
-            make.right.equalTo(self.view).offset(0)
-            make.top.equalTo(self.view).offset(0)
-            make.height.equalTo(200)
-        }
-        
-        homeProjectScrollView = HomeProjectScrollView()
-        homeProjectScrollView.handleTapMakeNewProject = {
-            self.tappedMakeNewProject()
-        }
-        homeProjectScrollView.handleTapBrowseAll = {
-            self.tappedBrowseAll()
-        }
-        
-        self.view.addSubview(homeProjectScrollView)
-        homeProjectScrollView.snp.makeConstraints { (make) in
-            make.left.equalTo(self.view).offset(0)
-            make.right.equalTo(self.view).offset(0)
-            make.top.equalTo(homeHeaderView.snp.bottom)
-            make.height.equalTo(380)
-        }
-        
-        let doocineBanner = UIImageView()
-        doocineBanner.contentMode = .scaleAspectFill
-        doocineBanner.image = UIImage(named: "img_banner_doocine")
-        doocineBanner.isUserInteractionEnabled = true
-        
         let tapBanner = UITapGestureRecognizer(target: self, action: #selector(tappedIntro))
         
-        doocineBanner.addGestureRecognizer(tapBanner)
+        self.bannerImageView.addGestureRecognizer(tapBanner)
+        self.bannerImageView.isUserInteractionEnabled = true
         
-        self.view.addSubview(doocineBanner)
-        doocineBanner.snp.makeConstraints { (make) in
-            make.left.equalTo(self.view)
-            make.right.equalTo(self.view)
-            make.top.equalTo(homeProjectScrollView.snp.bottom)
-            make.height.equalTo(200)
-        }
+        self.collectionView.delegate = self
+        self.collectionView.dataSource = self
+        self.collectionView.register(MakeProjectCell.self, forCellWithReuseIdentifier: "MakeProjectCell")
+        self.collectionView.register(ProjectCell.self, forCellWithReuseIdentifier: "ProjectCell")
     }
     
-    public func refresh() -> Void {
-        // Realm에서 Storyboard 부르고
-        // HomeProjectScrollView storyboard 교체해 주고 reload
+    private func initButtons() -> Void {
+        self.browseAllButton.addTarget(self, action: #selector(tappedBrowseAll), for: .touchUpInside)
+    }
+    
+    public func fetchStoryboards() -> Void {
+        self.projects.removeAll()
+        
         let realm = try! Realm()
-        print(realm.objects(MovieStoryboard.self))
+//        print(realm.objects(MovieStoryboard.self))
         
         let movieStoryboards = realm.objects(MovieStoryboard.self)
         
-        var storyboards = [MovieStoryboard]()
-        
         for storyboard in movieStoryboards {
-            storyboards.append(storyboard)
+            self.projects.append(storyboard)
         }
         
-        self.homeProjectScrollView.storyboards.removeAll()
-        self.homeProjectScrollView.storyboards = storyboards
-        self.homeProjectScrollView.initProjectsViews()
+        self.collectionView.reloadData()
+        self.projectCountLabel.text = String(self.projects.count)
+    }
+}
+
+
+// MARK: - CollectionView Delegate, DataSource
+extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSource {
+    func numberOfSections(in collectionView: UICollectionView) -> Int {
+        return 1
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return self.projects.count + 1
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        if indexPath.item == 0 {
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "MakeProjectCell", for: indexPath) as! MakeProjectCell
+            cell.initCell()
+            
+            return cell
+        } else {
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ProjectCell", for: indexPath) as! ProjectCell
+            cell.project = self.projects[indexPath.item - 1]
+            cell.initCell(project: self.projects[indexPath.item - 1], order: indexPath.item)
+            
+            return cell
+        }
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        if indexPath.item == 0 {
+            self.tappedMakeNewProject()
+        } else {
+            let controller = storyboard?.instantiateViewController(withIdentifier: "ProjectDetailViewController") as! ProjectDetailViewController
+            controller.project = projects[indexPath.item - 1]
+            
+            self.navigationController?.pushViewController(controller, animated: true)
+        }
+    }
+}
+
+
+// MARK: - Collection View Flow Layout
+extension HomeViewController: UICollectionViewDelegateFlowLayout {
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        var insets = UIEdgeInsets()
+        
+        insets = self.sectionInsets
+        
+        let paddingSpace = insets.left * (itemsPerRow + 1)
+        let availableWidth = view.frame.width - paddingSpace
+        let widthPerItem = availableWidth / itemsPerRow
+        
+        let height: CGFloat = 200
+        
+        return CGSize(width: widthPerItem, height: height)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+        return self.sectionInsets
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+        return self.sectionInsets.left
     }
 }
 
@@ -120,7 +159,7 @@ extension HomeViewController {
             
             popup.dismiss()
             
-            self.refresh()
+            self.fetchStoryboards()
         }
         
         popup.didShowHandler { (_) in
@@ -134,7 +173,7 @@ extension HomeViewController {
         popup = popup.show(controller)
     }
     
-    fileprivate func tappedBrowseAll() -> Void {
+    public func tappedBrowseAll() -> Void {
         let controller = storyboard?.instantiateViewController(withIdentifier: "ProjectListViewController")
         
         self.navigationController?.pushViewController(controller!, animated: true)
