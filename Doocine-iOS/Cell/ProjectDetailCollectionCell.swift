@@ -8,6 +8,7 @@
 
 import UIKit
 import SnapKit
+import RealmSwift
 
 class ProjectDetailCollectionCell: UICollectionViewCell {
     var scene: Scene!
@@ -23,7 +24,20 @@ class ProjectDetailCollectionCell: UICollectionViewCell {
     }
     
     public func initCell(scene: Scene, order: Int) -> Void {
-        sceneImage.image = UIImage(named: "img_banner_doocine")
+        let realm = try! Realm()
+        let cut = realm.objects(Cut.self).filter("sceneId == \(scene.id)").first
+        
+        if cut != nil {
+            let cutImage = PhotoManager.loadImage(imageId: (cut?.id)!)
+            
+            if cutImage != nil {
+                sceneImage.image = cutImage
+            } else {
+                sceneImage.image = UIImage(named: "img_banner_doocine")
+            }
+        } else {
+            sceneImage.image = UIImage(named: "img_banner_doocine")
+        }
         sceneImage.contentMode = .scaleAspectFill
         sceneImage.clipsToBounds = true
         sceneImage.layer.cornerRadius = 8

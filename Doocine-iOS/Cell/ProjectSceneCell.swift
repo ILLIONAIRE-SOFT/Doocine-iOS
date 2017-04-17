@@ -58,28 +58,38 @@ class ProjectSceneCell: UITableViewCell {
         // MARK: - Header
         let headerView = UIView()
         headerView.backgroundColor = UIColor.white
-        headerView.layer.cornerRadius = 10
+//        headerView.layer.cornerRadius = 10
         headerView.clipsToBounds = true
         self.addSubview(headerView)
         
         headerView.snp.makeConstraints { (make) in
-            make.left.equalTo(self).offset(96)
-            make.right.equalTo(self).offset(-96)
+            make.left.equalTo(self).offset(48)
+            make.right.equalTo(self).offset(-244)
             make.top.equalTo(self).offset(24)
-            make.height.equalTo(80)
+            make.height.equalTo(100)
         }
         
         height += 24
         
         let sceneOrder = UILabel()
-        sceneOrder.font = UIFont.boldSystemFont(ofSize: 24)
-        sceneOrder.text = "SCENE \(order)"
+        sceneOrder.font = UIFont.boldSystemFont(ofSize: 48)
+        sceneOrder.text = "\(order)"
         
         headerView.addSubview(sceneOrder)
         
         sceneOrder.snp.makeConstraints { (make) in
             make.centerY.equalTo(headerView)
             make.left.equalTo(headerView).offset(24)
+        }
+        
+        let sceneHeader = UILabel()
+        sceneHeader.text = "SCENE"
+        
+        headerView.addSubview(sceneHeader)
+        
+        sceneHeader.snp.makeConstraints { (make) in
+            make.left.equalTo(sceneOrder.snp.right).offset(24)
+            make.top.equalTo(headerView).offset(24)
         }
         
         let placeHeader = UILabel()
@@ -90,8 +100,8 @@ class ProjectSceneCell: UITableViewCell {
         headerView.addSubview(placeHeader)
         
         placeHeader.snp.makeConstraints { (make) in
-            make.left.equalTo(sceneOrder.snp.right).offset(60)
-            make.centerY.equalTo(headerView).offset(-16)
+            make.left.equalTo(sceneOrder.snp.right).offset(24)
+            make.centerY.equalTo(headerView).offset(16)
         }
         
         let placeLabel = UILabel()
@@ -100,7 +110,7 @@ class ProjectSceneCell: UITableViewCell {
         headerView.addSubview(placeLabel)
         
         placeLabel.snp.makeConstraints { (make) in
-            make.left.equalTo(placeHeader)
+            make.left.equalTo(placeHeader.snp.right).offset(16)
             make.centerY.equalTo(headerView).offset(16)
         }
         
@@ -112,8 +122,8 @@ class ProjectSceneCell: UITableViewCell {
         headerView.addSubview(timeHeader)
         
         timeHeader.snp.makeConstraints { (make) in
-            make.left.equalTo(placeHeader.snp.right).offset(150)
-            make.centerY.equalTo(headerView).offset(-16)
+            make.left.equalTo(placeLabel.snp.right).offset(16)
+            make.centerY.equalTo(headerView).offset(16)
         }
         
         let timeLabel = UILabel()
@@ -122,7 +132,7 @@ class ProjectSceneCell: UITableViewCell {
         headerView.addSubview(timeLabel)
         
         timeLabel.snp.makeConstraints { (make) in
-            make.left.equalTo(timeHeader)
+            make.left.equalTo(timeHeader.snp.right).offset(16)
             make.centerY.equalTo(headerView).offset(16)
         }
         
@@ -130,18 +140,19 @@ class ProjectSceneCell: UITableViewCell {
         addButton.setTitle("추가", for: .normal)
         addButton.backgroundColor = UIColor.orange
         addButton.addTarget(self, action: #selector(goToMakeCut), for: .touchUpInside)
+        addButton.layer.cornerRadius = 8
         
         headerView.addSubview(addButton)
         
         addButton.snp.makeConstraints { (make) in
-            make.centerY.equalTo(headerView)
-            make.right.equalTo(headerView).offset(-16)
-            make.height.equalTo(36)
+            make.top.equalTo(headerView).offset(24)
+            make.right.equalTo(headerView).offset(-24)
+            make.height.equalTo(30)
             make.width.equalTo(62)
         }
         
         // MARK: - Header View Height
-        height += 80 + 32
+        height += 100 + 32
         
         // MARK: - Body
         for i in 0 ..< cuts.count {
@@ -155,8 +166,8 @@ class ProjectSceneCell: UITableViewCell {
             bodyView.snp.makeConstraints({ (make) in
                 make.top.equalTo(self).offset(height)
                 make.height.equalTo(460)
-                make.left.equalTo(self).offset(72)
-                make.right.equalTo(self).offset(-72)
+                make.left.equalTo(self).offset(124)
+                make.right.equalTo(self).offset(-36)
             })
             
             // MARK: - Cut Number
@@ -180,7 +191,15 @@ class ProjectSceneCell: UITableViewCell {
             
             // MARK: - Cut Image
             let imageView = UIImageView()
-            imageView.image = UIImage(named: "img_banner_doocine")
+            
+            let cutImage = PhotoManager.loadImage(imageId: cuts[i].id)
+            
+            if cutImage != nil {
+                imageView.image = cutImage
+            } else {
+                imageView.image = UIImage(named: "img_banner_doocine")
+            }
+            
             imageView.clipsToBounds = true
             imageView.contentMode = .scaleAspectFill
             
