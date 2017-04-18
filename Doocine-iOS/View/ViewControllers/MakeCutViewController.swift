@@ -12,12 +12,16 @@ import RealmSwift
 
 class MakeCutViewController: BaseViewController {
     
+    var isUpdate: Bool = false
+    var originCut: Cut!
     var sceneId: Int!
+    
     @IBOutlet weak var shotSizeValueLabel: UILabel!
     @IBOutlet weak var cameraWalkValueLabel: UILabel!
     @IBOutlet weak var dialogTextField: UITextField!
     @IBOutlet weak var makeButton: UIButton!
     @IBOutlet weak var cutImage: UIImageView!
+    @IBOutlet weak var cutNumberLabel: UILabel!
     
     let imagePicker = UIImagePickerController()
     var pickedPhoto = UIImage()
@@ -28,7 +32,13 @@ class MakeCutViewController: BaseViewController {
 
         initNavigation()
         initViews()
+        
+        if isUpdate {
+            self.updateOriginValue()
+        }
+        
         initButton()
+        initCutNumber()
     }
     
     private func initNavigation() -> Void {
@@ -47,21 +57,55 @@ class MakeCutViewController: BaseViewController {
         
         imagePicker.delegate = self
         
-        cutImage.isUserInteractionEnabled = true
-        cutImage.contentMode = .scaleAspectFill
-        cutImage.clipsToBounds = true
-        
         let tapImage = UITapGestureRecognizer(target: self, action: #selector(tappedImage))
+        cutImage.isUserInteractionEnabled = true
         cutImage.addGestureRecognizer(tapImage)
         cutImage.contentMode = .scaleAspectFit
         cutImage.clipsToBounds = true
+    }
+    
+    private func updateOriginValue() -> Void {
+        self.shotSizeValueLabel.text = self.originCut.shotSize
+        self.cameraWalkValueLabel.text = self.originCut.cameraWalkMode
+        self.dialogTextField.text = self.originCut.dialog
+        
+        if let photo = PhotoManager.loadImage(imageId: self.originCut.id) {
+            self.pickedPhoto = photo
+            isPhotoPicked = true
+            self.cutImage.image = photo
+        } else {
+            self.cutImage.image = UIImage(named: "img_banner_doocine")
+        }
+    }
+    
+    private func initCutNumber() -> Void {
+        if !isUpdate {
+            let realm = try! Realm()
+            
+            let lastCut = realm.objects(Cut.self).filter("sceneId == \(self.sceneId ?? 0)").sorted(byKeyPath: "cutNumber").last
+            let lastNumber = lastCut?.cutNumber
+            
+            if let number = lastNumber {
+                self.cutNumberLabel.text = String(number+1)
+            } else {
+                self.cutNumberLabel.text = "1"
+            }
+        } else {
+            self.cutNumberLabel.text = String(originCut.cutNumber)
+        }
     }
     
     private func initButton() -> Void {
         makeButton.clipsToBounds = true
         makeButton.layer.cornerRadius = 8
         
-        makeButton.addTarget(self, action: #selector(makeCut), for: .touchUpInside)
+        if isUpdate {
+            makeButton.setTitle("Edit Cut", for: .normal)
+            makeButton.addTarget(self, action: #selector(updateCut), for: .touchUpInside)
+        } else {
+            makeButton.setTitle("Make Cut", for: .normal)
+            makeButton.addTarget(self, action: #selector(makeCut), for: .touchUpInside)
+        }
     }
     
     public func makeCut() -> Void {
@@ -69,9 +113,6 @@ class MakeCutViewController: BaseViewController {
             print("메세지를 입력하세요.")
             return
         }
-        
-        // 이미지 선택됬는지 확인
-        
         let cut = Cut()
         
         let realm = try! Realm()
@@ -84,6 +125,7 @@ class MakeCutViewController: BaseViewController {
             cut.id = lastId! + 1
         }
         
+        cut.cutNumber = Int(self.cutNumberLabel.text!)!
         cut.sceneId = self.sceneId
         cut.cameraWalkMode = cameraWalkValueLabel.text
         cut.shotSize = shotSizeValueLabel.text
@@ -95,6 +137,31 @@ class MakeCutViewController: BaseViewController {
         
         if isPhotoPicked {
             PhotoManager.saveImage(image: pickedPhoto, imageId: cut.id)
+        }
+        
+        self.navigationController?.popViewController(animated: true)
+    }
+    
+    public func updateCut() -> Void {
+        if dialogTextField.text == "" || dialogTextField.text == nil {
+            print("메세지를 입력하세요.")
+            return
+        }
+        
+        let realm = try! Realm()
+        
+        let cut = realm.objects(Cut.self).filter("id == \(originCut.id)").first
+        
+        try! realm.write {
+            cut?.cutNumber = Int(self.cutNumberLabel.text!)!
+            cut?.sceneId = self.originCut.sceneId
+            cut?.cameraWalkMode = cameraWalkValueLabel.text
+            cut?.shotSize = shotSizeValueLabel.text
+            cut?.dialog = dialogTextField.text
+        }
+        
+        if isPhotoPicked {
+            PhotoManager.saveImage(image: pickedPhoto, imageId: (cut?.id)!)
         }
         
         self.navigationController?.popViewController(animated: true)

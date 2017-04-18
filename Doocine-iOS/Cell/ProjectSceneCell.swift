@@ -11,6 +11,7 @@ import SnapKit
 import RealmSwift
 
 class ProjectSceneCell: UITableViewCell {
+    var handleTapCut: ((_ cut: Cut) -> ())!
     var rootController: ProjectDetailViewController!
     var scene: Scene!
     var cuts: [Cut] = [Cut]()
@@ -33,7 +34,7 @@ class ProjectSceneCell: UITableViewCell {
     
     private func fetchCuts() -> Void {
         let realm = try! Realm()
-        let cuts = realm.objects(Cut.self).filter("sceneId == \(self.scene.id)")
+        let cuts = realm.objects(Cut.self).filter("sceneId == \(self.scene.id)").sorted(byKeyPath: "cutNumber")
         
         self.cuts.removeAll()
         
@@ -49,9 +50,9 @@ class ProjectSceneCell: UITableViewCell {
         
         self.addSubview(centerLine)
         centerLine.snp.makeConstraints { (make) in
-            make.width.equalTo(0.5)
+            make.width.equalTo(1)
             make.height.equalTo(self)
-            make.centerX.equalTo(self)
+            make.left.equalTo(self).offset(88)
             make.centerY.equalTo(self)
         }
         
@@ -66,31 +67,42 @@ class ProjectSceneCell: UITableViewCell {
             make.left.equalTo(self).offset(48)
             make.right.equalTo(self).offset(-244)
             make.top.equalTo(self).offset(24)
-            make.height.equalTo(100)
+            make.height.equalTo(84)
         }
         
         height += 24
         
         let sceneOrder = UILabel()
-        sceneOrder.font = UIFont.boldSystemFont(ofSize: 48)
-        sceneOrder.text = "\(order)"
+        sceneOrder.font = UIFont.boldSystemFont(ofSize: 16)
+        sceneOrder.text = "SCENE #\(order)"
         
         headerView.addSubview(sceneOrder)
         
         sceneOrder.snp.makeConstraints { (make) in
             make.centerY.equalTo(headerView)
-            make.left.equalTo(headerView).offset(24)
+            make.left.equalTo(headerView).offset(16)
         }
         
-        let sceneHeader = UILabel()
-        sceneHeader.text = "SCENE"
+        let sceneSeparator = UILabel()
+        sceneSeparator.backgroundColor = UIColor.darkGray
         
-        headerView.addSubview(sceneHeader)
+        self.addSubview(sceneSeparator)
         
-        sceneHeader.snp.makeConstraints { (make) in
-            make.left.equalTo(sceneOrder.snp.right).offset(24)
-            make.top.equalTo(headerView).offset(24)
+        sceneSeparator.snp.makeConstraints { (make) in
+            make.width.equalTo(0.5)
+            make.left.equalTo(sceneOrder.snp.right).offset(16)
+            make.top.equalTo(headerView)
+            make.bottom.equalTo(headerView)
         }
+//        let sceneHeader = UILabel()
+//        sceneHeader.text = "SCENE"
+//        
+//        headerView.addSubview(sceneHeader)
+//        
+//        sceneHeader.snp.makeConstraints { (make) in
+//            make.left.equalTo(sceneOrder.snp.right).offset(24)
+//            make.top.equalTo(headerView).offset(24)
+//        }
         
         let placeHeader = UILabel()
         placeHeader.font = UIFont.systemFont(ofSize: 12)
@@ -100,8 +112,8 @@ class ProjectSceneCell: UITableViewCell {
         headerView.addSubview(placeHeader)
         
         placeHeader.snp.makeConstraints { (make) in
-            make.left.equalTo(sceneOrder.snp.right).offset(24)
-            make.centerY.equalTo(headerView).offset(16)
+            make.left.equalTo(sceneSeparator.snp.right).offset(16)
+            make.top.equalTo(headerView).offset(24)
         }
         
         let placeLabel = UILabel()
@@ -111,7 +123,7 @@ class ProjectSceneCell: UITableViewCell {
         
         placeLabel.snp.makeConstraints { (make) in
             make.left.equalTo(placeHeader.snp.right).offset(16)
-            make.centerY.equalTo(headerView).offset(16)
+            make.centerY.equalTo(placeHeader)
         }
         
         let timeHeader = UILabel()
@@ -122,7 +134,7 @@ class ProjectSceneCell: UITableViewCell {
         headerView.addSubview(timeHeader)
         
         timeHeader.snp.makeConstraints { (make) in
-            make.left.equalTo(placeLabel.snp.right).offset(16)
+            make.left.equalTo(sceneSeparator.snp.right).offset(16)
             make.centerY.equalTo(headerView).offset(16)
         }
         
@@ -132,8 +144,8 @@ class ProjectSceneCell: UITableViewCell {
         headerView.addSubview(timeLabel)
         
         timeLabel.snp.makeConstraints { (make) in
-            make.left.equalTo(timeHeader.snp.right).offset(16)
-            make.centerY.equalTo(headerView).offset(16)
+            make.left.equalTo(placeLabel.snp.left)
+            make.centerY.equalTo(timeHeader)
         }
         
         let addButton = UIButton()
@@ -145,18 +157,39 @@ class ProjectSceneCell: UITableViewCell {
         headerView.addSubview(addButton)
         
         addButton.snp.makeConstraints { (make) in
-            make.top.equalTo(headerView).offset(24)
+            make.centerY.equalTo(headerView)
             make.right.equalTo(headerView).offset(-24)
-            make.height.equalTo(30)
-            make.width.equalTo(62)
+            make.height.equalTo(36)
+            make.width.equalTo(64)
         }
         
         // MARK: - Header View Height
-        height += 100 + 32
+        height += 84 + 32
         
         // MARK: - Body
         for i in 0 ..< cuts.count {
+            let cutPoint = UIView()
+            cutPoint.backgroundColor = .white
+            cutPoint.layer.borderWidth = 2
+            cutPoint.layer.cornerRadius = 8
+            cutPoint.clipsToBounds = true
+            cutPoint.layer.borderColor = UIColor.darkGray.cgColor
+            
+            self.addSubview(cutPoint)
+            
+            cutPoint.snp.makeConstraints({ (make) in
+                make.left.equalTo(80)
+                make.top.equalTo(self).offset(height + 16)
+                make.width.equalTo(16)
+                make.height.equalTo(16)
+            })
+            
             let bodyView = UIView()
+            
+            let tapCut = MyTapGestureRecognizer(target: self, action: #selector(tappedCut))
+            tapCut.cutId = i
+            bodyView.addGestureRecognizer(tapCut)
+            
             bodyView.backgroundColor = .white
             bodyView.clipsToBounds = true
             bodyView.layer.cornerRadius = 16
@@ -172,7 +205,7 @@ class ProjectSceneCell: UITableViewCell {
             
             // MARK: - Cut Number
             let cutNumber = UILabel()
-            cutNumber.text = "CUT \(i+1)"
+            cutNumber.text = "CUT \(cuts[i].cutNumber)"
             cutNumber.font = UIFont.systemFont(ofSize: 12)
             cutNumber.textColor = UIColor.darkGray
             cutNumber.textAlignment = .center
@@ -311,4 +344,19 @@ class ProjectSceneCell: UITableViewCell {
         controller.sceneId = self.scene.id
         self.rootController.navigationController?.pushViewController(controller, animated: true)
     }
+    
+    public func tappedCut(sender: MyTapGestureRecognizer) -> Void {
+        let mainSB = UIStoryboard(name: "Main", bundle: nil)
+        let controller = mainSB.instantiateViewController(withIdentifier: "MakeCutViewController") as! MakeCutViewController
+        let targetCut = self.cuts[sender.cutId]
+        
+        controller.sceneId = self.scene.id
+        controller.originCut = targetCut
+        controller.isUpdate = true
+        self.rootController.navigationController?.pushViewController(controller, animated: true)
+    }
+}
+
+class MyTapGestureRecognizer: UITapGestureRecognizer {
+    var cutId: Int = 0
 }
