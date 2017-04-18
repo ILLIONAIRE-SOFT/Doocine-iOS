@@ -227,7 +227,7 @@ extension MakeCutViewController {
     }
     
     func tappedImage() -> Void {
-        imagePicker.allowsEditing = true
+        imagePicker.allowsEditing = false
         imagePicker.sourceType = .photoLibrary
         self.present(imagePicker, animated: true, completion: nil)
     }
@@ -237,14 +237,15 @@ extension MakeCutViewController {
 // MARK: - Image Picker Delegate
 extension MakeCutViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
-        let image = (info[UIImagePickerControllerEditedImage] as? UIImage)
+        print(info)
+        let image = (info[UIImagePickerControllerOriginalImage] as? UIImage)
         
         if image != nil {
             self.pickedPhoto = image!
             self.cutImage.image = pickedPhoto
             isPhotoPicked = true
+            dismiss(animated: true, completion: nil)
         }
-        dismiss(animated: true, completion: nil)
     }
     
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
