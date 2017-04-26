@@ -25,7 +25,7 @@ class CameraWalkPopup: UIViewController, PopupContentViewController {
     
     private func initViews() -> Void {
         let titleLabel = UILabel()
-        titleLabel.text = "SHOT SIZE"
+        titleLabel.text = "CAMERA WALK MODE"
         
         self.view.addSubview(titleLabel)
         
@@ -203,18 +203,18 @@ class CameraWalkPopup: UIViewController, PopupContentViewController {
 // MARK: - Tap Action
 extension CameraWalkPopup {
     public func tappedFirstSize() -> Void {
-        self.delegateSelect("Fix")
+        self.delegateSelect("FIX")
     }
     
     public func tappedSecondSize() -> Void {
-        self.delegateSelect("Pan")
+        self.delegateSelect("PAN")
     }
     
     public func tappedThirdSize() -> Void {
-        self.delegateSelect("Tilt")
+        self.delegateSelect("TILT")
     }
     
     public func tappedFourthSize() -> Void {
-        self.delegateSelect("Handy Held")
+        self.delegateSelect("HANDY HELD")
     }
 }

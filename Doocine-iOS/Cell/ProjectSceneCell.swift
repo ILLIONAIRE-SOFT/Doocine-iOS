@@ -327,6 +327,75 @@ class ProjectSceneCell: UITableViewCell {
             })
             
             height += 460 + 24
+            
+            // MARK: - SubCut
+            if cuts[i].needSecondSubCut() {
+                let subCut = UIView()
+                subCut.backgroundColor = UIColor.black
+                subCut.clipsToBounds = true
+                subCut.layer.cornerRadius = 16
+                subCut.isUserInteractionEnabled = true
+                
+                let tapSubCut = MyTapGestureRecognizer(target: self, action: #selector(tappedCut))
+                tapSubCut.cutId = i
+                
+                subCut.addGestureRecognizer(tapSubCut)
+                
+                self.addSubview(subCut)
+                
+                subCut.snp.makeConstraints({ (make) in
+                    make.top.equalTo(self).offset(height)
+                    make.height.equalTo(360)
+                    make.left.equalTo(self).offset(124)
+                    make.right.equalTo(self).offset(-26)
+                })
+                
+                // MARK: - Image View
+//                let imageView = UIImageView()
+//                
+//                let cutImage = PhotoManager.loadImage(imageId: cuts[i].id)
+//                
+//                if cutImage != nil {
+//                    imageView.image = cutImage
+//                } else {
+//                    imageView.image = UIImage(named: "img_banner_doocine")
+//                }
+//                
+//                imageView.clipsToBounds = true
+//                imageView.contentMode = .scaleAspectFill
+//                
+//                bodyView.addSubview(imageView)
+//                
+//                imageView.snp.makeConstraints({ (make) in
+//                    make.top.equalTo(bodyView).offset(48)
+//                    make.left.equalTo(bodyView)
+//                    make.right.equalTo(bodyView)
+//                    make.height.equalTo(300)
+//                })
+                let subCutImageView = UIImageView()
+                
+                let subCutImage = PhotoManager.loadImage(imageId: cuts[i].id, isSecondImage: true)
+                
+                if subCutImage != nil {
+                    subCutImageView.image = subCutImage
+                } else {
+                    subCutImageView.image = UIImage(named: "img_banner_doocine")
+                }
+                
+                subCutImageView.clipsToBounds = true
+                subCutImageView.contentMode = .scaleAspectFill
+                
+                subCut.addSubview(subCutImageView)
+                
+                subCutImageView.snp.makeConstraints({ (make) in
+                    make.top.equalTo(subCut).offset(24)
+                    make.left.equalTo(subCut)
+                    make.right.equalTo(subCut)
+                    make.bottom.equalTo(subCut).offset(-24)
+                })
+            
+                height += 360 + 24
+            }
         }
         
         

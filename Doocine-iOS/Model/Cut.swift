@@ -26,4 +26,13 @@ class Cut: Object {
     public func isTopEndCut() -> Bool {
         return false
     }
+    
+    public func needSecondSubCut() -> Bool {
+        if self.cameraWalkMode == "FIX" {
+            return false
+        } else {
+            return true
+        }
+    }
 }
+

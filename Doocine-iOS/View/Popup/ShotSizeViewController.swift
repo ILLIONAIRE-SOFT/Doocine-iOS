@@ -19,7 +19,7 @@ class ShotSizeViewController: UIViewController, PopupContentViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         initViews()
     }
     

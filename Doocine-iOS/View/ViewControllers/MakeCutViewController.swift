@@ -23,19 +23,28 @@ class MakeCutViewController: BaseViewController {
     @IBOutlet weak var deleteButton: UIButton!
     @IBOutlet weak var cutImage: UIImageView!
     @IBOutlet weak var cutNumberLabel: UILabel!
+    @IBOutlet weak var secondCutImage: UIImageView!
+    
+    @IBOutlet weak var firstCutImageWidthConst: NSLayoutConstraint!
+    @IBOutlet weak var secondCutImageWidthConst: NSLayoutConstraint!
     
     let imagePicker = UIImagePickerController()
     var pickedPhoto = UIImage()
+    var pickedSecondPhoto = UIImage()
     var isPhotoPicked: Bool = false
-
+    var isSecondPhotoPicked: Bool = false
+    var targetImage: Int = 0
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         initNavigation()
         initViews()
         
         if isUpdate {
             self.updateOriginValue()
+        } else {
+            hideSecondImage(animated: false)
         }
         
         initButton()
@@ -63,6 +72,12 @@ class MakeCutViewController: BaseViewController {
         cutImage.addGestureRecognizer(tapImage)
         cutImage.contentMode = .scaleAspectFit
         cutImage.clipsToBounds = true
+        
+        let tapSecondImage = UITapGestureRecognizer(target: self, action: #selector(tappedSecondImage))
+        secondCutImage.isUserInteractionEnabled = true
+        secondCutImage.addGestureRecognizer(tapSecondImage)
+        secondCutImage.contentMode = .scaleAspectFit
+        secondCutImage.clipsToBounds = true
     }
     
     private func updateOriginValue() -> Void {
@@ -76,6 +91,12 @@ class MakeCutViewController: BaseViewController {
             self.cutImage.image = photo
         } else {
             self.cutImage.image = UIImage(named: "img_banner_doocine")
+        }
+        
+        if self.cameraWalkValueLabel.text == "FIX" {
+            hideSecondImage(animated: false)
+        } else {
+            showSecondImage(animated: false)
         }
     }
     
@@ -146,6 +167,10 @@ class MakeCutViewController: BaseViewController {
             PhotoManager.saveImage(image: pickedPhoto, imageId: cut.id)
         }
         
+        if isSecondPhotoPicked && cut.cameraWalkMode != "FIX" {
+            PhotoManager.saveImage(image: pickedSecondPhoto, imageId: cut.id, isSecondImage: true)
+        }
+        
         self.navigationController?.popViewController(animated: true)
     }
     
@@ -171,6 +196,10 @@ class MakeCutViewController: BaseViewController {
             PhotoManager.saveImage(image: pickedPhoto, imageId: (cut?.id)!)
         }
         
+        if isSecondPhotoPicked && cut?.cameraWalkMode != "FIX" {
+            PhotoManager.saveImage(image: pickedSecondPhoto, imageId: (cut?.id)!, isSecondImage: true)
+        }
+        
         self.navigationController?.popViewController(animated: true)
     }
     
@@ -186,6 +215,44 @@ class MakeCutViewController: BaseViewController {
         }
         
         self.navigationController?.popViewController(animated: true)
+    }
+}
+
+
+// MARK: - View Change
+extension MakeCutViewController {
+    public func showSecondImage(animated: Bool = true) -> Void {
+        firstCutImageWidthConst = firstCutImageWidthConst.setMultiplier(multiplier: 0.5)
+        secondCutImageWidthConst = secondCutImageWidthConst.setMultiplier(multiplier: 0.5)
+        cutImage.updateConstraints()
+        secondCutImage.updateConstraints()
+        
+        if animated {
+            UIView.animate(withDuration: 1.0) {
+                self.cutImage.layoutIfNeeded()
+                self.secondCutImage.layoutIfNeeded()
+            }
+        } else {
+            self.cutImage.layoutIfNeeded()
+            self.secondCutImage.layoutIfNeeded()
+        }
+    }
+    
+    public func hideSecondImage(animated: Bool = true) -> Void {
+        firstCutImageWidthConst = firstCutImageWidthConst.setMultiplier(multiplier: 1.0)
+        secondCutImageWidthConst = secondCutImageWidthConst.setMultiplier(multiplier: 0.0)
+        cutImage.updateConstraints()
+        secondCutImage.updateConstraints()
+        
+        if animated {
+            UIView.animate(withDuration: 1.0) {
+                self.cutImage.layoutIfNeeded()
+                self.secondCutImage.layoutIfNeeded()
+            }
+        } else {
+            self.cutImage.layoutIfNeeded()
+            self.secondCutImage.layoutIfNeeded()
+        }
     }
 }
 
@@ -234,6 +301,53 @@ extension MakeCutViewController {
         controller.delegateSelect = { (selectedSize) in
             self.cameraWalkValueLabel.text = selectedSize
             popup.dismiss()
+            switch self.cameraWalkValueLabel.text! {
+            case "FIX":
+                self.hideSecondImage()
+                
+            default:
+                self.showSecondImage()
+                
+            }
+        }
+        
+        popup.didShowHandler { (_) in
+            
+        }
+        
+        popup.didCloseHandler { (_) in
+            
+        }
+        
+        popup = popup.show(controller)
+    }
+    
+    public func showPhotoModePopup() -> Void {
+        var popup = PopupController.create(self).customize(
+            [.animation(.slideUp),
+             .scrollable(false),
+             .backgroundStyle(.blackFilter(alpha:0.7)),
+             .layout(.center),
+             .movesAlongWithKeyboard(true)
+            ])
+        
+        let popupSB = UIStoryboard(name: "Popup", bundle: nil)
+        let controller = popupSB.instantiateViewController(withIdentifier: "PhotoModePopup") as! PhotoModePopup
+        
+        // 1: Take Photo, 2: Photo Library
+        controller.delegateSelect = { (selectedMode) in
+            popup.dismiss()
+            
+            if selectedMode == 1 {
+                self.imagePicker.allowsEditing = false
+//                self.imagePicker.sourceType = .camera
+                self.imagePicker.sourceType = .photoLibrary
+                self.present(self.imagePicker, animated: true, completion: nil)
+            } else {
+                self.imagePicker.allowsEditing = false
+                self.imagePicker.sourceType = .photoLibrary
+                self.present(self.imagePicker, animated: true, completion: nil)
+            }
         }
         
         popup.didShowHandler { (_) in
@@ -248,9 +362,15 @@ extension MakeCutViewController {
     }
     
     public func tappedImage() -> Void {
+        self.targetImage = 1
         imagePicker.allowsEditing = false
         imagePicker.sourceType = .photoLibrary
         self.present(imagePicker, animated: true, completion: nil)
+    }
+    
+    public func tappedSecondImage() -> Void {
+        self.targetImage = 2
+        self.showPhotoModePopup()
     }
     
     public func tappedDelete() -> Void {
@@ -267,18 +387,54 @@ extension MakeCutViewController {
 // MARK: - Image Picker Delegate
 extension MakeCutViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
-        print(info)
         let image = (info[UIImagePickerControllerOriginalImage] as? UIImage)
         
         if image != nil {
-            self.pickedPhoto = image!
-            self.cutImage.image = pickedPhoto
-            isPhotoPicked = true
+            if self.targetImage == 1 {
+                self.pickedPhoto = image!
+                self.cutImage.image = pickedPhoto
+                isPhotoPicked = true
+            } else {
+                self.pickedSecondPhoto = image!
+                self.secondCutImage.image = pickedSecondPhoto
+                isSecondPhotoPicked = true
+            }
             dismiss(animated: true, completion: nil)
         }
     }
     
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
         dismiss(animated: true, completion: nil)
+    }
+}
+
+
+// NSLayout Exstension
+extension NSLayoutConstraint {
+    /**
+     Change multiplier constraint
+     
+     - parameter multiplier: CGFloat
+     - returns: NSLayoutConstraint
+     */
+    func setMultiplier(multiplier:CGFloat) -> NSLayoutConstraint {
+        
+        NSLayoutConstraint.deactivate([self])
+        
+        let newConstraint = NSLayoutConstraint(
+            item: firstItem,
+            attribute: firstAttribute,
+            relatedBy: relation,
+            toItem: secondItem,
+            attribute: secondAttribute,
+            multiplier: multiplier,
+            constant: constant)
+        
+        newConstraint.priority = priority
+        newConstraint.shouldBeArchived = self.shouldBeArchived
+        newConstraint.identifier = self.identifier
+        
+        NSLayoutConstraint.activate([newConstraint])
+        return newConstraint
     }
 }
