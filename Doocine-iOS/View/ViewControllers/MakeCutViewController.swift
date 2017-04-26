@@ -254,7 +254,12 @@ extension MakeCutViewController {
     }
     
     public func tappedDelete() -> Void {
-        
+        let alert = UIAlertController(title: "", message: "삭제하시겠습니까?", preferredStyle: UIAlertControllerStyle.alert)
+        alert.addAction(UIAlertAction(title: "취소", style: UIAlertActionStyle.cancel, handler: nil))
+        alert.addAction(UIAlertAction(title: "삭제", style: UIAlertActionStyle.destructive, handler: { (action) in
+            self.deleteCut()
+        }))
+        self.present(alert, animated: true, completion: nil)
     }
 }
 
