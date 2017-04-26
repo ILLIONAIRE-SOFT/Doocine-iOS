@@ -20,6 +20,7 @@ class MakeCutViewController: BaseViewController {
     @IBOutlet weak var cameraWalkValueLabel: UILabel!
     @IBOutlet weak var dialogTextField: UITextField!
     @IBOutlet weak var makeButton: UIButton!
+    @IBOutlet weak var deleteButton: UIButton!
     @IBOutlet weak var cutImage: UIImageView!
     @IBOutlet weak var cutNumberLabel: UILabel!
     
@@ -96,15 +97,21 @@ class MakeCutViewController: BaseViewController {
     }
     
     private func initButton() -> Void {
-        makeButton.clipsToBounds = true
-        makeButton.layer.cornerRadius = 8
+        self.makeButton.clipsToBounds = true
+        self.makeButton.layer.cornerRadius = 8
+        self.deleteButton.clipsToBounds = true
+        self.deleteButton.layer.cornerRadius = 8
         
         if isUpdate {
-            makeButton.setTitle("Edit Cut", for: .normal)
-            makeButton.addTarget(self, action: #selector(updateCut), for: .touchUpInside)
+            self.makeButton.setTitle("Edit Cut", for: .normal)
+            self.makeButton.addTarget(self, action: #selector(updateCut), for: .touchUpInside)
+            self.deleteButton.isHidden = false
+            self.deleteButton.addTarget(self, action: #selector(tappedDelete), for: .touchUpInside)
         } else {
-            makeButton.setTitle("Make Cut", for: .normal)
-            makeButton.addTarget(self, action: #selector(makeCut), for: .touchUpInside)
+            self.makeButton.setTitle("Make Cut", for: .normal)
+            self.makeButton.addTarget(self, action: #selector(makeCut), for: .touchUpInside)
+            
+            self.deleteButton.isHidden = true
         }
     }
     
@@ -162,6 +169,20 @@ class MakeCutViewController: BaseViewController {
         
         if isPhotoPicked {
             PhotoManager.saveImage(image: pickedPhoto, imageId: (cut?.id)!)
+        }
+        
+        self.navigationController?.popViewController(animated: true)
+    }
+    
+    public func deleteCut() -> Void {
+        PhotoManager.deleteImage(imageId: originCut.id)
+        
+        let realm = try! Realm()
+        
+        let cut = realm.objects(Cut.self).filter("id == \(self.originCut.id)").first
+        
+        try! realm.write {
+            realm.delete(cut!)
         }
         
         self.navigationController?.popViewController(animated: true)
@@ -226,10 +247,14 @@ extension MakeCutViewController {
         popup = popup.show(controller)
     }
     
-    func tappedImage() -> Void {
+    public func tappedImage() -> Void {
         imagePicker.allowsEditing = false
         imagePicker.sourceType = .photoLibrary
         self.present(imagePicker, animated: true, completion: nil)
+    }
+    
+    public func tappedDelete() -> Void {
+        
     }
 }
 

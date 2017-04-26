@@ -36,4 +36,15 @@ class PhotoManager: NSObject {
         print("Loading image from path: \(pngImagePath.path)")
         return image
     }
+    
+    public static func deleteImage(imageId: Int) -> Void {
+        // 사진 두 개 다 삭제시켜줘야한다.
+        let pngImagePath = getDocumentsURL().appendingPathComponent(String(imageId))
+        
+        do {
+            try FileManager.default.removeItem(at: pngImagePath)
+        } catch _ as NSError {
+            print("File not exist")
+        }
+    }
 }

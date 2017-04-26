@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12118" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12120" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <device id="ipad9_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12086"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -821,6 +821,17 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sGZ-Qd-LjT">
+                                <rect key="frame" x="324" y="750.5" width="120" height="40"/>
+                                <color key="backgroundColor" red="1" green="0.5" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="120" id="q6U-9z-uzN"/>
+                                    <constraint firstAttribute="height" constant="40" id="udh-DF-ked"/>
+                                </constraints>
+                                <state key="normal" title="Delete">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <constraints>
@@ -839,6 +850,7 @@
                             <constraint firstItem="eey-or-zpl" firstAttribute="top" secondItem="Lu0-Gs-F5j" secondAttribute="bottom" constant="8" id="HUo-Wg-0XQ"/>
                             <constraint firstItem="7Fl-d1-ev5" firstAttribute="top" secondItem="gay-aR-hUU" secondAttribute="bottom" constant="12.5" id="K9b-fG-1lL"/>
                             <constraint firstItem="H61-4C-R2a" firstAttribute="leading" secondItem="MxP-2Z-s6z" secondAttribute="leading" id="KcL-jY-x8S"/>
+                            <constraint firstItem="sGZ-Qd-LjT" firstAttribute="top" secondItem="89B-0L-7uV" secondAttribute="bottom" constant="24" id="M20-MP-kNR"/>
                             <constraint firstItem="Dkb-Ld-wVi" firstAttribute="top" secondItem="X3z-Rs-EuT" secondAttribute="bottom" constant="8" id="NWX-Ia-q3H"/>
                             <constraint firstItem="IC4-Qn-2IT" firstAttribute="centerY" secondItem="AKW-Ja-H33" secondAttribute="centerY" id="Ub7-Ge-IiV"/>
                             <constraint firstItem="xVv-5R-d3j" firstAttribute="leading" secondItem="MxP-2Z-s6z" secondAttribute="leading" id="YDJ-YV-796"/>
@@ -846,6 +858,7 @@
                             <constraint firstItem="AKW-Ja-H33" firstAttribute="top" secondItem="pNp-1O-f9S" secondAttribute="bottom" constant="16" id="d4l-oD-kIa"/>
                             <constraint firstItem="89B-0L-7uV" firstAttribute="top" secondItem="H61-4C-R2a" secondAttribute="bottom" constant="24" id="dvJ-Fu-MPK"/>
                             <constraint firstItem="Lu0-Gs-F5j" firstAttribute="top" secondItem="lTA-s5-haH" secondAttribute="bottom" constant="12.5" id="exD-Ez-WgT"/>
+                            <constraint firstItem="sGZ-Qd-LjT" firstAttribute="centerX" secondItem="MxP-2Z-s6z" secondAttribute="centerX" id="h8W-b8-QyN"/>
                             <constraint firstItem="aID-Uk-r7G" firstAttribute="leading" secondItem="7Fl-d1-ev5" secondAttribute="leading" id="l56-Cl-OGd"/>
                             <constraint firstAttribute="trailing" secondItem="eey-or-zpl" secondAttribute="trailing" constant="24" id="lri-i6-Qcy"/>
                             <constraint firstItem="xVv-5R-d3j" firstAttribute="top" secondItem="IC4-Qn-2IT" secondAttribute="bottom" constant="24" id="mMN-Wa-NzB"/>
@@ -865,6 +878,7 @@
                         <outlet property="cameraWalkValueLabel" destination="aID-Uk-r7G" id="8J3-Sw-HqF"/>
                         <outlet property="cutImage" destination="xVv-5R-d3j" id="qBc-P7-rlQ"/>
                         <outlet property="cutNumberLabel" destination="IC4-Qn-2IT" id="iY8-H6-tIb"/>
+                        <outlet property="deleteButton" destination="sGZ-Qd-LjT" id="JcV-6d-paK"/>
                         <outlet property="dialogTextField" destination="eey-or-zpl" id="gwA-tB-pUi"/>
                         <outlet property="makeButton" destination="89B-0L-7uV" id="Cgk-pT-bqx"/>
                         <outlet property="shotSizeValueLabel" destination="Dkb-Ld-wVi" id="WnI-WL-2NA"/>
