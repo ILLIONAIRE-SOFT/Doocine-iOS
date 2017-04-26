@@ -28,6 +28,12 @@ class HomeViewController: BaseViewController {
         self.initNavigation()
         self.initViews()
         self.initButtons()
+//        self.fetchStoryboards()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
         self.fetchStoryboards()
     }
     
@@ -158,7 +164,6 @@ extension HomeViewController {
             }
             
             popup.dismiss()
-            
             self.fetchStoryboards()
         }
         

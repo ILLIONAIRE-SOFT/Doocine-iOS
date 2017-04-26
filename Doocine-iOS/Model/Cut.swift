@@ -14,6 +14,7 @@ import Realm
 class Cut: Object {
     dynamic var id: Int = 0
     dynamic var sceneId: Int = 0
+    dynamic var cutNumber: Int = 0
     
     dynamic var firstImage: String!
     dynamic var secondImage: String!
@@ -25,4 +26,13 @@ class Cut: Object {
     public func isTopEndCut() -> Bool {
         return false
     }
+    
+    public func needSecondSubCut() -> Bool {
+        if self.cameraWalkMode == "FIX" {
+            return false
+        } else {
+            return true
+        }
+    }
 }
+

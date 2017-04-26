@@ -28,13 +28,6 @@ class ProjectStartCell: UITableViewCell {
         
         self.addSubview(centerLine)
         
-        centerLine.snp.makeConstraints { (make) in
-            make.width.equalTo(0.5)
-            make.height.equalTo(self)
-            make.centerX.equalTo(self)
-            make.centerY.equalTo(self)
-        }
-        
         let startLabel = UILabel()
         startLabel.text = "START"
         startLabel.font = UIFont.boldSystemFont(ofSize: 13)
@@ -49,11 +42,16 @@ class ProjectStartCell: UITableViewCell {
         startLabel.snp.makeConstraints { (make) in
             make.width.equalTo(80)
             make.height.equalTo(40)
-            make.centerX.equalTo(self)
+            make.left.equalTo(self).offset(48)
             make.centerY.equalTo(self)
         }
         
-        
+        centerLine.snp.makeConstraints { (make) in
+            make.width.equalTo(1)
+            make.height.equalTo(self)
+            make.left.equalTo(self).offset(88)
+            make.centerY.equalTo(self)
+        }
     }
     
     public static func getHeight() -> CGFloat {
