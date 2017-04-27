@@ -93,6 +93,14 @@ class MakeCutViewController: BaseViewController {
             self.cutImage.image = UIImage(named: "img_banner_doocine")
         }
         
+        if let secondPhoto = PhotoManager.loadImage(imageId: self.originCut.id, isSecondImage: true) {
+            self.pickedSecondPhoto = secondPhoto
+            isSecondPhotoPicked = true
+            self.secondCutImage.image = secondPhoto
+        } else {
+            self.cutImage.image = UIImage(named: "img_banner_doocine")
+        }
+        
         if self.cameraWalkValueLabel.text == "FIX" {
             hideSecondImage(animated: false)
         } else {

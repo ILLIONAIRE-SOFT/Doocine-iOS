@@ -19,10 +19,12 @@ class PhotoModePopup: UIViewController, PopupContentViewController {
         super.viewDidLoad()
         
         let takePhotoImage = UIImageView()
-        takePhotoImage.contentMode = .scaleAspectFill
-        takePhotoImage.backgroundColor = UIColor.black
+        takePhotoImage.image = UIImage(named: "icon_take_photo")
+        takePhotoImage.contentScaleFactor = 1.0
+//        takePhotoImage.contentMode = .scaleAspectFill
         takePhotoImage.clipsToBounds = true
         takePhotoImage.layer.cornerRadius = 8
+        takePhotoImage.layer.borderWidth = 0.5
         takePhotoImage.isUserInteractionEnabled = true
         
         let tapTakePhoto = UITapGestureRecognizer(target: self, action: #selector(tappedTakePhoto))
@@ -50,10 +52,10 @@ class PhotoModePopup: UIViewController, PopupContentViewController {
         }
         
         let photoLibraryImage = UIImageView()
-        photoLibraryImage.contentMode = .scaleAspectFill
-        photoLibraryImage.backgroundColor = UIColor.black
+        photoLibraryImage.image = UIImage(named: "icon_photo_library")
         photoLibraryImage.clipsToBounds = true
         photoLibraryImage.layer.cornerRadius = 8
+        photoLibraryImage.layer.borderWidth = 0.5
         photoLibraryImage.isUserInteractionEnabled = true
         
         let tapPhotoLibrary = UITapGestureRecognizer(target: self, action: #selector(tappedLibraryPhoto))
