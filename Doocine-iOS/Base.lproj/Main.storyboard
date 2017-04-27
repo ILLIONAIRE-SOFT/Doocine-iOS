@@ -828,10 +828,10 @@
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sGZ-Qd-LjT">
-                                <rect key="frame" x="694" y="44" width="50" height="50"/>
+                                <rect key="frame" x="684" y="44" width="60" height="60"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="50" id="q6U-9z-uzN"/>
-                                    <constraint firstAttribute="height" constant="50" id="udh-DF-ked"/>
+                                    <constraint firstAttribute="width" constant="60" id="q6U-9z-uzN"/>
+                                    <constraint firstAttribute="height" constant="60" id="udh-DF-ked"/>
                                 </constraints>
                                 <state key="normal" image="icon_delete">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
