@@ -21,6 +21,7 @@ class ProjectCell: UICollectionViewCell {
         self.layer.borderWidth = 0.5
         self.layer.cornerRadius = 8
         self.clipsToBounds = true
+        self.layer.borderColor = UIColor.lightGray.withAlphaComponent(0.7).cgColor
     }
     
     required init?(coder aDecoder: NSCoder) {

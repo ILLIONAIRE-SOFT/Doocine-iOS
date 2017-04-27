@@ -11,13 +11,16 @@ import SnapKit
 
 class MakeProjectCell: UICollectionViewCell {
     var makeProjectLabel: UILabel = UILabel()
+    var makeProjectSubLabel: UILabel = UILabel()
     
     override init(frame: CGRect) {
         super.init(frame: CGRect())
         
-        self.backgroundColor = UIColor.lightGray
+        self.backgroundColor = UIColor.white
         self.layer.cornerRadius = 8
         self.clipsToBounds = true
+        self.layer.borderWidth = 0.5
+        self.layer.borderColor = UIColor.lightGray.withAlphaComponent(0.7).cgColor
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -25,15 +28,26 @@ class MakeProjectCell: UICollectionViewCell {
     }
     
     public func initCell() -> Void {
-        makeProjectLabel.text = "New Project"
-        makeProjectLabel.textColor = UIColor.white
-        makeProjectLabel.font = UIFont.boldSystemFont(ofSize: 18)
+        makeProjectLabel.text = "Create a new project"
+        makeProjectLabel.textColor = UIColor.orange
+        makeProjectLabel.font = UIFont.boldSystemFont(ofSize: 17)
         
         self.addSubview(makeProjectLabel)
         
         makeProjectLabel.snp.makeConstraints { (make) in
             make.left.equalTo(self).offset(12)
             make.top.equalTo(self).offset(12)
+        }
+        
+        makeProjectSubLabel.text = "You can do greate projects."
+        makeProjectSubLabel.textColor = UIColor.gray
+        makeProjectSubLabel.font = UIFont.systemFont(ofSize: 12)
+        
+        self.addSubview(makeProjectSubLabel)
+        
+        makeProjectSubLabel.snp.makeConstraints { (make) in
+            make.left.equalTo(self).offset(12)
+            make.top.equalTo(makeProjectLabel.snp.bottom).offset(8)
         }
     }
 }

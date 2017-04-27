@@ -61,6 +61,11 @@ class ProjectSceneCell: UITableViewCell {
         headerView.backgroundColor = UIColor.white
 //        headerView.layer.cornerRadius = 10
         headerView.clipsToBounds = true
+        headerView.isUserInteractionEnabled = true
+        
+        let tapScene = UITapGestureRecognizer(target: self, action: #selector(tappedScene))
+        headerView.addGestureRecognizer(tapScene)
+        
         self.addSubview(headerView)
         
         headerView.snp.makeConstraints { (make) in
@@ -422,6 +427,16 @@ class ProjectSceneCell: UITableViewCell {
         controller.sceneId = self.scene.id
         controller.originCut = targetCut
         controller.isUpdate = true
+        self.rootController.navigationController?.pushViewController(controller, animated: true)
+    }
+    
+    public func tappedScene(sender: UITapGestureRecognizer) -> Void {
+        let mainSB = UIStoryboard(name: "Main", bundle: nil)
+        let controller = mainSB.instantiateViewController(withIdentifier: "MakeSceneViewController") as! MakeSceneViewController
+        
+        controller.originalScene = self.scene
+        controller.isUpdate = true
+        controller.storyboardId = self.scene.storyboardId
         self.rootController.navigationController?.pushViewController(controller, animated: true)
     }
 }
