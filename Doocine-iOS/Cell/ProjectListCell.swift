@@ -121,23 +121,22 @@ class ProjectListCell: UICollectionViewCell {
             make.height.equalTo(self.frame.height*0.5*0.4)
         }
         
-        let sceneCountLabel = UILabel()
-        sceneCountLabel.text = "SCENE 13"
-        sceneCountLabel.backgroundColor = UIColor.greishBrown
-        sceneCountLabel.layer.cornerRadius = 8
-        sceneCountLabel.textColor = UIColor.white
-        sceneCountLabel.clipsToBounds = true
-        sceneCountLabel.textAlignment = .center
-        sceneCountLabel.font = UIFont.systemFont(ofSize: 14)
-        
-        tailView.addSubview(sceneCountLabel)
-        
-        sceneCountLabel.snp.makeConstraints { (make) in
-            make.centerY.equalTo(tailView)
-            make.left.equalTo(tailView).offset(16)
-            make.height.equalTo(30)
-            make.width.equalTo(80)
-        }
-        
+//        let sceneCountLabel = UILabel()
+//        sceneCountLabel.text = "SCENE 13"
+//        sceneCountLabel.backgroundColor = UIColor.greishBrown
+//        sceneCountLabel.layer.cornerRadius = 8
+//        sceneCountLabel.textColor = UIColor.white
+//        sceneCountLabel.clipsToBounds = true
+//        sceneCountLabel.textAlignment = .center
+//        sceneCountLabel.font = UIFont.systemFont(ofSize: 14)
+//        
+//        tailView.addSubview(sceneCountLabel)
+//        
+//        sceneCountLabel.snp.makeConstraints { (make) in
+//            make.centerY.equalTo(tailView)
+//            make.left.equalTo(tailView).offset(16)
+//            make.height.equalTo(30)
+//            make.width.equalTo(80)
+//        }
     }
 }
