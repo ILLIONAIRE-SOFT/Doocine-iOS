@@ -15,7 +15,11 @@ class MakeSceneCollectionViewCell: UICollectionViewCell {
     override init(frame: CGRect) {
         super.init(frame: CGRect())
         
-        self.backgroundColor = UIColor.lightGray
+        self.backgroundColor = UIColor.white
+        self.layer.borderWidth = 0.5
+        self.layer.cornerRadius = 8
+        self.layer.borderColor = UIColor.lightGray.withAlphaComponent(0.7).cgColor
+        self.clipsToBounds = true
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -24,8 +28,8 @@ class MakeSceneCollectionViewCell: UICollectionViewCell {
     
     public func initCell() -> Void {
         makeSceneLabel.text = "New Scene"
-        makeSceneLabel.textColor = UIColor.white
-        makeSceneLabel.font = UIFont.boldSystemFont(ofSize: 18)
+        makeSceneLabel.textColor = UIColor.orange
+        makeSceneLabel.font = UIFont.boldSystemFont(ofSize: 16)
         
         self.addSubview(makeSceneLabel)
         

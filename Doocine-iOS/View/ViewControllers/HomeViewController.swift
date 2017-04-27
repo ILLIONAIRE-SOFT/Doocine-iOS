@@ -149,6 +149,9 @@ extension HomeViewController {
                                                 .layout(.center),
                                                 .movesAlongWithKeyboard(true)
                                                 ])
+//        popup.view.layer.cornerRadius = 24
+//        popup.view.clipsToBounds = true
+        
         let popupSB = UIStoryboard(name: "Popup", bundle: nil)
         let controller = popupSB.instantiateViewController(withIdentifier: "CreateProjectPopup") as! CreateProjectPopup
         
@@ -185,8 +188,8 @@ extension HomeViewController {
     }
     
     func tappedIntro() -> Void {
-        let controller = storyboard?.instantiateViewController(withIdentifier: "IntroViewController")
+        let url = URL(string: "http://oocine.org/index.php/about-us-oocine/")!
         
-        self.navigationController?.pushViewController(controller!, animated: true)
+        UIApplication.shared.openURL(url)
     }
 }

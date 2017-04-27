@@ -61,6 +61,11 @@ class ProjectSceneCell: UITableViewCell {
         headerView.backgroundColor = UIColor.white
 //        headerView.layer.cornerRadius = 10
         headerView.clipsToBounds = true
+        headerView.isUserInteractionEnabled = true
+        
+        let tapScene = UITapGestureRecognizer(target: self, action: #selector(tappedScene))
+        headerView.addGestureRecognizer(tapScene)
+        
         self.addSubview(headerView)
         
         headerView.snp.makeConstraints { (make) in
@@ -206,9 +211,11 @@ class ProjectSceneCell: UITableViewCell {
             // MARK: - Cut Number
             let cutNumber = UILabel()
             cutNumber.text = "CUT \(cuts[i].cutNumber)"
-            cutNumber.font = UIFont.systemFont(ofSize: 12)
-            cutNumber.textColor = UIColor.darkGray
+            cutNumber.font = UIFont.boldSystemFont(ofSize: 12)
+            cutNumber.textColor = UIColor.white
+            cutNumber.backgroundColor = UIColor.red
             cutNumber.textAlignment = .center
+            cutNumber.clipsToBounds = true
             cutNumber.layer.borderWidth = 1.0
             cutNumber.layer.borderColor = UIColor.darkGray.cgColor
             cutNumber.layer.cornerRadius = 8
@@ -422,6 +429,16 @@ class ProjectSceneCell: UITableViewCell {
         controller.sceneId = self.scene.id
         controller.originCut = targetCut
         controller.isUpdate = true
+        self.rootController.navigationController?.pushViewController(controller, animated: true)
+    }
+    
+    public func tappedScene(sender: UITapGestureRecognizer) -> Void {
+        let mainSB = UIStoryboard(name: "Main", bundle: nil)
+        let controller = mainSB.instantiateViewController(withIdentifier: "MakeSceneViewController") as! MakeSceneViewController
+        
+        controller.originalScene = self.scene
+        controller.isUpdate = true
+        controller.storyboardId = self.scene.storyboardId
         self.rootController.navigationController?.pushViewController(controller, animated: true)
     }
 }

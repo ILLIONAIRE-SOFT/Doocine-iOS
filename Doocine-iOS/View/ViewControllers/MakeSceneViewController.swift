@@ -11,7 +11,8 @@ import RealmSwift
 
 class MakeSceneViewController: BaseViewController {
     var storyboardId: Int!
-    
+    var originalScene: Scene!
+    var isUpdate: Bool = false
     
     @IBOutlet weak var placeTextField: UITextField!
     @IBOutlet weak var timeTextField: UITextField!

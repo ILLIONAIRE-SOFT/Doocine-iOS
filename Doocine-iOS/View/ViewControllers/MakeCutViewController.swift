@@ -25,6 +25,9 @@ class MakeCutViewController: BaseViewController {
     @IBOutlet weak var cutNumberLabel: UILabel!
     @IBOutlet weak var secondCutImage: UIImageView!
     
+    @IBOutlet weak var shotSizeDownArrow: UIImageView!
+    @IBOutlet weak var cameraWalkDownArrow: UIImageView!
+    
     @IBOutlet weak var firstCutImageWidthConst: NSLayoutConstraint!
     @IBOutlet weak var secondCutImageWidthConst: NSLayoutConstraint!
     
@@ -58,12 +61,20 @@ class MakeCutViewController: BaseViewController {
     private func initViews() -> Void {
         self.shotSizeValueLabel.isUserInteractionEnabled = true
         self.cameraWalkValueLabel.isUserInteractionEnabled = true
+        self.shotSizeDownArrow.isUserInteractionEnabled = true
+        self.cameraWalkDownArrow.isUserInteractionEnabled = true
         
         let tapShotSize = UITapGestureRecognizer(target: self, action: #selector(tappedSelectShotSize))
         shotSizeValueLabel.addGestureRecognizer(tapShotSize)
         
         let tapCameraWalk = UITapGestureRecognizer(target: self, action: #selector(tappedSelectCameraWalk))
         cameraWalkValueLabel.addGestureRecognizer(tapCameraWalk)
+        
+        let tapShotSizeDownArrow = UITapGestureRecognizer(target: self, action: #selector(tappedSelectShotSize))
+        shotSizeDownArrow.addGestureRecognizer(tapShotSizeDownArrow)
+        
+        let tapCameraWalkDownArrow = UITapGestureRecognizer(target: self, action: #selector(tappedSelectCameraWalk))
+        cameraWalkDownArrow.addGestureRecognizer(tapCameraWalkDownArrow)
         
         imagePicker.delegate = self
         
@@ -98,7 +109,7 @@ class MakeCutViewController: BaseViewController {
             isSecondPhotoPicked = true
             self.secondCutImage.image = secondPhoto
         } else {
-            self.cutImage.image = UIImage(named: "img_banner_doocine")
+            self.secondCutImage.image = UIImage(named: "img_banner_doocine")
         }
         
         if self.cameraWalkValueLabel.text == "FIX" {
@@ -132,7 +143,7 @@ class MakeCutViewController: BaseViewController {
         self.deleteButton.layer.cornerRadius = 8
         
         if isUpdate {
-            self.makeButton.setTitle("Edit Cut", for: .normal)
+            self.makeButton.setTitle("Save", for: .normal)
             self.makeButton.addTarget(self, action: #selector(updateCut), for: .touchUpInside)
             self.deleteButton.isHidden = false
             self.deleteButton.addTarget(self, action: #selector(tappedDelete), for: .touchUpInside)

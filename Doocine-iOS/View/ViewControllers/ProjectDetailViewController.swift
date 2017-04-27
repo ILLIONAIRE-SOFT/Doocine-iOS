@@ -16,7 +16,8 @@ class ProjectDetailViewController: BaseViewController {
     var project: MovieStoryboard!
     var scenes: [Scene] = [Scene]()
     
-    @IBOutlet weak var expandButton: UIButton!
+    @IBOutlet weak var reduceOrExpandButton: UIImageView!
+    var isExpand: Bool = true
     
     @IBOutlet weak var reducedHeaderView: UIView!
     @IBOutlet weak var headerView: UIView!
@@ -38,7 +39,6 @@ class ProjectDetailViewController: BaseViewController {
         super.viewDidLoad()
 
 //        self.fetchScenes()
-//        self.makeTestScenes()
         self.initNavigation()
         self.initViews()
         self.initButton()
@@ -81,7 +81,9 @@ class ProjectDetailViewController: BaseViewController {
     }
     
     private func initButton() -> Void {
-        self.expandButton.addTarget(self, action: #selector(expandHeaderView), for: .touchUpInside)
+        self.reduceOrExpandButton.isUserInteractionEnabled = true
+        let tapReduceOrExpand = UITapGestureRecognizer(target: self, action: #selector(tappedReduceOrExpand))
+        self.reduceOrExpandButton.addGestureRecognizer(tapReduceOrExpand)
     }
     
     private func fetchScenes() -> Void {
@@ -148,13 +150,13 @@ extension ProjectDetailViewController: UITableViewDelegate, UITableViewDataSourc
         }
     }
     
-    func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        if scrollView == collectionView {
-            return
-        }
-        
-        reduceHeaderView()
-    }
+//    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+//        if scrollView == collectionView {
+//            return
+//        }
+//        
+//        reduceHeaderView()
+//    }
 }
 
 
@@ -232,6 +234,8 @@ extension ProjectDetailViewController {
         UIView.animate(withDuration: 0.4) {
             self.view.layoutIfNeeded()
         }
+        
+        // 화살표 아래로 향하도록 변경
     }
     
     public func expandHeaderView() -> Void {
@@ -243,6 +247,8 @@ extension ProjectDetailViewController {
         UIView.animate(withDuration: 0.4) {
             self.view.layoutIfNeeded()
         }
+        
+        // 화살표 위로 향하도록 변경
     }
     
     fileprivate func expandHeaderViewWithoutDelay() -> Void {
@@ -268,5 +274,15 @@ extension ProjectDetailViewController {
         activityVC.excludedActivityTypes = [UIActivityType.airDrop, UIActivityType.message, UIActivityType.mail, UIActivityType.postToFacebook, UIActivityType.addToReadingList, UIActivityType.saveToCameraRoll]
         
         self.present(activityVC, animated: true, completion: nil)
+    }
+    
+    public func tappedReduceOrExpand() -> Void {
+        if isExpand {
+            isExpand = false
+            self.reduceHeaderView()
+        } else {
+            isExpand = true
+            self.expandHeaderView()
+        }
     }
 }

@@ -19,6 +19,7 @@ class CreateProjectPopup: UIViewController, PopupContentViewController {
     @IBOutlet weak var directorTextField: UITextField!
     @IBOutlet weak var cameraTextField: UITextField!
     @IBOutlet weak var actorTextField: UITextField!
+    @IBOutlet weak var roundedView: UIView!
     
     var delegateCreate: ((_ movieStoryboard: MovieStoryboard) -> ())!
     var delegateTappedClose: (() -> ())!
@@ -26,6 +27,13 @@ class CreateProjectPopup: UIViewController, PopupContentViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.view.backgroundColor = UIColor.clear
+        self.view.clipsToBounds = true
+        self.view.isOpaque = false
+        
+        self.roundedView.layer.cornerRadius = 12
+        self.roundedView.clipsToBounds = true
+        self.roundedView.backgroundColor = UIColor.white
         initButton()
         // Do any additional setup after loading the view.
     }
