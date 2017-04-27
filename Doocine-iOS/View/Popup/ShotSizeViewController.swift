@@ -44,17 +44,17 @@ class ShotSizeViewController: UIViewController, PopupContentViewController {
         
         firstView.snp.makeConstraints { (make) in
             make.left.equalTo(self.view).offset(leftRightMargin)
-            make.bottom.equalTo(self.view).offset(-leftRightMargin)
+            make.top.equalTo(titleLabel.snp.bottom).offset(leftRightMargin)
             make.width.equalTo(itemWidth)
             make.height.equalTo(itemWidth + 20)
         }
         
         let firstImage = UIImageView()
-        firstImage.image = UIImage(named: "img_banner_doocine")
+        firstImage.image = UIImage(named: "icon_shotsize_fs")
         firstImage.contentMode = .scaleAspectFill
         firstImage.clipsToBounds = true
+        firstImage.layer.borderWidth = 0.5
         firstImage.layer.cornerRadius = 8
-        
         firstView.addSubview(firstImage)
         
         firstImage.snp.makeConstraints { (make) in
@@ -65,7 +65,7 @@ class ShotSizeViewController: UIViewController, PopupContentViewController {
         }
         
         let firstText = UILabel()
-        firstText.text = "Long Shot"
+        firstText.text = "Full Shot"
         firstText.textColor = UIColor.darkGray
         
         firstView.addSubview(firstText)
@@ -83,10 +83,11 @@ class ShotSizeViewController: UIViewController, PopupContentViewController {
         self.view.addSubview(secondView)
         
         let secondImage = UIImageView()
-        secondImage.image = UIImage(named: "img_banner_doocine")
+        secondImage.image = UIImage(named: "icon_shotsize_ks")
         secondImage.contentMode = .scaleAspectFill
         secondImage.clipsToBounds = true
         secondImage.layer.cornerRadius = 8
+        secondImage.layer.borderWidth = 0.5
         
         secondView.addSubview(secondImage)
         
@@ -98,7 +99,7 @@ class ShotSizeViewController: UIViewController, PopupContentViewController {
         }
         
         let secondText = UILabel()
-        secondText.text = "Medium Long Shot"
+        secondText.text = "Knee Shot"
         secondText.textColor = UIColor.darkGray
         
         secondView.addSubview(secondText)
@@ -109,7 +110,7 @@ class ShotSizeViewController: UIViewController, PopupContentViewController {
         
         secondView.snp.makeConstraints { (make) in
             make.left.equalTo(self.view).offset(leftRightMargin + itemWidth + itemSpacing)
-            make.bottom.equalTo(self.view).offset(-leftRightMargin)
+            make.top.equalTo(firstView)
             make.width.equalTo(itemWidth)
             make.height.equalTo(itemWidth + 20)
         }
@@ -123,10 +124,11 @@ class ShotSizeViewController: UIViewController, PopupContentViewController {
         self.view.addSubview(thirdView)
         
         let thirdImage = UIImageView()
-        thirdImage.image = UIImage(named: "img_banner_doocine")
+        thirdImage.image = UIImage(named: "icon_shotsize_ws")
         thirdImage.contentMode = .scaleAspectFill
         thirdImage.clipsToBounds = true
         thirdImage.layer.cornerRadius = 8
+        thirdImage.layer.borderWidth = 0.5
         
         thirdView.addSubview(thirdImage)
         
@@ -138,7 +140,7 @@ class ShotSizeViewController: UIViewController, PopupContentViewController {
         }
         
         let thirdText = UILabel()
-        thirdText.text = "Full Shot"
+        thirdText.text = "Waist Shot"
         thirdText.textColor = UIColor.darkGray
         
         thirdView.addSubview(thirdText)
@@ -149,7 +151,7 @@ class ShotSizeViewController: UIViewController, PopupContentViewController {
         
         thirdView.snp.makeConstraints { (make) in
             make.left.equalTo(self.view).offset(leftRightMargin + (itemWidth * 2) + (itemSpacing * 2))
-            make.bottom.equalTo(self.view).offset(-leftRightMargin)
+            make.top.equalTo(firstView)
             make.width.equalTo(itemWidth)
             make.height.equalTo(itemWidth + 20)
         }
@@ -162,10 +164,11 @@ class ShotSizeViewController: UIViewController, PopupContentViewController {
         self.view.addSubview(fourthView)
         
         let fourthImage = UIImageView()
-        fourthImage.image = UIImage(named: "img_banner_doocine")
+        fourthImage.image = UIImage(named: "icon_shotsize_bs")
         fourthImage.contentMode = .scaleAspectFill
         fourthImage.clipsToBounds = true
         fourthImage.layer.cornerRadius = 8
+        fourthImage.layer.borderWidth = 0.5
         
         fourthView.addSubview(fourthImage)
         
@@ -177,7 +180,7 @@ class ShotSizeViewController: UIViewController, PopupContentViewController {
         }
         
         let fourthText = UILabel()
-        fourthText.text = "Closure Shot"
+        fourthText.text = "Bust Shot"
         fourthText.textColor = UIColor.darkGray
         
         fourthView.addSubview(fourthText)
@@ -187,7 +190,87 @@ class ShotSizeViewController: UIViewController, PopupContentViewController {
         }
         
         fourthView.snp.makeConstraints { (make) in
-            make.left.equalTo(self.view).offset(leftRightMargin + (itemWidth * 3) + (itemSpacing * 3))
+            make.left.equalTo(self.view).offset(leftRightMargin)
+            make.bottom.equalTo(self.view).offset(-leftRightMargin)
+            make.width.equalTo(itemWidth)
+            make.height.equalTo(itemWidth + 20)
+        }
+        
+        let fifthView = UIView()
+        fifthView.isUserInteractionEnabled = true
+        let tapFifth = UITapGestureRecognizer(target: self, action: #selector(tappedFifthSize))
+        fifthView.addGestureRecognizer(tapFifth)
+        
+        self.view.addSubview(fifthView)
+        
+        let fifthImage = UIImageView()
+        fifthImage.image = UIImage(named: "icon_shotsize_cu")
+        fifthImage.contentMode = .scaleAspectFill
+        fifthImage.clipsToBounds = true
+        fifthImage.layer.cornerRadius = 8
+        fifthImage.layer.borderWidth = 0.5
+        
+        fifthView.addSubview(fifthImage)
+        
+        fifthImage.snp.makeConstraints { (make) in
+            make.left.equalTo(fifthView)
+            make.top.equalTo(fifthView)
+            make.right.equalTo(fifthView)
+            make.height.equalTo(120)
+        }
+        
+        let fifthText = UILabel()
+        fifthText.text = "Close Up"
+        fifthText.textColor = UIColor.darkGray
+        
+        fifthView.addSubview(fifthText)
+        fifthText.snp.makeConstraints { (make) in
+            make.centerX.equalTo(fifthView)
+            make.bottom.equalTo(fifthView).offset(-8)
+        }
+        
+        fifthView.snp.makeConstraints { (make) in
+            make.left.equalTo(self.view).offset(leftRightMargin + (itemWidth * 1) + (itemSpacing * 1))
+            make.bottom.equalTo(self.view).offset(-leftRightMargin)
+            make.width.equalTo(itemWidth)
+            make.height.equalTo(itemWidth + 20)
+        }
+        
+        let sixthView = UIView()
+        sixthView.isUserInteractionEnabled = true
+        let tapSixth = UITapGestureRecognizer(target: self, action: #selector(tappedSixthSize))
+        sixthView.addGestureRecognizer(tapSixth)
+        
+        self.view.addSubview(sixthView)
+        
+        let sixthImage = UIImageView()
+        sixthImage.image = UIImage(named: "icon_shotsize_ecu")
+        sixthImage.contentMode = .scaleAspectFill
+        sixthImage.clipsToBounds = true
+        sixthImage.layer.cornerRadius = 8
+        sixthImage.layer.borderWidth = 0.5
+        
+        sixthView.addSubview(sixthImage)
+        
+        sixthImage.snp.makeConstraints { (make) in
+            make.left.equalTo(sixthView)
+            make.top.equalTo(sixthView)
+            make.right.equalTo(sixthView)
+            make.height.equalTo(120)
+        }
+        
+        let sixthText = UILabel()
+        sixthText.text = "Extreme Close Up"
+        sixthText.textColor = UIColor.darkGray
+        
+        sixthView.addSubview(sixthText)
+        sixthText.snp.makeConstraints { (make) in
+            make.centerX.equalTo(sixthView)
+            make.bottom.equalTo(sixthView).offset(-8)
+        }
+        
+        sixthView.snp.makeConstraints { (make) in
+            make.left.equalTo(self.view).offset(leftRightMargin + (itemWidth * 2) + (itemSpacing * 2))
             make.bottom.equalTo(self.view).offset(-leftRightMargin)
             make.width.equalTo(itemWidth)
             make.height.equalTo(itemWidth + 20)
@@ -195,7 +278,7 @@ class ShotSizeViewController: UIViewController, PopupContentViewController {
     }
     
     func sizeForPopup(_ popupController: PopupController, size: CGSize, showingKeyboard: Bool) -> CGSize {
-        return CGSize(width: 600 + (leftRightMargin * 2) + (itemSpacing * 3), height: 250)
+        return CGSize(width: 450 + (leftRightMargin * 2) + (itemSpacing * 2), height: 300 + 24 + 24 + 30 + 30 + 40)
     }
 }
 
@@ -203,18 +286,26 @@ class ShotSizeViewController: UIViewController, PopupContentViewController {
 // MARK: - Tap Action
 extension ShotSizeViewController {
     public func tappedFirstSize() -> Void {
-        self.delegateSelect("Long Shot")
+        self.delegateSelect("F.S")
     }
     
     public func tappedSecondSize() -> Void {
-        self.delegateSelect("Medium Long Shot")
+        self.delegateSelect("K.S")
     }
     
     public func tappedThirdSize() -> Void {
-        self.delegateSelect("Full Shot")
+        self.delegateSelect("W.S")
     }
     
     public func tappedFourthSize() -> Void {
-        self.delegateSelect("Closure Shot")
+        self.delegateSelect("B.S")
+    }
+    
+    public func tappedFifthSize() -> Void {
+        self.delegateSelect("C.U")
+    }
+    
+    public func tappedSixthSize() -> Void {
+        self.delegateSelect("E.C.U")
     }
 }

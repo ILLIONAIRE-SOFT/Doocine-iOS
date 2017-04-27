@@ -363,9 +363,7 @@ extension MakeCutViewController {
     
     public func tappedImage() -> Void {
         self.targetImage = 1
-        imagePicker.allowsEditing = false
-        imagePicker.sourceType = .photoLibrary
-        self.present(imagePicker, animated: true, completion: nil)
+        self.showPhotoModePopup()
     }
     
     public func tappedSecondImage() -> Void {
