@@ -211,9 +211,11 @@ class ProjectSceneCell: UITableViewCell {
             // MARK: - Cut Number
             let cutNumber = UILabel()
             cutNumber.text = "CUT \(cuts[i].cutNumber)"
-            cutNumber.font = UIFont.systemFont(ofSize: 12)
-            cutNumber.textColor = UIColor.darkGray
+            cutNumber.font = UIFont.boldSystemFont(ofSize: 12)
+            cutNumber.textColor = UIColor.white
+            cutNumber.backgroundColor = UIColor.red
             cutNumber.textAlignment = .center
+            cutNumber.clipsToBounds = true
             cutNumber.layer.borderWidth = 1.0
             cutNumber.layer.borderColor = UIColor.darkGray.cgColor
             cutNumber.layer.cornerRadius = 8
