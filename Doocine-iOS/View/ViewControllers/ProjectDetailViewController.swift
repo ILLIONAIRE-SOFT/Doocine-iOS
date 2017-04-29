@@ -53,6 +53,7 @@ class ProjectDetailViewController: BaseViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
+        self.showLoading(view: self.view)
         self.fetchScenes()
     }
     
@@ -102,6 +103,8 @@ class ProjectDetailViewController: BaseViewController {
         for scene in scenes {
             self.scenes.append(scene)
         }
+        
+        self.hideLoading()
         
         self.collectionView.reloadData()
         self.tableView.reloadData()
@@ -292,8 +295,8 @@ extension ProjectDetailViewController {
 // MARK: - Tap Action
 extension ProjectDetailViewController {
     public func tappedShare() -> Void {
-        let shareText = UIImage(named: "img_intro")
-        let activityVC = UIActivityViewController(activityItems: [shareText], applicationActivities: nil)
+        let shareImage = self.tableView.screenshot
+        let activityVC = UIActivityViewController(activityItems: [shareImage], applicationActivities: nil)
         
         activityVC.popoverPresentationController?.sourceView = self.view
         activityVC.excludedActivityTypes = [UIActivityType.airDrop, UIActivityType.message, UIActivityType.mail, UIActivityType.postToFacebook, UIActivityType.addToReadingList, UIActivityType.saveToCameraRoll]
