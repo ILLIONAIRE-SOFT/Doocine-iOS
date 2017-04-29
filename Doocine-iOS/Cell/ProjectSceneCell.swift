@@ -63,14 +63,11 @@ class ProjectSceneCell: UITableViewCell {
         headerView.clipsToBounds = true
         headerView.isUserInteractionEnabled = true
         
-        let tapScene = UITapGestureRecognizer(target: self, action: #selector(tappedScene))
-        headerView.addGestureRecognizer(tapScene)
-        
         self.addSubview(headerView)
         
         headerView.snp.makeConstraints { (make) in
             make.left.equalTo(self).offset(48)
-            make.right.equalTo(self).offset(-200)
+            make.right.equalTo(self).offset(-160)
             make.top.equalTo(self).offset(24)
             make.height.equalTo(84)
         }

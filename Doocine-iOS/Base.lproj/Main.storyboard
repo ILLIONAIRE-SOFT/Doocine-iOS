@@ -672,6 +672,14 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bMe-ea-8g7">
+                                <rect key="frame" x="708" y="36" width="24" height="24"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="24" id="PbP-Jv-dNP"/>
+                                    <constraint firstAttribute="width" constant="24" id="UNP-yn-jJC"/>
+                                </constraints>
+                                <state key="normal" image="icon_delete"/>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <constraints>
@@ -686,17 +694,20 @@
                             <constraint firstItem="K2i-GV-Pb1" firstAttribute="leading" secondItem="PHz-TN-12h" secondAttribute="leading" constant="24" id="X5F-AT-OGy"/>
                             <constraint firstAttribute="trailing" secondItem="FwU-Ms-v2g" secondAttribute="trailing" constant="24" id="ZYg-B9-JKY"/>
                             <constraint firstAttribute="trailing" secondItem="BQa-fp-ToI" secondAttribute="trailing" constant="24" id="aNx-am-C4w"/>
+                            <constraint firstItem="bMe-ea-8g7" firstAttribute="top" secondItem="JMn-AB-Wfu" secondAttribute="bottom" constant="16" id="cUv-Ue-fZL"/>
                             <constraint firstItem="1PY-1P-Fzm" firstAttribute="leading" secondItem="PHz-TN-12h" secondAttribute="leading" constant="24" id="fZx-xA-alI"/>
                             <constraint firstAttribute="trailing" secondItem="2Qw-tf-4QL" secondAttribute="trailing" constant="24" id="gev-0T-wct"/>
                             <constraint firstItem="2Qw-tf-4QL" firstAttribute="leading" secondItem="PHz-TN-12h" secondAttribute="leading" constant="24" id="hXv-AC-pLT"/>
                             <constraint firstAttribute="trailing" secondItem="xEe-gP-hWo" secondAttribute="trailing" constant="24" id="mZi-yW-Qt6"/>
                             <constraint firstItem="K2i-GV-Pb1" firstAttribute="top" secondItem="JMn-AB-Wfu" secondAttribute="bottom" constant="24" id="oS2-VD-1nB"/>
                             <constraint firstItem="OAO-ah-SMK" firstAttribute="centerX" secondItem="PHz-TN-12h" secondAttribute="centerX" id="p0i-C8-x09"/>
+                            <constraint firstAttribute="trailing" secondItem="bMe-ea-8g7" secondAttribute="trailing" constant="36" id="umA-xr-Jfo"/>
                             <constraint firstItem="BQa-fp-ToI" firstAttribute="top" secondItem="xEe-gP-hWo" secondAttribute="bottom" constant="16" id="z6j-KR-UWy"/>
                             <constraint firstItem="2Qw-tf-4QL" firstAttribute="top" secondItem="K2i-GV-Pb1" secondAttribute="bottom" constant="16" id="zbl-x3-lE4"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="deleteButton" destination="bMe-ea-8g7" id="R8G-c9-pSp"/>
                         <outlet property="makeButton" destination="OAO-ah-SMK" id="aeK-4l-CYU"/>
                         <outlet property="placeTextField" destination="2Qw-tf-4QL" id="Zzr-f9-9zi"/>
                         <outlet property="timeTextField" destination="BQa-fp-ToI" id="AqR-iY-Npm"/>
