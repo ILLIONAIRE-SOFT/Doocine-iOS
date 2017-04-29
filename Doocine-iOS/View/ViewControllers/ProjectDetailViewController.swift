@@ -11,6 +11,7 @@ import RealmSwift
 
 class ProjectDetailViewController: BaseViewController {
 
+    @IBOutlet weak var deleteProjectButton: UIButton!
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var tableView: UITableView!
     var project: MovieStoryboard!
@@ -84,6 +85,7 @@ class ProjectDetailViewController: BaseViewController {
         self.reduceOrExpandButton.isUserInteractionEnabled = true
         let tapReduceOrExpand = UITapGestureRecognizer(target: self, action: #selector(tappedReduceOrExpand))
         self.reduceOrExpandButton.addGestureRecognizer(tapReduceOrExpand)
+        self.deleteProjectButton.addTarget(self, action: #selector(tappedDelete), for: .touchUpInside)
     }
     
     private func fetchScenes() -> Void {
@@ -100,16 +102,34 @@ class ProjectDetailViewController: BaseViewController {
         self.tableView.reloadData()
     }
     
-    private func makeTestScenes() -> Void {
-        for _ in 0 ..< 11 {
-            let scene = Scene()
-            scene.place = "Chungmuro Pildong"
-            scene.time = "Late evening"
+    public func deleteProject() -> Void {
+        let realm = try! Realm()
+        
+        let scenes = realm.objects(Scene.self).filter("storyboardId == \(self.project.id)")
+        
+        for scene in scenes {
+            let cuts = realm.objects(Cut.self).filter("sceneId == \(scene.id)")
             
-            scenes.append(scene)
+            for cut in cuts {
+                PhotoManager.deleteImage(imageId: cut.id)
+                
+                try! realm.write {
+                    realm.delete(cut)
+                }
+            }
+            
+            try! realm.write {
+                realm.delete(scene)
+            }
         }
         
-        self.collectionView.reloadData()
+        let project = realm.objects(MovieStoryboard.self).filter("id == \(self.project.id)")
+        
+        try! realm.write {
+            realm.delete(project)
+        }
+        
+        self.navigationController?.popViewController(animated: true)
     }
 }
 
@@ -284,5 +304,14 @@ extension ProjectDetailViewController {
             isExpand = true
             self.expandHeaderView()
         }
+    }
+    
+    public func tappedDelete() -> Void {
+        let alert = UIAlertController(title: "", message: "프로젝트를 삭제하시겠습니까?", preferredStyle: UIAlertControllerStyle.alert)
+        alert.addAction(UIAlertAction(title: "취소", style: .cancel, handler: nil))
+        alert.addAction(UIAlertAction(title: "삭제", style: UIAlertActionStyle.destructive, handler: { (action) in
+            self.deleteProject()
+        }))
+        self.present(alert, animated: true, completion: nil)
     }
 }
