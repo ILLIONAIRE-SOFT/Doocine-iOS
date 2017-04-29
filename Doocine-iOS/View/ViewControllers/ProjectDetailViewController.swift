@@ -38,8 +38,7 @@ class ProjectDetailViewController: BaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-//        self.fetchScenes()
+        
         self.initNavigation()
         self.initViews()
         self.initButton()
@@ -47,7 +46,13 @@ class ProjectDetailViewController: BaseViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        
         self.expandHeaderViewWithoutDelay()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
         self.fetchScenes()
     }
     
