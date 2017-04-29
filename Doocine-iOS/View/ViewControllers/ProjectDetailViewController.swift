@@ -236,7 +236,7 @@ extension ProjectDetailViewController {
         }
         
         // 화살표 아래로 향하도록 변경
-    }q
+    }
     
     public func expandHeaderView() -> Void {
         self.headerViewHeightConstraint.constant = 400

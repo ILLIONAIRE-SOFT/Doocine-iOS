@@ -21,9 +21,12 @@ class MakeSceneViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        print("Stroyboard Id : \(self.storyboardId!)")
         initNavigation()
         initButton()
+        
+        if isUpdate {
+            self.updateOriginalValue()
+        }
     }
     
     private func initNavigation() -> Void {
@@ -32,6 +35,17 @@ class MakeSceneViewController: BaseViewController {
     
     private func initButton() -> Void {
         self.makeButton.addTarget(self, action: #selector(makeScene), for: .touchUpInside)
+        
+        if isUpdate {
+            makeButton.setTitle("Save", for: .normal)
+        } else {
+            makeButton.setTitle("Make", for: .normal)
+        }
+    }
+    
+    private func updateOriginalValue() -> Void {
+        self.placeTextField.text = originalScene.place
+        self.timeTextField.text = originalScene.time
     }
     
     public func makeScene() -> Void {
@@ -68,5 +82,19 @@ class MakeSceneViewController: BaseViewController {
         }
         
         self.navigationController?.popViewController(animated: true)
+    }
+    
+    public func updateScene() -> Void {
+        if placeTextField.text == "" || placeTextField.text == nil {
+            print("장소를 입력하세요.")
+            return
+        }
+        
+        if timeTextField.text == "" || timeTextField.text == nil {
+            print("시간을 입력하세요.")
+            return
+        }
+        
+        
     }
 }

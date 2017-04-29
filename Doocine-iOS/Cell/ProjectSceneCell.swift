@@ -59,7 +59,7 @@ class ProjectSceneCell: UITableViewCell {
         // MARK: - Header
         let headerView = UIView()
         headerView.backgroundColor = UIColor.white
-//        headerView.layer.cornerRadius = 10
+        headerView.layer.cornerRadius = 4
         headerView.clipsToBounds = true
         headerView.isUserInteractionEnabled = true
         
@@ -70,7 +70,7 @@ class ProjectSceneCell: UITableViewCell {
         
         headerView.snp.makeConstraints { (make) in
             make.left.equalTo(self).offset(48)
-            make.right.equalTo(self).offset(-244)
+            make.right.equalTo(self).offset(-200)
             make.top.equalTo(self).offset(24)
             make.height.equalTo(84)
         }
@@ -153,9 +153,21 @@ class ProjectSceneCell: UITableViewCell {
             make.centerY.equalTo(timeHeader)
         }
         
+        let editSceneButton = UIButton()
+        editSceneButton.setImage(UIImage(named: "icon_edit"), for: .normal)
+        editSceneButton.addTarget(self, action: #selector(tappedScene), for: .touchUpInside)
+        
+        headerView.addSubview(editSceneButton)
+        
+        editSceneButton.snp.makeConstraints { (make) in
+            make.centerY.equalTo(headerView)
+            make.right.equalTo(headerView).offset(-16)
+            make.height.equalTo(24)
+            make.width.equalTo(24)
+        }
+        
         let addButton = UIButton()
-        addButton.setTitle("추가", for: .normal)
-        addButton.backgroundColor = UIColor.orange
+        addButton.setImage(UIImage(named: "icon_add_box"), for: .normal)
         addButton.addTarget(self, action: #selector(goToMakeCut), for: .touchUpInside)
         addButton.layer.cornerRadius = 8
         
@@ -163,9 +175,9 @@ class ProjectSceneCell: UITableViewCell {
         
         addButton.snp.makeConstraints { (make) in
             make.centerY.equalTo(headerView)
-            make.right.equalTo(headerView).offset(-24)
-            make.height.equalTo(36)
-            make.width.equalTo(64)
+            make.right.equalTo(editSceneButton.snp.left).offset(-24)
+            make.height.equalTo(24)
+            make.width.equalTo(24)
         }
         
         // MARK: - Header View Height
@@ -190,10 +202,6 @@ class ProjectSceneCell: UITableViewCell {
             })
             
             let bodyView = UIView()
-            
-            let tapCut = MyTapGestureRecognizer(target: self, action: #selector(tappedCut))
-            tapCut.cutId = i
-            bodyView.addGestureRecognizer(tapCut)
             
             bodyView.backgroundColor = .white
             bodyView.clipsToBounds = true
@@ -227,6 +235,23 @@ class ProjectSceneCell: UITableViewCell {
                 make.top.equalTo(bodyView).offset(9)
                 make.width.equalTo(60)
                 make.height.equalTo(30)
+            })
+            
+            // MARK: - Cut Edit Button
+            let cutEditButton = UIButton()
+            cutEditButton.setImage(UIImage(named: "icon_edit"), for: .normal)
+            
+            let tapCut = MyTapGestureRecognizer(target: self, action: #selector(tappedCut))
+            tapCut.cutId = i
+            cutEditButton.addGestureRecognizer(tapCut)
+            
+            bodyView.addSubview(cutEditButton)
+            
+            cutEditButton.snp.makeConstraints({ (make) in
+                make.right.equalTo(bodyView).offset(-16)
+                make.centerY.equalTo(cutNumber)
+                make.width.equalTo(36)
+                make.height.equalTo(36)
             })
             
             // MARK: - Cut Image
