@@ -1,23 +1,26 @@
 PODS:
+  - Dodo (8.0.0)
   - PopupController (0.2.0)
-  - Realm (2.5.0):
-    - Realm/Headers (= 2.5.0)
-  - Realm/Headers (2.5.0)
-  - RealmSwift (2.5.0):
-    - Realm (= 2.5.0)
+  - Realm (2.6.2):
+    - Realm/Headers (= 2.6.2)
+  - Realm/Headers (2.6.2)
+  - RealmSwift (2.6.2):
+    - Realm (= 2.6.2)
   - SnapKit (3.2.0)
 
 DEPENDENCIES:
+  - Dodo (~> 8.0)
   - PopupController
   - RealmSwift
   - SnapKit
 
 SPEC CHECKSUMS:
+  Dodo: 93541c1ab02b400b2a473cbb8132133ff8174af1
   PopupController: 0b69fdf11cbeaa807789a8c3992599083640988f
-  Realm: 62abce501668580092d2be9b6ba7324a3d5f906a
-  RealmSwift: 9f1a8f624f2f153410115c2cb7d486be9976565d
+  Realm: 29222766425b9f831228f81b63f0e38a97a4d700
+  RealmSwift: d161a80f96cb91ae88391a7d5a9cf08024a7bc8e
   SnapKit: 1ca44df72cfa543218d177cb8aab029d10d86ea7
 
-PODFILE CHECKSUM: 2c11f081578a886d79628a331590b1dcd89ae0dd
+PODFILE CHECKSUM: 32c363c2f63a1477da4b3675d3decf9210b084dc
 
 COCOAPODS: 1.1.1
