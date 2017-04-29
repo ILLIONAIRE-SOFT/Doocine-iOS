@@ -462,6 +462,14 @@
                                             </collectionViewCell>
                                         </cells>
                                     </collectionView>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kdc-lr-CXz">
+                                        <rect key="frame" x="720" y="24" width="24" height="24"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="24" id="4fD-rF-S47"/>
+                                            <constraint firstAttribute="width" constant="24" id="tYJ-nA-xaH"/>
+                                        </constraints>
+                                        <state key="normal" image="icon_delete"/>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" red="0.96078431372549022" green="0.96078431372549022" blue="0.96078431372549022" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
@@ -475,12 +483,14 @@
                                     <constraint firstItem="8nN-Wa-Pqp" firstAttribute="top" secondItem="6Sx-85-XAU" secondAttribute="bottom" constant="8" id="CS9-ej-iDf"/>
                                     <constraint firstItem="8nN-Wa-Pqp" firstAttribute="leading" secondItem="aoK-vv-jvK" secondAttribute="leading" constant="24" id="EOd-CH-i6i"/>
                                     <constraint firstItem="M4o-r0-2gm" firstAttribute="top" secondItem="Cdd-bW-uTC" secondAttribute="bottom" constant="16" id="Hlw-1L-8C2"/>
+                                    <constraint firstAttribute="trailing" secondItem="kdc-lr-CXz" secondAttribute="trailing" constant="24" id="Hv4-2e-IAF"/>
                                     <constraint firstItem="G2j-bE-tQe" firstAttribute="leading" secondItem="aoK-vv-jvK" secondAttribute="leading" constant="24" id="Keh-dg-bqu"/>
                                     <constraint firstItem="8nN-Wa-Pqp" firstAttribute="leading" secondItem="aoK-vv-jvK" secondAttribute="leading" constant="24" id="M2e-rr-Exo"/>
                                     <constraint firstAttribute="trailing" secondItem="vxG-Rn-DaE" secondAttribute="trailing" constant="24" id="Opw-PV-gXA"/>
                                     <constraint firstAttribute="trailing" secondItem="qcf-u7-WFg" secondAttribute="trailing" id="S1F-tA-HA3"/>
                                     <constraint firstItem="5BI-np-OHu" firstAttribute="leading" secondItem="aoK-vv-jvK" secondAttribute="leading" constant="24" id="SVp-1R-na7"/>
                                     <constraint firstAttribute="bottom" secondItem="qcf-u7-WFg" secondAttribute="bottom" id="Tx5-7w-bXl"/>
+                                    <constraint firstItem="kdc-lr-CXz" firstAttribute="top" secondItem="aoK-vv-jvK" secondAttribute="top" constant="24" id="XpQ-dC-NZg"/>
                                     <constraint firstAttribute="bottom" secondItem="M4o-r0-2gm" secondAttribute="bottom" id="bKg-0b-cTV"/>
                                     <constraint firstItem="Cdd-bW-uTC" firstAttribute="leading" secondItem="aoK-vv-jvK" secondAttribute="leading" constant="24" id="bkO-j1-0De"/>
                                     <constraint firstItem="5BI-np-OHu" firstAttribute="top" secondItem="Ewa-YY-wnh" secondAttribute="bottom" constant="8" id="cGX-2h-NKg"/>
@@ -577,6 +587,7 @@
                         <outlet property="actor" destination="0Is-bg-JVL" id="5W0-0p-Jpm"/>
                         <outlet property="cameraMan" destination="6Sx-85-XAU" id="VEc-lF-Hpb"/>
                         <outlet property="collectionView" destination="M4o-r0-2gm" id="e5G-es-pcD"/>
+                        <outlet property="deleteProjectButton" destination="kdc-lr-CXz" id="YVh-2l-vuC"/>
                         <outlet property="director" destination="5BI-np-OHu" id="nxd-dN-O3I"/>
                         <outlet property="groupName" destination="Cuo-QS-qLZ" id="5AY-An-FHx"/>
                         <outlet property="headerView" destination="aoK-vv-jvK" id="nxj-6i-Xgd"/>
