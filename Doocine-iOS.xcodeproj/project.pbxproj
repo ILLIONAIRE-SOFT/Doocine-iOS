@@ -33,6 +33,8 @@
 		49A9DF8F1E954ACC008F75AB /* ProjectListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49A9DF8E1E954ACC008F75AB /* ProjectListViewController.swift */; };
 		49A9DF921E9550ED008F75AB /* ProjectListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49A9DF911E9550ED008F75AB /* ProjectListCell.swift */; };
 		49A9DF951E9564BD008F75AB /* ProjectDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49A9DF941E9564BD008F75AB /* ProjectDetailViewController.swift */; };
+		49ACFDAB1EB481C400565912 /* UIImageExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49ACFDAA1EB481C400565912 /* UIImageExtension.swift */; };
+		49ACFDAD1EB481D900565912 /* UITableViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49ACFDAC1EB481D900565912 /* UITableViewExtension.swift */; };
 		49C282481EA381BF00727CB2 /* PhotoManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49C282471EA381BF00727CB2 /* PhotoManager.swift */; };
 		49C4A5BA1EB08BD1007B0D04 /* PhotoModePopup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49C4A5B91EB08BD1007B0D04 /* PhotoModePopup.swift */; };
 		49F8E3BB1E7D149B004A61B3 /* TutorialViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49F8E3BA1E7D149B004A61B3 /* TutorialViewController.swift */; };
@@ -76,6 +78,8 @@
 		49A9DF8E1E954ACC008F75AB /* ProjectListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ProjectListViewController.swift; path = View/ViewControllers/ProjectListViewController.swift; sourceTree = "<group>"; };
 		49A9DF911E9550ED008F75AB /* ProjectListCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ProjectListCell.swift; path = Cell/ProjectListCell.swift; sourceTree = "<group>"; };
 		49A9DF941E9564BD008F75AB /* ProjectDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ProjectDetailViewController.swift; path = View/ViewControllers/ProjectDetailViewController.swift; sourceTree = "<group>"; };
+		49ACFDAA1EB481C400565912 /* UIImageExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIImageExtension.swift; sourceTree = "<group>"; };
+		49ACFDAC1EB481D900565912 /* UITableViewExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UITableViewExtension.swift; sourceTree = "<group>"; };
 		49C282471EA381BF00727CB2 /* PhotoManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PhotoManager.swift; path = Utils/PhotoManager.swift; sourceTree = "<group>"; };
 		49C4A5B91EB08BD1007B0D04 /* PhotoModePopup.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PhotoModePopup.swift; path = View/Popup/PhotoModePopup.swift; sourceTree = "<group>"; };
 		49F8E3BA1E7D149B004A61B3 /* TutorialViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TutorialViewController.swift; path = View/ViewControllers/TutorialViewController.swift; sourceTree = "<group>"; };
@@ -238,6 +242,8 @@
 			isa = PBXGroup;
 			children = (
 				49F8E3BF1E7D194C004A61B3 /* ColorExtension.swift */,
+				49ACFDAA1EB481C400565912 /* UIImageExtension.swift */,
+				49ACFDAC1EB481D900565912 /* UITableViewExtension.swift */,
 			);
 			name = Extension;
 			sourceTree = "<group>";
@@ -494,6 +500,7 @@
 				49F8E3BB1E7D149B004A61B3 /* TutorialViewController.swift in Sources */,
 				49FD2F961EA4630800F40C44 /* ProjectCell.swift in Sources */,
 				49C4A5BA1EB08BD1007B0D04 /* PhotoModePopup.swift in Sources */,
+				49ACFDAB1EB481C400565912 /* UIImageExtension.swift in Sources */,
 				49A9DF951E9564BD008F75AB /* ProjectDetailViewController.swift in Sources */,
 				49131DFD1E9E8A25002108A2 /* ProjectDetailCollectionCell.swift in Sources */,
 				492430BA1E840B1000C3BBA0 /* MakeNewProjectView.swift in Sources */,
@@ -505,6 +512,7 @@
 				492430B61E8401AD00C3BBA0 /* HomeHeaderView.swift in Sources */,
 				49F8E3C01E7D194C004A61B3 /* ColorExtension.swift in Sources */,
 				49A9DF8F1E954ACC008F75AB /* ProjectListViewController.swift in Sources */,
+				49ACFDAD1EB481D900565912 /* UITableViewExtension.swift in Sources */,
 				49F8E3BE1E7D18E6004A61B3 /* BaseViewController.swift in Sources */,
 				49F8E3C71E7D1B2D004A61B3 /* Constants.swift in Sources */,
 				493D68641E9A522500A67670 /* ProjectStartCell.swift in Sources */,

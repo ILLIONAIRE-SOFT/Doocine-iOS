@@ -221,8 +221,6 @@ class ProjectSceneCell: UITableViewCell {
             cutNumber.backgroundColor = UIColor.red
             cutNumber.textAlignment = .center
             cutNumber.clipsToBounds = true
-            cutNumber.layer.borderWidth = 1.0
-            cutNumber.layer.borderColor = UIColor.darkGray.cgColor
             cutNumber.layer.cornerRadius = 8
             
             bodyView.addSubview(cutNumber)

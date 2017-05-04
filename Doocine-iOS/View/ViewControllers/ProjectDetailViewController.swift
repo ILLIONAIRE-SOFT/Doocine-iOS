@@ -38,8 +38,7 @@ class ProjectDetailViewController: BaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-//        self.fetchScenes()
+        
         self.initNavigation()
         self.initViews()
         self.initButton()
@@ -47,7 +46,14 @@ class ProjectDetailViewController: BaseViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        
         self.expandHeaderViewWithoutDelay()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        self.showLoading(view: self.view)
         self.fetchScenes()
     }
     
@@ -98,6 +104,8 @@ class ProjectDetailViewController: BaseViewController {
             self.scenes.append(scene)
         }
         
+        self.hideLoading()
+        
         self.collectionView.reloadData()
         self.tableView.reloadData()
     }
@@ -141,7 +149,11 @@ extension ProjectDetailViewController: UITableViewDelegate, UITableViewDataSourc
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return scenes.count + 1
+        if scenes.count == 0 {
+            return 0
+        } else {
+            return scenes.count + 1
+        }
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -287,8 +299,8 @@ extension ProjectDetailViewController {
 // MARK: - Tap Action
 extension ProjectDetailViewController {
     public func tappedShare() -> Void {
-        let shareText = UIImage(named: "img_intro")
-        let activityVC = UIActivityViewController(activityItems: [shareText], applicationActivities: nil)
+        let shareImage = self.tableView.screenshot
+        let activityVC = UIActivityViewController(activityItems: [shareImage], applicationActivities: nil)
         
         activityVC.popoverPresentationController?.sourceView = self.view
         activityVC.excludedActivityTypes = [UIActivityType.airDrop, UIActivityType.message, UIActivityType.mail, UIActivityType.postToFacebook, UIActivityType.addToReadingList, UIActivityType.saveToCameraRoll]

@@ -10,7 +10,11 @@ import UIKit
 import Dodo
 
 class BaseViewController: UIViewController {
-
+    var loadingView = UIView()
+//    let activityIndicatorView = UIActivityIndicatorView(frame: CGRect(x: 0, y: 0, width: 25, height: 25),
+//                                                        type: .remoteControl,
+//                                                        color: UIColor.white)
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -69,5 +73,24 @@ class BaseViewController: UIViewController {
         }
         view.dodo.error(message)
     }
-
+    
+    func showLoading(view: UIView) -> Void {
+        self.loadingView.frame = CGRect(x: 0, y:0, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height*2)
+        self.view.addSubview(self.loadingView)
+//        activityIndicatorView.center = CGPoint(x: self.loadingView.center.x, y: self.loadingView.center.y-50)
+//        self.activityIndicatorView.startAnimating()
+        UIView.animate(withDuration: 0.3, animations: {
+            self.loadingView.alpha = 1.0
+        })
+    }
+    
+    func hideLoading() -> Void {
+        UIView.animate(withDuration: 0.3, animations: {
+            self.loadingView.alpha = 0.0
+        }, completion: {
+            (finished: Bool) -> Void in
+//            self.activityIndicatorView.stopAnimating()
+            self.loadingView.removeFromSuperview()
+        })
+    }
 }

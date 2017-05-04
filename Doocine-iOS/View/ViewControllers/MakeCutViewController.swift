@@ -359,8 +359,8 @@ extension MakeCutViewController {
             
             if selectedMode == 1 {
                 self.imagePicker.allowsEditing = false
-//                self.imagePicker.sourceType = .camera
-                self.imagePicker.sourceType = .photoLibrary
+                self.imagePicker.sourceType = .camera
+//                self.imagePicker.sourceType = .photoLibrary
                 self.present(self.imagePicker, animated: true, completion: nil)
             } else {
                 self.imagePicker.allowsEditing = false
