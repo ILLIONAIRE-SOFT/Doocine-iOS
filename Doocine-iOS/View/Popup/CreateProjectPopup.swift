@@ -10,7 +10,7 @@ import UIKit
 import PopupController
 import RealmSwift
 
-class CreateProjectPopup: UIViewController, PopupContentViewController {
+class CreateProjectPopup: BaseViewController, PopupContentViewController {
     
     @IBOutlet weak var createButton: UIButton!
     @IBOutlet weak var closeButton: UIButton!
@@ -89,22 +89,27 @@ extension CreateProjectPopup {
 extension CreateProjectPopup {
     fileprivate func isComplete() -> Bool {
         if titleTextField.text == nil || titleTextField.text == "" {
+            self.dodoError("제목을 입력하세요.")
             return false
         }
         
         if groupTextField.text == nil || groupTextField.text == "" {
+            self.dodoError("그룹을 입력하세요.")
             return false
         }
         
         if directorTextField.text == nil || directorTextField.text == "" {
+            self.dodoError("디렉터를 입력하세요.")
             return false
         }
         
         if cameraTextField.text == nil || cameraTextField.text == "" {
+            self.dodoError("카메라맨을 입력하세요.")
             return false
         }
         
         if actorTextField.text == nil || actorTextField.text == "" {
+            self.dodoError("배우를 입력하세요.")
             return false
         }
         
