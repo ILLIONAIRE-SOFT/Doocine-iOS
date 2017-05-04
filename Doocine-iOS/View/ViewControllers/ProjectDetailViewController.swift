@@ -149,7 +149,11 @@ extension ProjectDetailViewController: UITableViewDelegate, UITableViewDataSourc
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return scenes.count + 1
+        if scenes.count == 0 {
+            return 0
+        } else {
+            return scenes.count + 1
+        }
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {

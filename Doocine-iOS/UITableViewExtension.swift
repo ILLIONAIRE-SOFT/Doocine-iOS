@@ -40,11 +40,9 @@ extension UIScrollView {
         croppingRect.origin = self.contentOffset
         return self.screenshotForCroppingRect(croppingRect: croppingRect)
     }
-    
 }
 
 extension UITableView {
-    
     override var screenshot : UIImage? {
         return self.screenshotExcludingHeadersAtSections(excludedHeaderSections: nil, excludingFootersAtSections:nil, excludingRowsAtIndexPaths:nil)
     }
