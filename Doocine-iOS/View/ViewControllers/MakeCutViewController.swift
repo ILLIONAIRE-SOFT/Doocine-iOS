@@ -157,7 +157,7 @@ class MakeCutViewController: BaseViewController {
     
     public func makeCut() -> Void {
         if dialogTextField.text == "" || dialogTextField.text == nil {
-            print("메세지를 입력하세요.")
+            self.dodoError("메세지를 입력하세요.")
             return
         }
         let cut = Cut()
@@ -195,7 +195,7 @@ class MakeCutViewController: BaseViewController {
     
     public func updateCut() -> Void {
         if dialogTextField.text == "" || dialogTextField.text == nil {
-            print("메세지를 입력하세요.")
+            self.dodoError("메세지를 입력하세요.")
             return
         }
         

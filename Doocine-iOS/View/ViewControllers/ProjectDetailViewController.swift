@@ -300,10 +300,11 @@ extension ProjectDetailViewController {
 extension ProjectDetailViewController {
     public func tappedShare() -> Void {
         let shareImage = self.tableView.screenshot
-        let activityVC = UIActivityViewController(activityItems: [shareImage], applicationActivities: nil)
+        
+        let shareItems: Array = [shareImage]
+        let activityVC = UIActivityViewController(activityItems: shareItems, applicationActivities: nil)
         
         activityVC.popoverPresentationController?.sourceView = self.view
-        activityVC.excludedActivityTypes = [UIActivityType.airDrop, UIActivityType.message, UIActivityType.mail, UIActivityType.postToFacebook, UIActivityType.addToReadingList, UIActivityType.saveToCameraRoll]
         
         self.present(activityVC, animated: true, completion: nil)
     }
