@@ -17,6 +17,7 @@ class HomeViewController: BaseViewController {
     @IBOutlet weak var browseAllButton: UIButton!
     @IBOutlet weak var projectCountLabel: UILabel!
     @IBOutlet weak var collectionView: UICollectionView!
+    @IBOutlet weak var youtubeChannelLabel: UILabel!
     var projects: [MovieStoryboard] = [MovieStoryboard]()
     
     fileprivate let sectionInsets = UIEdgeInsets(top: 10.0, left: 24.0, bottom: 10.0, right: 24.0)
@@ -51,6 +52,15 @@ class HomeViewController: BaseViewController {
         self.collectionView.dataSource = self
         self.collectionView.register(MakeProjectCell.self, forCellWithReuseIdentifier: "MakeProjectCell")
         self.collectionView.register(ProjectCell.self, forCellWithReuseIdentifier: "ProjectCell")
+        
+        let tappedYoutube = UITapGestureRecognizer(target: self, action: #selector(tappedYoutubeChannel))
+        
+        self.youtubeChannelLabel.addGestureRecognizer(tappedYoutube)
+        self.youtubeChannelLabel.isUserInteractionEnabled = true
+        self.youtubeChannelLabel.backgroundColor = UIColor.red
+        self.youtubeChannelLabel.clipsToBounds = true
+        self.youtubeChannelLabel.textColor = .white
+        self.youtubeChannelLabel.layer.cornerRadius = 8
     }
     
     private func initButtons() -> Void {
@@ -61,7 +71,6 @@ class HomeViewController: BaseViewController {
         self.projects.removeAll()
         
         let realm = try! Realm()
-//        print(realm.objects(MovieStoryboard.self))
         
         let movieStoryboards = realm.objects(MovieStoryboard.self)
         
@@ -149,8 +158,6 @@ extension HomeViewController {
                                                 .layout(.center),
                                                 .movesAlongWithKeyboard(true)
                                                 ])
-//        popup.view.layer.cornerRadius = 24
-//        popup.view.clipsToBounds = true
         
         let popupSB = UIStoryboard(name: "Popup", bundle: nil)
         let controller = popupSB.instantiateViewController(withIdentifier: "CreateProjectPopup") as! CreateProjectPopup
@@ -187,9 +194,15 @@ extension HomeViewController {
         self.navigationController?.pushViewController(controller!, animated: true)
     }
     
-    func tappedIntro() -> Void {
+    public func tappedIntro() -> Void {
         let url = URL(string: "http://oocine.org/index.php/about-us-oocine/")!
         
         UIApplication.shared.openURL(url)
+    }
+    
+    public func tappedYoutubeChannel() -> Void {
+        let url = URL(string: "https://www.youtube.com/channel/UCCy867k4zCevUFLL8zSOqwA")
+        
+        UIApplication.shared.openURL(url!)
     }
 }
