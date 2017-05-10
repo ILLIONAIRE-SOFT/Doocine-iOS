@@ -79,7 +79,7 @@ class HomeViewController: BaseViewController {
         }
         
         self.collectionView.reloadData()
-        self.projectCountLabel.text = String(self.projects.count)
+        self.projectCountLabel.text = String(self.projects.count) + "projects"
     }
 }
 
