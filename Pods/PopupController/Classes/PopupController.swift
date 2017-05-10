@@ -359,7 +359,7 @@ private extension PopupController {
         }
         popupView.frame.size = child.sizeForPopup(self, size: maximumSize, showingKeyboard: isShowingKeyboard)
         baseScrollView.contentInset.top = origin.y - popupView.frame.height
-        baseScrollView.contentOffset.y = -baseScrollView.contentInset.top
+        baseScrollView.contentOffset.y = -baseScrollView.contentInset.top + 120
         defaultContentOffset = baseScrollView.contentOffset
     }
     
