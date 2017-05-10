@@ -349,10 +349,10 @@
             </objects>
             <point key="canvasLocation" x="2255" y="824"/>
         </scene>
-        <!--View Controller-->
+        <!--Youtube View Controller-->
         <scene sceneID="WOH-LM-B0R">
             <objects>
-                <viewController id="TOQ-Gd-Q3c" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="YoutubeViewController" id="TOQ-Gd-Q3c" customClass="YoutubeViewController" customModule="Doocine_iOS" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="G25-kt-dGS"/>
                         <viewControllerLayoutGuide type="bottom" id="a4W-0K-eqR"/>
@@ -360,8 +360,23 @@
                     <view key="view" contentMode="scaleToFill" id="UQw-eI-9Vg">
                         <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="f3X-Oa-AXL">
+                                <rect key="frame" x="0.0" y="20" width="768" height="1004"/>
+                                <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </webView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="f3X-Oa-AXL" secondAttribute="trailing" id="Uaw-v9-DuW"/>
+                            <constraint firstItem="f3X-Oa-AXL" firstAttribute="top" secondItem="G25-kt-dGS" secondAttribute="bottom" id="ihJ-dK-UTS"/>
+                            <constraint firstItem="a4W-0K-eqR" firstAttribute="top" secondItem="f3X-Oa-AXL" secondAttribute="bottom" id="iwe-Ph-IDV"/>
+                            <constraint firstItem="f3X-Oa-AXL" firstAttribute="leading" secondItem="UQw-eI-9Vg" secondAttribute="leading" id="ppF-J8-eOw"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="webView" destination="f3X-Oa-AXL" id="hpy-jd-l1C"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rei-Us-C91" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

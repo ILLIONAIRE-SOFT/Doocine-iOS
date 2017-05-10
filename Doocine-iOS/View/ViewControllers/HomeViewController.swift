@@ -201,8 +201,12 @@ extension HomeViewController {
     }
     
     public func tappedYoutubeChannel() -> Void {
-        let url = URL(string: "https://www.youtube.com/channel/UCCy867k4zCevUFLL8zSOqwA")
+//        let url = URL(string: "https://www.youtube.com/channel/UCCy867k4zCevUFLL8zSOqwA")
+//        
+//        UIApplication.shared.openURL(url!)
         
-        UIApplication.shared.openURL(url!)
+        let controller = storyboard?.instantiateViewController(withIdentifier: "YoutubeViewController") as! YoutubeViewController
+        
+        self.navigationController?.pushViewController(controller, animated: true)
     }
 }
