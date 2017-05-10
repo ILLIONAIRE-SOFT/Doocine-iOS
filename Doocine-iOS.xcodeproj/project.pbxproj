@@ -16,6 +16,7 @@
 		492430B61E8401AD00C3BBA0 /* HomeHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 492430B51E8401AD00C3BBA0 /* HomeHeaderView.swift */; };
 		492430B81E840AF500C3BBA0 /* ProjectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 492430B71E840AF500C3BBA0 /* ProjectView.swift */; };
 		492430BA1E840B1000C3BBA0 /* MakeNewProjectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 492430B91E840B1000C3BBA0 /* MakeNewProjectView.swift */; };
+		492C24601EC323D800029F18 /* YoutubeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 492C245F1EC323D800029F18 /* YoutubeViewController.swift */; };
 		4939D6B91EA0667000A90B96 /* CameraWalkPopup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4939D6B81EA0667000A90B96 /* CameraWalkPopup.swift */; };
 		493D68641E9A522500A67670 /* ProjectStartCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 493D68631E9A522500A67670 /* ProjectStartCell.swift */; };
 		4947661D1E7D0D000024F9A2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4947661C1E7D0D000024F9A2 /* AppDelegate.swift */; };
@@ -59,6 +60,7 @@
 		492430B51E8401AD00C3BBA0 /* HomeHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HomeHeaderView.swift; path = View/CustomView/HomeHeaderView.swift; sourceTree = "<group>"; };
 		492430B71E840AF500C3BBA0 /* ProjectView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ProjectView.swift; path = View/CustomView/ProjectView.swift; sourceTree = "<group>"; };
 		492430B91E840B1000C3BBA0 /* MakeNewProjectView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MakeNewProjectView.swift; path = View/CustomView/MakeNewProjectView.swift; sourceTree = "<group>"; };
+		492C245F1EC323D800029F18 /* YoutubeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = YoutubeViewController.swift; path = View/ViewControllers/YoutubeViewController.swift; sourceTree = "<group>"; };
 		4939D6B81EA0667000A90B96 /* CameraWalkPopup.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CameraWalkPopup.swift; path = View/Popup/CameraWalkPopup.swift; sourceTree = "<group>"; };
 		493D68631E9A522500A67670 /* ProjectStartCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ProjectStartCell.swift; path = Cell/ProjectStartCell.swift; sourceTree = "<group>"; };
 		494766191E7D0D000024F9A2 /* Doocine-iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Doocine-iOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -130,6 +132,14 @@
 				492430B91E840B1000C3BBA0 /* MakeNewProjectView.swift */,
 			);
 			name = Home;
+			sourceTree = "<group>";
+		};
+		492C245E1EC323C800029F18 /* Youtube */ = {
+			isa = PBXGroup;
+			children = (
+				492C245F1EC323D800029F18 /* YoutubeViewController.swift */,
+			);
+			name = Youtube;
 			sourceTree = "<group>";
 		};
 		493D68621E9A520700A67670 /* ProjectStart */ = {
@@ -210,6 +220,7 @@
 		494766311E7D0E720024F9A2 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				492C245E1EC323C800029F18 /* Youtube */,
 				496882441EA0915E0068605A /* Intro */,
 				49A9DF931E9564A8008F75AB /* ProjectDetail */,
 				49A9DF8D1E954AA0008F75AB /* ProjectList */,
@@ -495,6 +506,7 @@
 				494766331E7D0E900024F9A2 /* SplashViewController.swift in Sources */,
 				491FDA2C1E9FBE150010FB8A /* ShotSizeViewController.swift in Sources */,
 				494766361E7D0F6B0024F9A2 /* MovieStoryboard.swift in Sources */,
+				492C24601EC323D800029F18 /* YoutubeViewController.swift in Sources */,
 				4939D6B91EA0667000A90B96 /* CameraWalkPopup.swift in Sources */,
 				49A9DF921E9550ED008F75AB /* ProjectListCell.swift in Sources */,
 				49F8E3BB1E7D149B004A61B3 /* TutorialViewController.swift in Sources */,
