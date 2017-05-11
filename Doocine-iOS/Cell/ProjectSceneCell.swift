@@ -151,7 +151,9 @@ class ProjectSceneCell: UITableViewCell {
         }
         
         let editSceneButton = UIButton()
-        editSceneButton.setImage(UIImage(named: "icon_edit"), for: .normal)
+        
+        editSceneButton.tintColor = .orange
+        editSceneButton.setImage(UIImage(named: "icon_edit")?.withRenderingMode(.alwaysTemplate), for: .normal)
         editSceneButton.addTarget(self, action: #selector(tappedScene), for: .touchUpInside)
         
         headerView.addSubview(editSceneButton)
@@ -164,7 +166,8 @@ class ProjectSceneCell: UITableViewCell {
         }
         
         let addButton = UIButton()
-        addButton.setImage(UIImage(named: "icon_add_box"), for: .normal)
+        addButton.tintColor = UIColor.orange
+        addButton.setImage(UIImage(named: "icon_add_box")?.withRenderingMode(.alwaysTemplate), for: .normal)
         addButton.addTarget(self, action: #selector(goToMakeCut), for: .touchUpInside)
         addButton.layer.cornerRadius = 8
         
@@ -234,7 +237,8 @@ class ProjectSceneCell: UITableViewCell {
             
             // MARK: - Cut Edit Button
             let cutEditButton = UIButton()
-            cutEditButton.setImage(UIImage(named: "icon_edit"), for: .normal)
+            cutEditButton.tintColor = UIColor.orange
+            cutEditButton.setImage(UIImage(named: "icon_edit")?.withRenderingMode(.alwaysTemplate), for: .normal)
             
             let tapCut = MyTapGestureRecognizer(target: self, action: #selector(tappedCut))
             tapCut.cutId = i

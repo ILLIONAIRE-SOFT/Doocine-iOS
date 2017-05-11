@@ -35,6 +35,9 @@ class MakeSceneViewController: BaseViewController {
     }
     
     private func initButton() -> Void {
+        deleteButton.tintColor = UIColor.orange
+        deleteButton.setImage(UIImage(named: "icon_delete")?.withRenderingMode(.alwaysTemplate), for: .normal)
+        
         if isUpdate {
             deleteButton.isHidden = false
             deleteButton.addTarget(self, action: #selector(tappedDelete), for: .touchUpInside)
