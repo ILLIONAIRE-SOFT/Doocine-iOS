@@ -1029,6 +1029,6 @@
         <image name="img_home_title" width="243" height="116"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="WId-FU-vlQ"/>
+        <segue reference="ITD-rp-xTe"/>
     </inferredMetricsTieBreakers>
 </document>
