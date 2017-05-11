@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SnapKit
 
 class TutorialViewController: BaseViewController {
     @IBOutlet weak var scrollView: UIScrollView!
@@ -66,12 +67,54 @@ extension TutorialViewController {
     }
     
     private func makeFirstLandingPage(offset: CGFloat, width: CGFloat, height: CGFloat) -> Void {
-        let firstPage = UIImageView(frame: CGRect(x: offset, y: 0, width: width, height: height))
-        firstPage.image = UIImage(named: "img_tutorial_1")
-        firstPage.backgroundColor = UIColor.white
-        firstPage.contentMode = .scaleAspectFit
+        let firstView = UIView(frame: CGRect(x: offset, y: 0, width: width, height: height))
+        firstView.backgroundColor = UIColor.white
         
-        scrollView.addSubview(firstPage)
+        let firstImageView = UIImageView()
+        firstImageView.image = UIImage(named: "img_tutorial_1")
+        firstImageView.contentMode = .scaleAspectFit
+        
+        firstView.addSubview(firstImageView)
+        
+        firstImageView.snp.makeConstraints { (make) in
+            make.top.equalTo(firstView).offset(128)
+            make.centerX.equalTo(firstView)
+            make.width.equalTo(360)
+            make.height.equalTo(360)
+        }
+        
+        let firstTextHeader = UILabel()
+        firstTextHeader.text = "공공씨네OOCINE는"
+        firstTextHeader.font = UIFont.boldSystemFont(ofSize: 24)
+        firstTextHeader.textColor = UIColor.darkGray
+        firstTextHeader.textAlignment = .center
+        
+        firstView.addSubview(firstTextHeader)
+        
+        firstTextHeader.snp.makeConstraints { (make) in
+            make.centerX.equalTo(firstView)
+            make.left.equalTo(firstView).offset(24)
+            make.right.equalTo(firstView).offset(-24)
+            make.top.equalTo(firstImageView.snp.bottom).offset(64)
+        }
+        
+        let firstTextView = UITextView()
+        firstTextView.text = "종이와 펜으로 이뤄지는 낡은 교육을 혁신하고,\n영상을 통해 새로운 시대에 맞는\n새로운 교육콘텐츠를 다양한 영역에 제공합니다."
+        firstTextView.textAlignment = .center
+        firstTextView.textColor = UIColor.gray
+        firstTextView.font = UIFont.systemFont(ofSize: 20)
+        
+        firstView.addSubview(firstTextView)
+        
+        firstTextView.snp.makeConstraints { (make) in
+            make.centerX.equalTo(firstView)
+            make.left.equalTo(firstView).offset(24)
+            make.right.equalTo(firstView).offset(-24)
+            make.bottom.equalTo(firstView).offset(-24)
+            make.top.equalTo(firstTextHeader.snp.bottom).offset(8)
+        }
+        
+        scrollView.addSubview(firstView)
     }
     
     private func makeSecondLandingPage(offset: CGFloat, width: CGFloat, height: CGFloat) -> Void {

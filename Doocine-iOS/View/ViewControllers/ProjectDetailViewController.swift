@@ -60,7 +60,7 @@ class ProjectDetailViewController: BaseViewController {
     private func initNavigation() -> Void {
         super.initNavigation(barTintColor: .white, barTitle: "PROJECT")
         
-        let shareBarButton = UIBarButtonItem(image: UIImage(named: "icon_file_upload"), style: .plain, target: self, action: #selector(tappedShare))
+        let shareBarButton = UIBarButtonItem(image: UIImage(named: "icon_export"), style: .plain, target: self, action: #selector(tappedShare))
         
         self.navigationItem.rightBarButtonItem = shareBarButton
     }
@@ -91,6 +91,8 @@ class ProjectDetailViewController: BaseViewController {
         self.reduceOrExpandButton.isUserInteractionEnabled = true
         let tapReduceOrExpand = UITapGestureRecognizer(target: self, action: #selector(tappedReduceOrExpand))
         self.reduceOrExpandButton.addGestureRecognizer(tapReduceOrExpand)
+        self.deleteProjectButton.tintColor = UIColor.orange
+        self.deleteProjectButton.setImage(UIImage(named: "icon_delete")?.withRenderingMode(.alwaysTemplate), for: .normal)
         self.deleteProjectButton.addTarget(self, action: #selector(tappedDelete), for: .touchUpInside)
     }
     

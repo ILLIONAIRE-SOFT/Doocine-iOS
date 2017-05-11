@@ -141,6 +141,8 @@ class MakeCutViewController: BaseViewController {
         self.makeButton.layer.cornerRadius = 8
         self.deleteButton.clipsToBounds = true
         self.deleteButton.layer.cornerRadius = 8
+        self.deleteButton.setImage(UIImage(named: "icon_delete")?.withRenderingMode(.alwaysTemplate), for: .normal)
+        self.deleteButton.tintColor = UIColor.orange
         
         if isUpdate {
             self.makeButton.setTitle("Save", for: .normal)
