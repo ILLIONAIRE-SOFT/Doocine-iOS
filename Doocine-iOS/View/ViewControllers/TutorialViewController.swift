@@ -118,21 +118,105 @@ extension TutorialViewController {
     }
     
     private func makeSecondLandingPage(offset: CGFloat, width: CGFloat, height: CGFloat) -> Void {
-        let secondPage = UIImageView(frame: CGRect(x: offset, y: 0, width: width, height: height))
-        secondPage.image = UIImage(named: "img_tutorial_2")
-        secondPage.backgroundColor = UIColor.white
-        secondPage.contentMode = .scaleAspectFit
+        let firstView = UIView(frame: CGRect(x: offset, y: 0, width: width, height: height))
+        firstView.backgroundColor = UIColor.white
         
-        scrollView.addSubview(secondPage)
+        let firstImageView = UIImageView()
+        firstImageView.image = UIImage(named: "img_tutorial_2")
+        firstImageView.contentMode = .scaleAspectFit
+        
+        firstView.addSubview(firstImageView)
+        
+        firstImageView.snp.makeConstraints { (make) in
+            make.top.equalTo(firstView).offset(128)
+            make.centerX.equalTo(firstView)
+            make.width.equalTo(360)
+            make.height.equalTo(360)
+        }
+        
+        let firstTextHeader = UILabel()
+        firstTextHeader.text = "한국인이 하루 중 영상을 보는 시간, 2시간."
+        firstTextHeader.font = UIFont.boldSystemFont(ofSize: 24)
+        firstTextHeader.textColor = UIColor.darkGray
+        firstTextHeader.textAlignment = .center
+        
+        firstView.addSubview(firstTextHeader)
+        
+        firstTextHeader.snp.makeConstraints { (make) in
+            make.centerX.equalTo(firstView)
+            make.left.equalTo(firstView).offset(24)
+            make.right.equalTo(firstView).offset(-24)
+            make.top.equalTo(firstImageView.snp.bottom).offset(64)
+        }
+        
+        let firstTextView = UITextView()
+        firstTextView.text = "공공씨네의 FILMMAKING 툴은\n누구나 쉽게 영상을 읽고 쓸수 있도록 하는\n교육도구로 사용됩니다."
+        firstTextView.textAlignment = .center
+        firstTextView.textColor = UIColor.gray
+        firstTextView.font = UIFont.systemFont(ofSize: 20)
+        
+        firstView.addSubview(firstTextView)
+        
+        firstTextView.snp.makeConstraints { (make) in
+            make.centerX.equalTo(firstView)
+            make.left.equalTo(firstView).offset(24)
+            make.right.equalTo(firstView).offset(-24)
+            make.bottom.equalTo(firstView).offset(-24)
+            make.top.equalTo(firstTextHeader.snp.bottom).offset(8)
+        }
+        
+        scrollView.addSubview(firstView)
     }
     
     private func makeThirdLandingPage(offset: CGFloat, width: CGFloat, height: CGFloat) -> Void {
-        let thirdPage = UIImageView(frame: CGRect(x: offset, y: 0, width: width, height: height))
-        thirdPage.image = UIImage(named: "img_tutorial_3")
-        thirdPage.backgroundColor = UIColor.white
-        thirdPage.contentMode = .scaleAspectFit
+        let firstView = UIView(frame: CGRect(x: offset, y: 0, width: width, height: height))
+        firstView.backgroundColor = UIColor.white
         
-        scrollView.addSubview(thirdPage)
+        let firstImageView = UIImageView()
+        firstImageView.image = UIImage(named: "img_tutorial_3")
+        firstImageView.contentMode = .scaleAspectFit
+        
+        firstView.addSubview(firstImageView)
+        
+        firstImageView.snp.makeConstraints { (make) in
+            make.top.equalTo(firstView).offset(128)
+            make.centerX.equalTo(firstView)
+            make.width.equalTo(360)
+            make.height.equalTo(360)
+        }
+        
+        let firstTextHeader = UILabel()
+        firstTextHeader.text = "이야기 시각화의 첫 단계, 스토리보드"
+        firstTextHeader.font = UIFont.boldSystemFont(ofSize: 24)
+        firstTextHeader.textColor = UIColor.darkGray
+        firstTextHeader.textAlignment = .center
+        
+        firstView.addSubview(firstTextHeader)
+        
+        firstTextHeader.snp.makeConstraints { (make) in
+            make.centerX.equalTo(firstView)
+            make.left.equalTo(firstView).offset(24)
+            make.right.equalTo(firstView).offset(-24)
+            make.top.equalTo(firstImageView.snp.bottom).offset(64)
+        }
+        
+        let firstTextView = UITextView()
+        firstTextView.text = "DooCine-Storyboard는\n직접 찍은 사진을 통해 이야기 시각화의 과정을\n쉽게 도와주는 어플리케이션 입니다."
+        firstTextView.textAlignment = .center
+        firstTextView.textColor = UIColor.gray
+        firstTextView.font = UIFont.systemFont(ofSize: 20)
+        
+        firstView.addSubview(firstTextView)
+        
+        firstTextView.snp.makeConstraints { (make) in
+            make.centerX.equalTo(firstView)
+            make.left.equalTo(firstView).offset(24)
+            make.right.equalTo(firstView).offset(-24)
+            make.bottom.equalTo(firstView).offset(-24)
+            make.top.equalTo(firstTextHeader.snp.bottom).offset(8)
+        }
+        
+        scrollView.addSubview(firstView)
     }
 }
 
