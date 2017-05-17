@@ -16,7 +16,10 @@ class ProjectListCell: UICollectionViewCell {
         
         self.backgroundColor = UIColor.lightGray
         self.layer.cornerRadius = 10
+        self.layer.borderColor = UIColor.lightGray.withAlphaComponent(0.7).cgColor
+        self.layer.borderWidth = 0.5
         self.clipsToBounds = true
+        
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -71,7 +74,8 @@ class ProjectListCell: UICollectionViewCell {
             make.left.equalTo(self)
             make.right.equalTo(self)
             make.top.equalTo(projectImage.snp.bottom)
-            make.height.equalTo(self.frame.height*0.5*0.6)
+            make.bottom.equalTo(self)
+//            make.height.equalTo(self.frame.height*0.5*0.6)
         }
         
         let projectGroup = UILabel()
@@ -96,30 +100,30 @@ class ProjectListCell: UICollectionViewCell {
             make.centerY.equalTo(bodyView).offset(16)
         }
         
-        let separator = UILabel()
-        separator.backgroundColor = UIColor.gray
-        
-        bodyView.addSubview(separator)
-        
-        separator.snp.makeConstraints { (make) in
-            make.height.equalTo(0.5)
-            make.left.equalTo(bodyView)
-            make.right.equalTo(bodyView)
-            make.bottom.equalTo(bodyView)
-        }
+//        let separator = UILabel()
+//        separator.backgroundColor = UIColor.gray
+//        
+//        bodyView.addSubview(separator)
+//        
+//        separator.snp.makeConstraints { (make) in
+//            make.height.equalTo(0.5)
+//            make.left.equalTo(bodyView)
+//            make.right.equalTo(bodyView)
+//            make.bottom.equalTo(bodyView)
+//        }
         
         // MARK: - Tail View
-        let tailView = UIView()
-        tailView.backgroundColor = UIColor.white
-        
-        self.addSubview(tailView)
-        
-        tailView.snp.makeConstraints { (make) in
-            make.left.equalTo(self)
-            make.right.equalTo(self)
-            make.top.equalTo(bodyView.snp.bottom)
-            make.height.equalTo(self.frame.height*0.5*0.4)
-        }
+//        let tailView = UIView()
+//        tailView.backgroundColor = UIColor.white
+//        
+//        self.addSubview(tailView)
+//        
+//        tailView.snp.makeConstraints { (make) in
+//            make.left.equalTo(self)
+//            make.right.equalTo(self)
+//            make.top.equalTo(bodyView.snp.bottom)
+//            make.height.equalTo(self.frame.height*0.5*0.4)
+//        }
         
 //        let sceneCountLabel = UILabel()
 //        sceneCountLabel.text = "SCENE 13"

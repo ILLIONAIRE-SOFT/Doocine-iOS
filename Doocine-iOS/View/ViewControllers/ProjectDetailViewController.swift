@@ -173,7 +173,12 @@ extension ProjectDetailViewController: UITableViewDelegate, UITableViewDataSourc
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         switch indexPath.row {
         case 0:
-            let cell = ProjectStartCell(style: .default, reuseIdentifier: "ProjectStartCell")
+            var isEmpty: Bool = false
+            if scenes.count == 0 {
+                isEmpty = true
+            }
+            
+            let cell = ProjectStartCell(style: .default, reuseIdentifier: "ProjectStartCell", isEmpty: isEmpty)
             return cell
             
         default:
