@@ -12,6 +12,8 @@ import RealmSwift
 
 class MakeCutViewController: BaseViewController {
     
+    @IBOutlet weak var editCutNumberButton: UIButton!
+    
     var isUpdate: Bool = false
     var originCut: Cut!
     var sceneId: Int!
@@ -101,7 +103,7 @@ class MakeCutViewController: BaseViewController {
             isPhotoPicked = true
             self.cutImage.image = photo
         } else {
-            self.cutImage.image = UIImage(named: "img_banner_doocine")
+            self.cutImage.image = UIImage(named: "img_empty")
         }
         
         if let secondPhoto = PhotoManager.loadImage(imageId: self.originCut.id, isSecondImage: true) {
@@ -109,7 +111,7 @@ class MakeCutViewController: BaseViewController {
             isSecondPhotoPicked = true
             self.secondCutImage.image = secondPhoto
         } else {
-            self.secondCutImage.image = UIImage(named: "img_banner_doocine")
+            self.secondCutImage.image = UIImage(named: "img_empty")
         }
         
         if self.cameraWalkValueLabel.text == "FIX" {
@@ -155,6 +157,8 @@ class MakeCutViewController: BaseViewController {
             
             self.deleteButton.isHidden = true
         }
+        
+        self.editCutNumberButton.addTarget(self, action: #selector(tappedEditCutNumber), for: .touchUpInside)
     }
     
     public func makeCut() -> Void {
@@ -293,7 +297,6 @@ extension MakeCutViewController {
         let controller = popupSB.instantiateViewController(withIdentifier: "ShotSizeViewController") as! ShotSizeViewController
         
         controller.delegateSelect = { (selectedSize) in
-            print(selectedSize)
             self.shotSizeValueLabel.text = selectedSize
             popup.dismiss()
         }
@@ -303,6 +306,29 @@ extension MakeCutViewController {
         
         popup.didCloseHandler { (_) in
         }
+        
+        popup = popup.show(controller)
+    }
+    
+    public func tappedEditCutNumber() -> Void {
+        var popup = PopupController.create(self).customize(
+            [.animation(.slideUp),
+             .scrollable(false),
+             .backgroundStyle(.blackFilter(alpha:0.7)),
+             .layout(.center),
+             .movesAlongWithKeyboard(false)
+            ])
+        
+        
+        let popupSB = UIStoryboard(name: "Popup", bundle: nil)
+        let controller = popupSB.instantiateViewController(withIdentifier: "EditCutNumberPopup") as! EditCutNumberPopup
+        
+        controller.delegateSelect = { (selectedNum) in
+            self.cutNumberLabel.text = "\(selectedNum)"
+            popup.dismiss()
+        }
+        
+        controller.originCutNumber = Int(self.cutNumberLabel.text!)!
         
         popup = popup.show(controller)
     }

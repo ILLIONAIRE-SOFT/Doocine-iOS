@@ -51,9 +51,15 @@ class ProjectSceneCell: UITableViewCell {
         self.addSubview(centerLine)
         centerLine.snp.makeConstraints { (make) in
             make.width.equalTo(1)
-            make.height.equalTo(self)
+            if cuts.count != 0 {
+                make.height.equalTo(self)
+            } else {
+                make.height.equalTo(54)
+            }
+            
+            make.top.equalTo(self)
             make.left.equalTo(self).offset(88)
-            make.centerY.equalTo(self)
+//            make.centerY.equalTo(self)
         }
         
         // MARK: - Header
@@ -96,15 +102,15 @@ class ProjectSceneCell: UITableViewCell {
             make.top.equalTo(headerView)
             make.bottom.equalTo(headerView)
         }
-//        let sceneHeader = UILabel()
-//        sceneHeader.text = "SCENE"
-//        
-//        headerView.addSubview(sceneHeader)
-//        
-//        sceneHeader.snp.makeConstraints { (make) in
-//            make.left.equalTo(sceneOrder.snp.right).offset(24)
-//            make.top.equalTo(headerView).offset(24)
-//        }
+        //        let sceneHeader = UILabel()
+        //        sceneHeader.text = "SCENE"
+        //
+        //        headerView.addSubview(sceneHeader)
+        //
+        //        sceneHeader.snp.makeConstraints { (make) in
+        //            make.left.equalTo(sceneOrder.snp.right).offset(24)
+        //            make.top.equalTo(headerView).offset(24)
+        //        }
         
         let placeHeader = UILabel()
         placeHeader.font = UIFont.systemFont(ofSize: 12)
@@ -206,6 +212,8 @@ class ProjectSceneCell: UITableViewCell {
             bodyView.backgroundColor = .white
             bodyView.clipsToBounds = true
             bodyView.layer.cornerRadius = 16
+            bodyView.layer.borderColor = UIColor.lightGray.withAlphaComponent(0.7).cgColor
+            bodyView.layer.borderWidth = 0.5
             
             self.addSubview(bodyView)
             
@@ -261,7 +269,7 @@ class ProjectSceneCell: UITableViewCell {
             if cutImage != nil {
                 imageView.image = cutImage
             } else {
-                imageView.image = UIImage(named: "img_banner_doocine")
+                imageView.image = UIImage(named: "img_empty")
             }
             
             imageView.clipsToBounds = true
@@ -276,6 +284,62 @@ class ProjectSceneCell: UITableViewCell {
                 make.height.equalTo(300)
             })
             
+            /*
+             Shot size
+             */
+            
+            let shotSizeHeader = UILabel()
+            shotSizeHeader.text = "SHOT SIZE"
+            shotSizeHeader.textColor = UIColor.darkGray
+            shotSizeHeader.font = UIFont.systemFont(ofSize: 15)
+            
+            bodyView.addSubview(shotSizeHeader)
+            
+            shotSizeHeader.snp.makeConstraints({ (make) in
+                make.left.equalTo(bodyView).offset(16)
+                make.top.equalTo(bodyView).offset(360)
+//                make.top.equalTo(dialogMessage.snp.bottom).offset(8)
+            })
+            
+            let shotSizeValue = UILabel()
+            shotSizeValue.text = cuts[i].shotSize
+            
+            bodyView.addSubview(shotSizeValue)
+            
+            shotSizeValue.snp.makeConstraints({ (make) in
+                make.left.equalTo(shotSizeHeader.snp.right).offset(16)
+                make.centerY.equalTo(shotSizeHeader)
+            })
+            
+            /*
+             Camera Walk
+             */
+            
+            let cameraWalkHeader = UILabel()
+            cameraWalkHeader.text = "CAMERA WALK"
+            cameraWalkHeader.textColor = UIColor.darkGray
+            cameraWalkHeader.font = UIFont.systemFont(ofSize: 15)
+            
+            bodyView.addSubview(cameraWalkHeader)
+            
+            cameraWalkHeader.snp.makeConstraints({ (make) in
+                make.left.equalTo(bodyView.snp.centerX).offset(32)
+                make.centerY.equalTo(shotSizeHeader)
+            })
+            
+            let cameraWalkValue = UILabel()
+            cameraWalkValue.text = cuts[i].cameraWalkMode
+            
+            bodyView.addSubview(cameraWalkValue)
+            
+            cameraWalkValue.snp.makeConstraints({ (make) in
+                make.left.equalTo(cameraWalkHeader.snp.right).offset(16)
+                make.centerY.equalTo(shotSizeHeader)
+            })
+            
+            /*
+             Dialog
+             */
             let dialogImage = UIImageView()
             dialogImage.image = UIImage(named: "icon_dialog")
             dialogImage.contentMode = .scaleAspectFit
@@ -284,7 +348,7 @@ class ProjectSceneCell: UITableViewCell {
             
             dialogImage.snp.makeConstraints({ (make) in
                 make.left.equalTo(bodyView).offset(16)
-                make.top.equalTo(bodyView).offset(360)
+                make.top.equalTo(shotSizeHeader.snp.bottom).offset(12)
                 make.width.equalTo(24)
                 make.height.equalTo(24)
             })
@@ -313,50 +377,6 @@ class ProjectSceneCell: UITableViewCell {
                 make.top.equalTo(dialogImage.snp.bottom).offset(8)
             })
             
-            let shotSizeHeader = UILabel()
-            shotSizeHeader.text = "SHOT SIZE"
-            shotSizeHeader.textColor = UIColor.darkGray
-            shotSizeHeader.font = UIFont.systemFont(ofSize: 15)
-            
-            bodyView.addSubview(shotSizeHeader)
-            
-            shotSizeHeader.snp.makeConstraints({ (make) in
-                make.left.equalTo(bodyView).offset(16)
-                make.top.equalTo(dialogMessage.snp.bottom).offset(8)
-            })
-            
-            let shotSizeValue = UILabel()
-            shotSizeValue.text = cuts[i].shotSize
-            
-            bodyView.addSubview(shotSizeValue)
-            
-            shotSizeValue.snp.makeConstraints({ (make) in
-                make.left.equalTo(shotSizeHeader.snp.right).offset(16)
-                make.centerY.equalTo(shotSizeHeader)
-            })
-            
-            let cameraWalkHeader = UILabel()
-            cameraWalkHeader.text = "CAMERA WALK"
-            cameraWalkHeader.textColor = UIColor.darkGray
-            cameraWalkHeader.font = UIFont.systemFont(ofSize: 15)
-            
-            bodyView.addSubview(cameraWalkHeader)
-            
-            cameraWalkHeader.snp.makeConstraints({ (make) in
-                make.left.equalTo(shotSizeValue.snp.right).offset(32)
-                make.centerY.equalTo(shotSizeHeader)
-            })
-            
-            let cameraWalkValue = UILabel()
-            cameraWalkValue.text = cuts[i].cameraWalkMode
-            
-            bodyView.addSubview(cameraWalkValue)
-            
-            cameraWalkValue.snp.makeConstraints({ (make) in
-                make.left.equalTo(cameraWalkHeader.snp.right).offset(16)
-                make.centerY.equalTo(shotSizeHeader)
-            })
-            
             height += 460 + 24
             
             // MARK: - SubCut
@@ -365,12 +385,14 @@ class ProjectSceneCell: UITableViewCell {
                 subCut.backgroundColor = UIColor.black
                 subCut.clipsToBounds = true
                 subCut.layer.cornerRadius = 16
+                subCut.layer.borderWidth = 0.5
+                subCut.layer.borderColor = UIColor.lightGray.withAlphaComponent(0.7).cgColor
                 subCut.isUserInteractionEnabled = true
                 
-                let tapSubCut = MyTapGestureRecognizer(target: self, action: #selector(tappedCut))
-                tapSubCut.cutId = i
-                
-                subCut.addGestureRecognizer(tapSubCut)
+                //                let tapSubCut = MyTapGestureRecognizer(target: self, action: #selector(tappedCut))
+                //                tapSubCut.cutId = i
+                //
+                //                subCut.addGestureRecognizer(tapSubCut)
                 
                 self.addSubview(subCut)
                 
@@ -382,27 +404,27 @@ class ProjectSceneCell: UITableViewCell {
                 })
                 
                 // MARK: - Image View
-//                let imageView = UIImageView()
-//                
-//                let cutImage = PhotoManager.loadImage(imageId: cuts[i].id)
-//                
-//                if cutImage != nil {
-//                    imageView.image = cutImage
-//                } else {
-//                    imageView.image = UIImage(named: "img_banner_doocine")
-//                }
-//                
-//                imageView.clipsToBounds = true
-//                imageView.contentMode = .scaleAspectFill
-//                
-//                bodyView.addSubview(imageView)
-//                
-//                imageView.snp.makeConstraints({ (make) in
-//                    make.top.equalTo(bodyView).offset(48)
-//                    make.left.equalTo(bodyView)
-//                    make.right.equalTo(bodyView)
-//                    make.height.equalTo(300)
-//                })
+                //                let imageView = UIImageView()
+                //
+                //                let cutImage = PhotoManager.loadImage(imageId: cuts[i].id)
+                //
+                //                if cutImage != nil {
+                //                    imageView.image = cutImage
+                //                } else {
+                //                    imageView.image = UIImage(named: "img_banner_doocine")
+                //                }
+                //
+                //                imageView.clipsToBounds = true
+                //                imageView.contentMode = .scaleAspectFill
+                //
+                //                bodyView.addSubview(imageView)
+                //
+                //                imageView.snp.makeConstraints({ (make) in
+                //                    make.top.equalTo(bodyView).offset(48)
+                //                    make.left.equalTo(bodyView)
+                //                    make.right.equalTo(bodyView)
+                //                    make.height.equalTo(300)
+                //                })
                 let subCutImageView = UIImageView()
                 
                 let subCutImage = PhotoManager.loadImage(imageId: cuts[i].id, isSecondImage: true)
@@ -424,7 +446,7 @@ class ProjectSceneCell: UITableViewCell {
                     make.right.equalTo(subCut)
                     make.bottom.equalTo(subCut).offset(-24)
                 })
-            
+                
                 height += 360 + 24
             }
         }

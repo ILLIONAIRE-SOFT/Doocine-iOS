@@ -10,19 +10,19 @@ import UIKit
 import SnapKit
 
 class ProjectStartCell: UITableViewCell {
-    override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
+    init(style: UITableViewCellStyle, reuseIdentifier: String?, isEmpty: Bool = false) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         
         self.selectionStyle = .none
         self.backgroundColor = UIColor.groupTableViewBackground
-        self.initCell()
+        self.initCell(isEmpty: isEmpty)
     }
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
-    private func initCell() -> Void {
+    private func initCell(isEmpty: Bool) -> Void {
         let centerLine = UILabel()
         centerLine.backgroundColor = UIColor.darkGray
         
@@ -48,9 +48,13 @@ class ProjectStartCell: UITableViewCell {
         
         centerLine.snp.makeConstraints { (make) in
             make.width.equalTo(1)
-            make.height.equalTo(self)
+            make.top.equalTo(self)
             make.left.equalTo(self).offset(88)
-            make.centerY.equalTo(self)
+            if isEmpty {
+                make.height.equalTo(50)
+            } else {
+                make.height.equalTo(self)
+            }
         }
     }
     

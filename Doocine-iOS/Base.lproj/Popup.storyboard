@@ -296,6 +296,24 @@
             </objects>
             <point key="canvasLocation" x="569" y="188"/>
         </scene>
+        <!--Edit Cut Number Popup-->
+        <scene sceneID="9OM-fZ-PvV">
+            <objects>
+                <viewController storyboardIdentifier="EditCutNumberPopup" id="oAh-Zy-h0s" customClass="EditCutNumberPopup" customModule="Doocine_iOS" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="pW6-GB-Q0s"/>
+                        <viewControllerLayoutGuide type="bottom" id="r8k-B9-Ts3"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="zXl-3w-QmR">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="QgX-aR-EYF" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="569" y="879"/>
+        </scene>
         <!--Camera Walk Popup-->
         <scene sceneID="VMb-aj-Upv">
             <objects>

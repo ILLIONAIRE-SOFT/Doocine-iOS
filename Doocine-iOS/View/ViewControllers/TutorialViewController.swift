@@ -100,6 +100,7 @@ extension TutorialViewController {
         
         let firstTextView = UITextView()
         firstTextView.text = "종이와 펜으로 이뤄지는 낡은 교육을 혁신하고,\n영상을 통해 새로운 시대에 맞는\n새로운 교육콘텐츠를 다양한 영역에 제공합니다."
+        firstTextView.isUserInteractionEnabled = false
         firstTextView.textAlignment = .center
         firstTextView.textColor = UIColor.gray
         firstTextView.font = UIFont.systemFont(ofSize: 20)
@@ -151,6 +152,7 @@ extension TutorialViewController {
         
         let firstTextView = UITextView()
         firstTextView.text = "공공씨네의 FILMMAKING 툴은\n누구나 쉽게 영상을 읽고 쓸수 있도록 하는\n교육도구로 사용됩니다."
+        firstTextView.isUserInteractionEnabled = false
         firstTextView.textAlignment = .center
         firstTextView.textColor = UIColor.gray
         firstTextView.font = UIFont.systemFont(ofSize: 20)
@@ -164,7 +166,6 @@ extension TutorialViewController {
             make.bottom.equalTo(firstView).offset(-24)
             make.top.equalTo(firstTextHeader.snp.bottom).offset(8)
         }
-        
         scrollView.addSubview(firstView)
     }
     
@@ -202,6 +203,7 @@ extension TutorialViewController {
         
         let firstTextView = UITextView()
         firstTextView.text = "DooCine-Storyboard는\n직접 찍은 사진을 통해 이야기 시각화의 과정을\n쉽게 도와주는 어플리케이션 입니다."
+        firstTextView.isUserInteractionEnabled = false
         firstTextView.textAlignment = .center
         firstTextView.textColor = UIColor.gray
         firstTextView.font = UIFont.systemFont(ofSize: 20)
