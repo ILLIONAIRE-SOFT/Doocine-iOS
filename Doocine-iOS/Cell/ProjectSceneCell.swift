@@ -323,7 +323,7 @@ class ProjectSceneCell: UITableViewCell {
             bodyView.addSubview(cameraWalkHeader)
             
             cameraWalkHeader.snp.makeConstraints({ (make) in
-                make.left.equalTo(shotSizeValue.snp.right).offset(32)
+                make.left.equalTo(bodyView.snp.centerX).offset(32)
                 make.centerY.equalTo(shotSizeHeader)
             })
             
