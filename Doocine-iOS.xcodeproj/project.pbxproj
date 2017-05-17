@@ -28,6 +28,7 @@
 		4947663F1E7D14430024F9A2 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4947663E1E7D14430024F9A2 /* HomeViewController.swift */; };
 		494AF10C1E96092F005D704C /* ProjectSceneCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 494AF10B1E96092F005D704C /* ProjectSceneCell.swift */; };
 		496882461EA0917B0068605A /* IntroViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 496882451EA0917B0068605A /* IntroViewController.swift */; };
+		49898BC61ECC6665007C5360 /* EditCutNumberPopup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49898BC51ECC6665007C5360 /* EditCutNumberPopup.swift */; };
 		498A21F01E8C100400C1D5E1 /* CreateProjectPopup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 498A21EF1E8C100400C1D5E1 /* CreateProjectPopup.swift */; };
 		498A21F31E8C105300C1D5E1 /* Popup.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 498A21F11E8C105300C1D5E1 /* Popup.storyboard */; };
 		4997E9601E8CD7A8004F742E /* Cut.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4997E95F1E8CD7A8004F742E /* Cut.swift */; };
@@ -74,6 +75,7 @@
 		4947663E1E7D14430024F9A2 /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HomeViewController.swift; path = View/ViewControllers/HomeViewController.swift; sourceTree = "<group>"; };
 		494AF10B1E96092F005D704C /* ProjectSceneCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ProjectSceneCell.swift; path = Cell/ProjectSceneCell.swift; sourceTree = "<group>"; };
 		496882451EA0917B0068605A /* IntroViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = IntroViewController.swift; path = View/ViewControllers/IntroViewController.swift; sourceTree = "<group>"; };
+		49898BC51ECC6665007C5360 /* EditCutNumberPopup.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EditCutNumberPopup.swift; path = View/Popup/EditCutNumberPopup.swift; sourceTree = "<group>"; };
 		498A21EF1E8C100400C1D5E1 /* CreateProjectPopup.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CreateProjectPopup.swift; path = View/Popup/CreateProjectPopup.swift; sourceTree = "<group>"; };
 		498A21F21E8C105300C1D5E1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Popup.storyboard; sourceTree = "<group>"; };
 		4997E95F1E8CD7A8004F742E /* Cut.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Cut.swift; path = Model/Cut.swift; sourceTree = "<group>"; };
@@ -290,6 +292,7 @@
 				491FDA2B1E9FBE150010FB8A /* ShotSizeViewController.swift */,
 				4939D6B81EA0667000A90B96 /* CameraWalkPopup.swift */,
 				49C4A5B91EB08BD1007B0D04 /* PhotoModePopup.swift */,
+				49898BC51ECC6665007C5360 /* EditCutNumberPopup.swift */,
 			);
 			name = Popup;
 			sourceTree = "<group>";
@@ -496,6 +499,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				49898BC61ECC6665007C5360 /* EditCutNumberPopup.swift in Sources */,
 				49131E011E9F1A53002108A2 /* MakeSceneViewController.swift in Sources */,
 				494AF10C1E96092F005D704C /* ProjectSceneCell.swift in Sources */,
 				49FD2F941EA462F700F40C44 /* MakeProjectCell.swift in Sources */,
