@@ -261,7 +261,7 @@ class ProjectSceneCell: UITableViewCell {
             if cutImage != nil {
                 imageView.image = cutImage
             } else {
-                imageView.image = UIImage(named: "img_banner_doocine")
+                imageView.image = UIImage(named: "img_empty")
             }
             
             imageView.clipsToBounds = true
@@ -367,10 +367,10 @@ class ProjectSceneCell: UITableViewCell {
                 subCut.layer.cornerRadius = 16
                 subCut.isUserInteractionEnabled = true
                 
-                let tapSubCut = MyTapGestureRecognizer(target: self, action: #selector(tappedCut))
-                tapSubCut.cutId = i
-                
-                subCut.addGestureRecognizer(tapSubCut)
+//                let tapSubCut = MyTapGestureRecognizer(target: self, action: #selector(tappedCut))
+//                tapSubCut.cutId = i
+//                
+//                subCut.addGestureRecognizer(tapSubCut)
                 
                 self.addSubview(subCut)
                 
