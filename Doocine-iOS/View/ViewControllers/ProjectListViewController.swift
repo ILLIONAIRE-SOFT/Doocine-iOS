@@ -22,6 +22,10 @@ class ProjectListViewController: BaseViewController {
         
         self.initNavigation()
         self.initViews()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         self.refresh()
     }
     
