@@ -43,13 +43,13 @@ class ProjectListCell: UICollectionViewCell {
                 if cutImage != nil {
                     projectImage.image = cutImage
                 } else {
-                    projectImage.image = UIImage(named: "img_banner_doocine")
+                    projectImage.image = UIImage(named: "icon_add_img")
                 }
             } else {
-                projectImage.image = UIImage(named: "img_banner_doocine")
+                projectImage.image = UIImage(named: "icon_add_img")
             }
         } else {
-            projectImage.image = UIImage(named: "img_banner_doocine")
+            projectImage.image = UIImage(named: "icon_add_img")
         }
         
         projectImage.contentMode = .scaleAspectFill

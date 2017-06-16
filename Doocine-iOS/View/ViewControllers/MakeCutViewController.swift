@@ -100,6 +100,7 @@ class MakeCutViewController: BaseViewController {
         
         if let photo = PhotoManager.loadImage(imageId: self.originCut.id) {
             self.pickedPhoto = photo
+            self.cutImage.contentMode = .scaleAspectFit
             isPhotoPicked = true
             self.cutImage.image = photo
         } else {
@@ -108,6 +109,7 @@ class MakeCutViewController: BaseViewController {
         
         if let secondPhoto = PhotoManager.loadImage(imageId: self.originCut.id, isSecondImage: true) {
             self.pickedSecondPhoto = secondPhoto
+            self.secondCutImage.contentMode = .scaleAspectFit
             isSecondPhotoPicked = true
             self.secondCutImage.image = secondPhoto
         } else {
@@ -438,10 +440,12 @@ extension MakeCutViewController: UIImagePickerControllerDelegate, UINavigationCo
             if self.targetImage == 1 {
                 self.pickedPhoto = image!
                 self.cutImage.image = pickedPhoto
+                self.cutImage.contentMode = .scaleAspectFit
                 isPhotoPicked = true
             } else {
                 self.pickedSecondPhoto = image!
                 self.secondCutImage.image = pickedSecondPhoto
+                self.secondCutImage.contentMode = .scaleAspectFit
                 isSecondPhotoPicked = true
             }
             dismiss(animated: true, completion: nil)

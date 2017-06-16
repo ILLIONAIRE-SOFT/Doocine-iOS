@@ -33,10 +33,10 @@ class ProjectDetailCollectionCell: UICollectionViewCell {
             if cutImage != nil {
                 sceneImage.image = cutImage
             } else {
-                sceneImage.image = UIImage(named: "img_banner_doocine")
+                sceneImage.image = UIImage(named: "icon_add_img")
             }
         } else {
-            sceneImage.image = UIImage(named: "img_banner_doocine")
+            sceneImage.image = UIImage(named: "icon_add_img")
         }
         sceneImage.contentMode = .scaleAspectFill
         sceneImage.clipsToBounds = true

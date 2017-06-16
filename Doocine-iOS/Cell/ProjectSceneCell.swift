@@ -432,7 +432,7 @@ class ProjectSceneCell: UITableViewCell {
                 if subCutImage != nil {
                     subCutImageView.image = subCutImage
                 } else {
-                    subCutImageView.image = UIImage(named: "img_banner_doocine")
+                    subCutImageView.image = UIImage(named: "icon_add_img")
                 }
                 
                 subCutImageView.clipsToBounds = true
