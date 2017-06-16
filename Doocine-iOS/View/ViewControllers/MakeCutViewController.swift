@@ -83,13 +83,13 @@ class MakeCutViewController: BaseViewController {
         let tapImage = UITapGestureRecognizer(target: self, action: #selector(tappedImage))
         cutImage.isUserInteractionEnabled = true
         cutImage.addGestureRecognizer(tapImage)
-        cutImage.contentMode = .scaleAspectFit
+        cutImage.contentMode = .center
         cutImage.clipsToBounds = true
         
         let tapSecondImage = UITapGestureRecognizer(target: self, action: #selector(tappedSecondImage))
         secondCutImage.isUserInteractionEnabled = true
         secondCutImage.addGestureRecognizer(tapSecondImage)
-        secondCutImage.contentMode = .scaleAspectFit
+        secondCutImage.contentMode = .center
         secondCutImage.clipsToBounds = true
     }
     

@@ -50,7 +50,7 @@ class CameraWalkPopup: UIViewController, PopupContentViewController {
         }
         
         let firstImage = UIImageView()
-        firstImage.image = UIImage(named: "img_banner_doocine")
+        firstImage.image = UIImage(named: "icon_camera_fix")
         firstImage.contentMode = .scaleAspectFill
         firstImage.clipsToBounds = true
         firstImage.layer.cornerRadius = 8
@@ -83,7 +83,7 @@ class CameraWalkPopup: UIViewController, PopupContentViewController {
         self.view.addSubview(secondView)
         
         let secondImage = UIImageView()
-        secondImage.image = UIImage(named: "img_banner_doocine")
+        secondImage.image = UIImage(named: "icon_camera_pan")
         secondImage.contentMode = .scaleAspectFill
         secondImage.clipsToBounds = true
         secondImage.layer.cornerRadius = 8
@@ -123,7 +123,7 @@ class CameraWalkPopup: UIViewController, PopupContentViewController {
         self.view.addSubview(thirdView)
         
         let thirdImage = UIImageView()
-        thirdImage.image = UIImage(named: "img_banner_doocine")
+        thirdImage.image = UIImage(named: "icon_camera_tilt")
         thirdImage.contentMode = .scaleAspectFill
         thirdImage.clipsToBounds = true
         thirdImage.layer.cornerRadius = 8
@@ -162,7 +162,7 @@ class CameraWalkPopup: UIViewController, PopupContentViewController {
         self.view.addSubview(fourthView)
         
         let fourthImage = UIImageView()
-        fourthImage.image = UIImage(named: "img_banner_doocine")
+        fourthImage.image = UIImage(named: "icon_camera_handyheld")
         fourthImage.contentMode = .scaleAspectFill
         fourthImage.clipsToBounds = true
         fourthImage.layer.cornerRadius = 8
