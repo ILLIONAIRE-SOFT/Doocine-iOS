@@ -84,12 +84,14 @@ class MakeCutViewController: BaseViewController {
         cutImage.isUserInteractionEnabled = true
         cutImage.addGestureRecognizer(tapImage)
         cutImage.contentMode = .center
+        cutImage.backgroundColor = UIColor.lightGray
         cutImage.clipsToBounds = true
         
         let tapSecondImage = UITapGestureRecognizer(target: self, action: #selector(tappedSecondImage))
         secondCutImage.isUserInteractionEnabled = true
         secondCutImage.addGestureRecognizer(tapSecondImage)
         secondCutImage.contentMode = .center
+        secondCutImage.backgroundColor = UIColor.lightGray
         secondCutImage.clipsToBounds = true
     }
     
@@ -101,19 +103,21 @@ class MakeCutViewController: BaseViewController {
         if let photo = PhotoManager.loadImage(imageId: self.originCut.id) {
             self.pickedPhoto = photo
             self.cutImage.contentMode = .scaleAspectFit
+            self.cutImage.backgroundColor = UIColor.black
             isPhotoPicked = true
             self.cutImage.image = photo
         } else {
-            self.cutImage.image = UIImage(named: "img_empty")
+            self.cutImage.image = UIImage(named: "icon_add_img")
         }
         
         if let secondPhoto = PhotoManager.loadImage(imageId: self.originCut.id, isSecondImage: true) {
             self.pickedSecondPhoto = secondPhoto
             self.secondCutImage.contentMode = .scaleAspectFit
+            self.secondCutImage.backgroundColor = UIColor.black
             isSecondPhotoPicked = true
             self.secondCutImage.image = secondPhoto
         } else {
-            self.secondCutImage.image = UIImage(named: "img_empty")
+            self.secondCutImage.image = UIImage(named: "icon_add_img")
         }
         
         if self.cameraWalkValueLabel.text == "FIX" {
@@ -440,11 +444,13 @@ extension MakeCutViewController: UIImagePickerControllerDelegate, UINavigationCo
             if self.targetImage == 1 {
                 self.pickedPhoto = image!
                 self.cutImage.image = pickedPhoto
+                self.cutImage.backgroundColor = UIColor.black
                 self.cutImage.contentMode = .scaleAspectFit
                 isPhotoPicked = true
             } else {
                 self.pickedSecondPhoto = image!
                 self.secondCutImage.image = pickedSecondPhoto
+                self.secondCutImage.backgroundColor = UIColor.black
                 self.secondCutImage.contentMode = .scaleAspectFit
                 isSecondPhotoPicked = true
             }
