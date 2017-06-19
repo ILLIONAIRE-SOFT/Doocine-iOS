@@ -42,13 +42,13 @@ class ProjectCell: UICollectionViewCell {
                 if cutImage != nil {
                     projectImageView.image = cutImage
                 } else {
-                    projectImageView.image = UIImage(named: "icon_add_img")
+                    projectImageView.image = UIImage(named: "img_blank_project")
                 }
             } else {
-                projectImageView.image = UIImage(named: "icon_add_img")
+                projectImageView.image = UIImage(named: "img_blank_project")
             }
         } else {
-            projectImageView.image = UIImage(named: "icon_add_img")
+            projectImageView.image = UIImage(named: "img_blank_project")
         }
         
         projectImageView.clipsToBounds = true
