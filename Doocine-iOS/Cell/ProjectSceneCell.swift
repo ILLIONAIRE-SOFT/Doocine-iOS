@@ -268,12 +268,14 @@ class ProjectSceneCell: UITableViewCell {
             
             if cutImage != nil {
                 imageView.image = cutImage
+                imageView.contentMode = .scaleAspectFill
             } else {
-                imageView.image = UIImage(named: "img_empty")
+                imageView.image = UIImage(named: "icon_add_img")
+                imageView.contentMode = .center
+                imageView.backgroundColor = .lightGray
             }
             
             imageView.clipsToBounds = true
-            imageView.contentMode = .scaleAspectFill
             
             bodyView.addSubview(imageView)
             
@@ -432,7 +434,7 @@ class ProjectSceneCell: UITableViewCell {
                 if subCutImage != nil {
                     subCutImageView.image = subCutImage
                 } else {
-                    subCutImageView.image = UIImage(named: "img_banner_doocine")
+                    subCutImageView.image = UIImage(named: "icon_add_img")
                 }
                 
                 subCutImageView.clipsToBounds = true

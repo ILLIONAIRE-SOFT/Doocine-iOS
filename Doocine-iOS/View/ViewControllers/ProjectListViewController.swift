@@ -22,6 +22,12 @@ class ProjectListViewController: BaseViewController {
         
         self.initNavigation()
         self.initViews()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        super.showLoading(view: self.view)
         self.refresh()
     }
     
@@ -45,6 +51,8 @@ class ProjectListViewController: BaseViewController {
         for storyboard in movieStoryboards {
             self.projects.append(storyboard)
         }
+        
+        super.hideLoading()
         
         self.collectionView.reloadData()
     }

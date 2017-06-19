@@ -78,6 +78,7 @@ class BaseViewController: UIViewController {
     func showLoading(view: UIView) -> Void {
         self.loadingView.frame = CGRect(x: 0, y:0, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height*2)
         self.view.addSubview(self.loadingView)
+        self.loadingView.backgroundColor = UIColor.black.withAlphaComponent(0.5)
 //        activityIndicatorView.center = CGPoint(x: self.loadingView.center.x, y: self.loadingView.center.y-50)
 //        self.activityIndicatorView.startAnimating()
         UIView.animate(withDuration: 0.3, animations: {
