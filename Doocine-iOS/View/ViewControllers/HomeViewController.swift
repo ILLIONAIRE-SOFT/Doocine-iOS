@@ -35,6 +35,7 @@ class HomeViewController: BaseViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
+        super.showLoading(view: self.view)
         self.fetchStoryboards()
     }
     
@@ -80,6 +81,8 @@ class HomeViewController: BaseViewController {
         
         self.collectionView.reloadData()
         self.projectCountLabel.text = String(self.projects.count) + " projects"
+        
+        super.hideLoading()
     }
 }
 

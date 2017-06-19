@@ -48,13 +48,13 @@ class ProjectDetailViewController: BaseViewController {
         super.viewWillAppear(animated)
         
         self.expandHeaderViewWithoutDelay()
+        
+        super.showLoading(view: self.view)
+        self.fetchScenes()
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        
-        self.showLoading(view: self.view)
-        self.fetchScenes()
     }
     
     private func initNavigation() -> Void {
@@ -106,7 +106,7 @@ class ProjectDetailViewController: BaseViewController {
             self.scenes.append(scene)
         }
         
-        self.hideLoading()
+        super.hideLoading()
         
         self.collectionView.reloadData()
         self.tableView.reloadData()
