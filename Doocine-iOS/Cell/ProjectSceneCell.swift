@@ -270,7 +270,8 @@ class ProjectSceneCell: UITableViewCell {
                 imageView.image = cutImage
                 imageView.contentMode = .scaleAspectFill
             } else {
-                imageView.image = UIImage(named: "icon_add_img")
+                let addImage: UIImage = UIImage(named: "icon_add_img")!
+                imageView.image = addImage.resizedImage(newSize: CGSize(width: 130, height: 90))
                 imageView.contentMode = .center
                 imageView.backgroundColor = .lightGray
             }
